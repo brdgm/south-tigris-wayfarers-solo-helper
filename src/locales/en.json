@@ -12,6 +12,10 @@
       "title": "Difficulty Level",
       "easy": "Easy",
       "hard": "Hard"
+    },
+    "expansions": {
+      "title": "Expansions",
+      "tides-of-trade": "Tides of Trade"
     }
   },
   "notfound": {
