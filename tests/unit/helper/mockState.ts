@@ -1,4 +1,5 @@
-import DifficultyLevel from '@/services/enum/DifficultyLevel'
+import BotFocus from '@/services/enum/BotFocus'
+import Expansion from '@/services/enum/Expansion'
 import { Round, State } from '@/store/state'
 
 export default function mockState(params?: MockStateParams) : State {  
@@ -6,13 +7,15 @@ export default function mockState(params?: MockStateParams) : State {
     language: 'en',
     baseFontSize: 1,
     setup: {
-      difficultyLevel: params?.difficultyLevel ?? DifficultyLevel.LEVEL_1
+      botFocus: params?.botFocus ?? BotFocus.TOWNSFOLK,
+      expansions: params?.expansions ?? []
     },
     rounds: params?.rounds ?? []
   }
 }
 
 export interface MockStateParams {
-  difficultyLevel?: DifficultyLevel
+  botFocus?: BotFocus
+  expansions?: Expansion[]
   rounds?: Round[]
 }

@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { name } from '@/../package.json'
-import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Expansion from '@/services/enum/Expansion'
 import toggleArrayItem from '@brdgm/brdgm-commons/src/util/array/toggleArrayItem'
+import BotFocus from '@/services/enum/BotFocus'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -10,7 +10,7 @@ export const useStateStore = defineStore(`${name}.state`, {
       language: 'en',
       baseFontSize: 1,
       setup: {
-        difficultyLevel: DifficultyLevel.LEVEL_1,
+        botFocus: BotFocus.TOWNSFOLK,
         expansions: []
       },
       rounds: []
@@ -46,7 +46,7 @@ export interface State {
   rounds: Round[]
 }
 export interface Setup {
-  difficultyLevel: DifficultyLevel
+  botFocus: BotFocus
   expansions: Expansion[]
   debugMode?: boolean
 }

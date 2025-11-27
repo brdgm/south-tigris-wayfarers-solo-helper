@@ -8,15 +8,19 @@
   },
   "setup": {
     "title": "Setup",
-    "difficultyLevel": {
-      "title": "Difficulty Level",
-      "easy": "Easy",
-      "hard": "Hard"
+    "botFocusSelection": {
+      "title": "AI Focus"
     },
     "expansions": {
       "title": "Expansions",
       "tides-of-trade": "Tides of Trade"
     }
+  },
+  "botFocus": {
+    "townsfolk": "Townsfolk",
+    "upgrade": "Upgrade",
+    "space": "Space",
+    "journal": "Journal"
   },
   "notfound": {
     "title": "Not Found"
