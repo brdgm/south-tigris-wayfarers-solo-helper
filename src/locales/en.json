@@ -9,12 +9,16 @@
   "setup": {
     "title": "Setup",
     "botFocusSelection": {
-      "title": "AI Focus"
+      "title": "AI Focus",
+      "feelDifferent": "Each AI Focus will feel different to play against."
     },
     "expansions": {
       "title": "Expansions",
       "tides-of-trade": "Tides of Trade"
     }
+  },
+  "setupBot": {
+    "title": "Setup AI"
   },
   "botFocus": {
     "townsfolk": "Townsfolk",
