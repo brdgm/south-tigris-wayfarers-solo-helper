@@ -12,7 +12,7 @@
              autocomplete="off">
       <label class="focus-card" :for="`botFocus-${botFocus}`">
         <div class="focus-card-icon">
-          <AppIcon type="bot-focus" :name="botFocus" extension="svg" class="icon"/>
+          <AppIcon type="bot-focus" :name="botFocus" class="icon"/>
         </div>
         <div class="focus-card-text">
           {{t(`botFocus.${botFocus}`)}}
