@@ -1,22 +1,18 @@
 import { State } from '@/store/state'
 import { RouteLocation } from 'vue-router'
 import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRouteParam'
-import DifficultyLevel from '@/services/enum/DifficultyLevel'
+import CardDeck from '@/services/CardDeck'
 
 export default class NavigationState {
 
-  readonly round : number
   readonly turn : number
-  readonly turnOrderIndex : number
   readonly action : number
-  readonly difficultyLevel : DifficultyLevel
+  readonly cardDeck: CardDeck
 
   constructor(route: RouteLocation, state: State) {    
-    this.round = getIntRouteParam(route, 'round')
     this.turn = getIntRouteParam(route, 'turn')
-    this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
     this.action = getIntRouteParam(route, 'action')
-    this.difficultyLevel = state.setup.difficultyLevel
+    this.cardDeck = CardDeck.new(state.setup.expansions)
   }
 
 }
