@@ -2,18 +2,18 @@
   <h1>{{t('setupBot.title')}}</h1>
 
   <div class="instructions mt-4">
-    <p>Setup the game for a 2-player game, with the following changes for the AI:</p>
+    <p v-html="t('setupBot.instructions.intro')"></p>
     <ol>
       <li>
-        <span>On the backside of the player boards you find the AI sides. Find the board with the "Space AI" focus with this symbol:</span><br/>
+        <span v-html="t('setupBot.instructions.aiBoard', { focus: t(`botFocus.${state.setup.botFocus}`) })"></span><br/>
         <AppIcon type="bot-focus" :name="state.setup.botFocus" class="icon bot-focus"/>
       </li>
-      <li>The AI is not using any Dice.</li>
-      <li>Place the Player Marker of their colour on the starting space of the Journal Track.</li>
-      <li>They start with 1 Yellow Worker and 1 Blue Worker.</li>
-      <li>The AI will always be the 2nd player. They do not gain any Provisions or Silver, but do start the game with <b>1 Influence in the Yellow Guild and 1 in Blue</b>. Place their remaining Influence into their supply.</li>
+      <li v-html="t('setupBot.instructions.noDice')"></li>
+      <li v-html="t('setupBot.instructions.playerMarker')"></li>
+      <li v-html="t('setupBot.instructions.workers')"></li>
+      <li v-html="t('setupBot.instructions.secondPlayer')"></li>
     </ol>
-    <p>You do not need the scheme cards cards - the card deck, the AI resource track and the comet track is manged by this application.</p>
+    <p v-html="t('setupBot.instructions.noSchemeCards')"></p>
   </div>
 
   <div class="container-fluid mt-4">
@@ -21,10 +21,10 @@
       <div class="col alert alert-primary">
         <h4>{{t('setupBot.ruleChanges.title')}}</h4>
         <ul>
-          <li><b>Influence Limits</b>: Unlike human players, the AI is not limited by the Influence in their supply. If they run out, use Influence of an unused colour. This is still considered to be their Influence.</li>
-          <li>The AI <b>ignores all costs</b> <i>(other than those on their Scheme Cards)</i>, and ignores all requirements on the Journal Track. They still gain all rewards from the Journal Track. In the final column, they gain a Pink Upgrade, not an Inspiration Card.</li>
-          <li>The AI <b>ignores all icons on all Cards and Upgrade Tiles</b> they acquire. This includes Comets, Influence, free Upgrades, etc - everything! However, they do still gain Victory Points from acquired Upgrade Tiles.</li>
-          <li>The AI <b>resolves all icons on the Resource Track</b> just as a player would. Along the top of the AI Board are shown some key changes to certain icons. If they would ever gain the effect on the left, they instead resolve that shown on the right.</li>
+          <li v-html="t('setupBot.ruleChanges.influenceLimits')"></li>
+          <li v-html="t('setupBot.ruleChanges.costs')"></li>
+          <li v-html="t('setupBot.ruleChanges.icons')"></li>
+          <li v-html="t('setupBot.ruleChanges.resourceTrack')"></li>
         </ul>
       </div>
     </div>
