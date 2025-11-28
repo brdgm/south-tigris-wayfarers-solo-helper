@@ -44,6 +44,7 @@ import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useRouter } from 'vue-router'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import CardDeck from '@/services/CardDeck'
 
 export default defineComponent({
   name: 'SetupBot',
@@ -60,6 +61,8 @@ export default defineComponent({
   },
   methods: {
     startGame() : void {
+      this.state.resetGame()
+      this.state.setup.initialCardDeck = CardDeck.new(this.state.setup.expansions).toPersistence()
       this.router.push('/turn/1/player')
     }
   }
