@@ -1,6 +1,6 @@
 import BotFocus from '@/services/enum/BotFocus'
 import Expansion from '@/services/enum/Expansion'
-import { State, Turn } from '@/store/state'
+import { CardDeckPersistence, State, Turn } from '@/store/state'
 
 export default function mockState(params?: MockStateParams) : State {  
   return {
@@ -8,7 +8,8 @@ export default function mockState(params?: MockStateParams) : State {
     baseFontSize: 1,
     setup: {
       botFocus: params?.botFocus ?? BotFocus.TOWNSFOLK,
-      expansions: params?.expansions ?? []
+      expansions: params?.expansions ?? [],
+      initialCardDeck: params?.initialCardDeck
     },
     turns: params?.turns ?? []
   }
@@ -17,5 +18,6 @@ export default function mockState(params?: MockStateParams) : State {
 export interface MockStateParams {
   botFocus?: BotFocus
   expansions?: Expansion[]
+  initialCardDeck?: CardDeckPersistence
   turns?: Turn[]
 }
