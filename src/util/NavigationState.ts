@@ -31,17 +31,14 @@ export default class NavigationState {
 }
 
 function getBotPersistence(state: State, turn: number, lastTurn: boolean) : BotPersistence {
-  let botPersistence = getLastBotPersistence(state, turn, lastTurn)
-  if (!botPersistence) {
-    botPersistence = {
+  return getLastBotPersistence(state, turn, lastTurn)
+    ?? {
       cardDeck: state.setup.initialCardDeck ?? CardDeck.new(state.setup.expansions).toPersistence(),
       botResources: {
         resourceTrack: 0,
         cometTrack: 0
       }
     }
-  }
-  return botPersistence
 }
 
 function getLastBotPersistence(state: State, turn: number, lastTurn: boolean) : BotPersistence | undefined {
