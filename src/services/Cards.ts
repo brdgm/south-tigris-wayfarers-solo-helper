@@ -2,7 +2,7 @@ import findMandatory from '@brdgm/brdgm-commons/src/util/map/findMandatory'
 import Card from './Card'
 import Action from './enum/Action'
 import SpecialUpgradeTilePick from './enum/SpecialUpgradeTilePick'
-import CardColor from './enum/CardColor'
+import SchemeCardColor from './enum/SchemeCardColor'
 import Expansion from './enum/Expansion'
 
 /**
@@ -11,7 +11,7 @@ import Expansion from './enum/Expansion'
 const cards : Card[] = [
   {
     id: 1,
-    cardColor: CardColor.BLUE,
+    cardColor: SchemeCardColor.BLUE,
     silverValue: 2,
     actions: [
       Action.WORKER_GREEN,
@@ -21,7 +21,7 @@ const cards : Card[] = [
   },
   {
     id: 2,
-    cardColor: CardColor.BLUE,
+    cardColor: SchemeCardColor.BLUE,
     silverValue: 0,
     actions: [
       Action.WORKER_GREEN_OR_BLUE,
@@ -32,7 +32,7 @@ const cards : Card[] = [
   },
   {
     id: 3,
-    cardColor: CardColor.BLUE,
+    cardColor: SchemeCardColor.BLUE,
     silverValue: 0,
     actions: [
       Action.WORKER_GREEN_OR_YELLOW,
@@ -43,7 +43,7 @@ const cards : Card[] = [
   },
   {
     id: 4,
-    cardColor: CardColor.RED,
+    cardColor: SchemeCardColor.RED,
     silverValue: 1,
     actions: [
       Action.CARD_LAND_SPEND_INFLUENCE_YELLOW,
@@ -54,7 +54,7 @@ const cards : Card[] = [
   },
   {
     id: 5,
-    cardColor: CardColor.RED,
+    cardColor: SchemeCardColor.RED,
     silverValue: 2,
     actions: [
       Action.CARD_SPACE_SPEND_INFLUENCE_BLACK,
@@ -64,7 +64,7 @@ const cards : Card[] = [
   },
   {
     id: 6,
-    cardColor: CardColor.RED,
+    cardColor: SchemeCardColor.RED,
     silverValue: 1,
     actions: [
       Action.CARD_WATER_SPEND_INFLUENCE_BLUE,

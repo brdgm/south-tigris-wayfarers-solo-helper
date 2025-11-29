@@ -1,6 +1,10 @@
 <template>
   <div class="sidebar">
     {{t('sideBar.turn', {turn})}}
+    <p class="mt-2">
+      Resources: {{ navigationState.botResources.resourceTrack }}<br/>
+      Comets: {{ navigationState.botResources.cometTrack }}
+    </p>
   </div>
 </template>
 
