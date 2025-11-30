@@ -35,8 +35,33 @@ export default class CardDeck {
    * Returns true if the discard has 3 red or 3 blue cards.
    */
   public get isRest() : boolean {
-    return this._discard.value.filter(card => card.cardColor === SchemeCardColor.RED).length === 3
-        || this._discard.value.filter(card => card.cardColor === SchemeCardColor.BLUE).length === 3
+    return this.getCardColorCount(SchemeCardColor.RED) == 3 || this.getCardColorCount(SchemeCardColor.BLUE) == 3
+  }
+
+  /**
+   * Returns the color which has majority in the discard pile.
+   */
+  public get colorMajority() : SchemeCardColor {
+    const redCount = this.getCardColorCount(SchemeCardColor.RED)
+    const blueCount = this.getCardColorCount(SchemeCardColor.BLUE)
+    if (redCount > blueCount) {
+      return SchemeCardColor.RED
+    }
+    if (blueCount > redCount) {
+      return SchemeCardColor.BLUE
+    }
+    return this._discard.value[0].color ?? SchemeCardColor.BLUE
+  }
+
+  private getCardColorCount(color : SchemeCardColor) : number {
+    return this._discard.value.filter(card => card.color === color).length
+  }
+
+  /**
+   * Sum of silver values of the first two cards in the discard pile.
+   */
+  public get silverValueSum() : number {
+    return this._discard.value.slice(0, 2).reduce((sum, card) => sum + card.silverValue, 0)
   }
 
   /**

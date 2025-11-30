@@ -1,5 +1,6 @@
 import CardDeck from '@/services/CardDeck'
 import Expansion from '@/services/enum/Expansion'
+import SchemeCardColor from '@/services/enum/SchemeCardColor'
 import { expect } from 'chai'
 
 describe('services/CardDeck', () => {
@@ -28,26 +29,38 @@ describe('services/CardDeck', () => {
 
     expect(deck.currentCard?.id).to.eq(4)  // red
     expect(deck.isRest).to.eq(false)
+    expect(deck.colorMajority).to.eq(SchemeCardColor.RED)
+    expect(deck.silverValueSum).to.eq(1)
 
     deck.draw()
     expect(deck.currentCard?.id).to.eq(1)  // blue
     expect(deck.isRest).to.eq(false)
+    expect(deck.colorMajority).to.eq(SchemeCardColor.BLUE)
+    expect(deck.silverValueSum).to.eq(3)
 
     deck.draw()
     expect(deck.currentCard?.id).to.eq(7)  // no color
     expect(deck.isRest).to.eq(false)
+    expect(deck.colorMajority).to.eq(SchemeCardColor.BLUE)
+    expect(deck.silverValueSum).to.eq(3)
 
     deck.draw()
     expect(deck.currentCard?.id).to.eq(2)  // blue
     expect(deck.isRest).to.eq(false)
+    expect(deck.colorMajority).to.eq(SchemeCardColor.BLUE)
+    expect(deck.silverValueSum).to.eq(1)
 
     deck.draw()
     expect(deck.currentCard?.id).to.eq(5)  // red
     expect(deck.isRest).to.eq(false)
+    expect(deck.colorMajority).to.eq(SchemeCardColor.RED)
+    expect(deck.silverValueSum).to.eq(2)
 
     deck.draw()
     expect(deck.currentCard?.id).to.eq(6)  // red
     expect(deck.isRest).to.eq(true)
+    expect(deck.colorMajority).to.eq(SchemeCardColor.RED)
+    expect(deck.silverValueSum).to.eq(3)
   })
 
   it('shuffle', () => {

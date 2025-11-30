@@ -6,7 +6,7 @@ import SpecialUpgradeTilePick from './enum/SpecialUpgradeTilePick'
 export default interface Card {
   id: number
   expansion?: Expansion
-  cardColor?: SchemeCardColor
+  color?: SchemeCardColor
   silverValue: number
   actions: Action[]
   specialUpgradeTilePick?: SpecialUpgradeTilePick
