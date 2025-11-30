@@ -37,6 +37,10 @@
       "resourceTrack": "The AI <b>resolves all icons on the Resource Track</b> just as a player would. Along the top of the AI Board are shown some key changes to certain icons. If they would ever gain the effect on the left, they instead resolve that shown on the right."
     }
   },
+  "turnPlayer": {
+    "execute": "Execute you turn.",
+    "playerPaySilver": "Silver/Provisions you paid to the AI:"
+  },
   "sideBar": {
     "turn": "Turn {turn}"
   },

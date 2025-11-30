@@ -45,8 +45,9 @@ export default class BotActions {
     let newResourceTrack = oldResourceTrack + advanceSteps
 
     // benefits from resource track and drawn card
-    if (oldResourceTrack < 5 && newResourceTrack >= 5) {
-      benefits.push(getResourceTrackBenefit(botFocus))
+    const resourceTrackBenefit = getResourceTrackBenefit(oldResourceTrack, newResourceTrack, botFocus)
+    if (resourceTrackBenefit) {
+      benefits.push(resourceTrackBenefit)
     }
     if (lastCard.comet) {
       benefits.push(Benefit.COMET)

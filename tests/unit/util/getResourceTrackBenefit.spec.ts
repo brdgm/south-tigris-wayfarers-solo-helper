@@ -5,9 +5,10 @@ import { expect } from 'chai'
 
 describe('util/getResourceTrackBenefit', () => {
   it('getResourceTrackBenefit', () => {
-    expect(getResourceTrackBenefit(BotFocus.TOWNSFOLK)).to.eq(Benefit.TOWNSFOLK_CARD)
-    expect(getResourceTrackBenefit(BotFocus.UPGRADE)).to.eq(Benefit.INFLUENCE_YELLOW)
-    expect(getResourceTrackBenefit(BotFocus.SPACE)).to.eq(Benefit.COMET)
-    expect(getResourceTrackBenefit(BotFocus.JOURNAL)).to.eq(Benefit.INFLUENCE_BLACK)
+    expect(getResourceTrackBenefit(4,5,BotFocus.TOWNSFOLK)).to.eq(Benefit.TOWNSFOLK_CARD)
+    expect(getResourceTrackBenefit(4,5,BotFocus.UPGRADE)).to.eq(Benefit.INFLUENCE_YELLOW)
+    expect(getResourceTrackBenefit(4,5,BotFocus.SPACE)).to.eq(Benefit.COMET)
+    expect(getResourceTrackBenefit(4,5,BotFocus.JOURNAL)).to.eq(Benefit.INFLUENCE_BLACK)
+    expect(getResourceTrackBenefit(3,4,BotFocus.TOWNSFOLK)).to.undefined
   })
 })

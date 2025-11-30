@@ -15,7 +15,7 @@ const state = mockState({botFocus:BotFocus.TOWNSFOLK,
     mockTurn({turn:1, player:Player.PLAYER, botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[1,2,3,4]})})}),
     mockTurn({turn:2, player:Player.BOT, botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[2,3,4],discard:[1]}), resourceTrack:2, cometTrack:1})}),
     mockTurn({turn:3, player:Player.PLAYER, botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[2,3,4],discard:[1]}), resourceTrack:2, cometTrack:1})}),
-    mockTurn({turn:4, player:Player.BOT, botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[3,4],discard:[2,1]}), resourceTrack:3, cometTrack:1})}),
+    mockTurn({turn:4, player:Player.BOT, botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[3,4],discard:[2,1]}), resourceTrack:2, cometTrack:1})}),
   ]})
 
 describe('util/NavigationState', () => {
@@ -30,7 +30,7 @@ describe('util/NavigationState', () => {
     const underTest = navigationState('TurnBot', {turn:'2'})
     expect(underTest.turn).to.equal(2)
     expect(underTest.cardDeck.currentCard?.id).to.eq(1)
-    expect(underTest.botResources).to.eql({resourceTrack:0, cometTrack:0})
+    expect(underTest.botResources).to.eql({resourceTrack:2, cometTrack:0})
   })
 
   it('turn-3', () => {
@@ -44,7 +44,7 @@ describe('util/NavigationState', () => {
     const underTest = navigationState('TurnBot', {turn:'4'})
     expect(underTest.turn).to.equal(4)
     expect(underTest.cardDeck.currentCard?.id).to.eq(2)
-    expect(underTest.botResources).to.eql({resourceTrack:2, cometTrack:1})
+    expect(underTest.botResources).to.eql({resourceTrack:2, cometTrack:2})
   })
 })
 
