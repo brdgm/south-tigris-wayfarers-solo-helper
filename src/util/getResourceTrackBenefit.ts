@@ -1,21 +1,21 @@
+import Benefit from '@/services/enum/Benefit'
 import BotFocus from '@/services/enum/BotFocus'
-import ResourceTrackBenefit from '@/services/enum/ResourceTrackBenefit'
 
 /**
  * Get benefit form resource track when moving from pos. 4 to 5.
- * @param resourceTrack Resource track position
+ * @param botFocus Bot focus
  * @returns Resource track benefit
  */
-export default function getResourceTrackBenefit(botFocus : BotFocus) : ResourceTrackBenefit {
+export default function getResourceTrackBenefit(botFocus : BotFocus) : Benefit {
   switch (botFocus) {
     case BotFocus.TOWNSFOLK:
-      return ResourceTrackBenefit.TOWNSFOLK_CARD
+      return Benefit.TOWNSFOLK_CARD
     case BotFocus.UPGRADE:
-      return ResourceTrackBenefit.INFLUENCE_YELLOW
+      return Benefit.INFLUENCE_YELLOW
     case BotFocus.SPACE:
-      return ResourceTrackBenefit.COMET
+      return Benefit.COMET
     case BotFocus.JOURNAL:
-      return ResourceTrackBenefit.INFLUENCE_BLACK
+      return Benefit.INFLUENCE_BLACK
     default:
       throw new Error(`Invalid bot focus: ${botFocus}`)
   }

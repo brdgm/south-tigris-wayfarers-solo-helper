@@ -15,6 +15,9 @@ enum Action {
   PLACE_INFLUENCE_BLACK_TOWNSFOLK_CARD = 'place-influence-black-townsfolk-card',
   PLACE_INFLUENCE_BLUE_UPGRADE_TILE = 'place-influence-blue-upgrade-tile',
   CARD_INSPIRATION_SPEND_INFLUENCE_RED = 'place-influence-red-inspiration-card',
-  WORKER_UPGRADE_TILE_PLACE_INFLUENCE_RED = 'worker-upgrade-tile-place-influence-red'
+  WORKER_UPGRADE_TILE_PLACE_INFLUENCE_RED = 'worker-upgrade-tile-place-influence-red',
+  JOURNAL = 'journal',
+  CARD_SPACE = 'card-space',
+  CARD_TOWNSFOLK = 'card-townsfolk'
 }
 export default Action
