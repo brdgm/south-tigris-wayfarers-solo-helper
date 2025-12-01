@@ -3,12 +3,17 @@ import BotFocus from '@/services/enum/BotFocus'
 
 /**
  * Get benefit form resource track when moving from pos. 4 to 5.
- * @param oldResourceTrack Old resource track position
- * @param newResourceTrack New resource track position
+ * @param resourceTrack Current resource track position
+ * @param resourceTrackAdd Steps to add to resource track
  * @param botFocus Bot focus
  * @returns Resource track benefit or undefined if the position does not match
  */
-export default function getResourceTrackBenefit(oldResourceTrack: number, newResourceTrack:number, botFocus : BotFocus) : Benefit|undefined {
+export default function getResourceTrackBenefit(resourceTrack: number, resourceTrackAdd: number, botFocus : BotFocus) : Benefit|undefined {
+  const newResourceTrack = (resourceTrack + resourceTrackAdd) % 8
+  let oldResourceTrack = resourceTrack
+  if (resourceTrack + resourceTrackAdd > 7) {
+    oldResourceTrack = 0
+  }
   if (oldResourceTrack < 5 && newResourceTrack >= 5) {
     switch (botFocus) {
       case BotFocus.TOWNSFOLK:

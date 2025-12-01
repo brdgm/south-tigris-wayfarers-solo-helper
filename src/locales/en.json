@@ -43,7 +43,9 @@
     "playerPaySilver": "Silver/Provisions you paid to the AI:"
   },
   "turnBot": {
-    "title": "{focus} AI"
+    "title": "{focus} AI",
+    "executed": "Executed",
+    "notPossible": "Not Possible"
   },
   "sideBar": {
     "turn": "Turn {turn}"
