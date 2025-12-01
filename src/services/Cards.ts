@@ -4,6 +4,8 @@ import Action from './enum/Action'
 import SpecialUpgradeTilePick from './enum/SpecialUpgradeTilePick'
 import SchemeCardColor from './enum/SchemeCardColor'
 import Expansion from './enum/Expansion'
+import Color from './enum/Color'
+import Guild from './enum/Guild'
 
 /**
  * Scheme cards
@@ -14,8 +16,8 @@ const cards : Card[] = [
     color: SchemeCardColor.BLUE,
     silverValue: 2,
     actions: [
-      Action.WORKER_GREEN,
-      Action.FOCUS
+      { action: Action.WORKER, workerColors: [Color.GREEN] },
+      { action: Action.FOCUS }
     ],
     specialUpgradeTilePick: SpecialUpgradeTilePick.TOP_LEFT,
   },
@@ -24,8 +26,8 @@ const cards : Card[] = [
     color: SchemeCardColor.BLUE,
     silverValue: 0,
     actions: [
-      Action.WORKER_GREEN_OR_BLUE,
-      Action.PLACE_INFLUENCE_BLUE_GREEN_BLACK,
+      { action: Action.WORKER, workerColors: [Color.GREEN,Color.BLUE] },
+      { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE,Guild.YELLOW,Guild.BLACK] }
     ],
     specialUpgradeTilePick: SpecialUpgradeTilePick.TOP_MIDDLE,
     comet: true
@@ -35,8 +37,8 @@ const cards : Card[] = [
     color: SchemeCardColor.BLUE,
     silverValue: 0,
     actions: [
-      Action.WORKER_GREEN_OR_YELLOW,
-      Action.UPGRADE_TILE
+      { action: Action.WORKER, workerColors: [Color.GREEN,Color.YELLOW] },
+      { action: Action.UPGRADE_TILE }
     ],
     specialUpgradeTilePick: SpecialUpgradeTilePick.TOP_RIGHT,
     comet: true
@@ -46,8 +48,8 @@ const cards : Card[] = [
     color: SchemeCardColor.RED,
     silverValue: 1,
     actions: [
-      Action.CARD_LAND_SPEND_INFLUENCE_YELLOW,
-      Action.PLACE_INFLUENCE_YELLOW_INFLUENCE_CARD
+      { action: Action.CARD_LAND, influenceCost: [Guild.YELLOW,Guild.YELLOW] },
+      { action: Action.INFLUENCE_CARD, influenceBonus: [Guild.YELLOW,Guild.YELLOW] }
     ],
     specialUpgradeTilePick: SpecialUpgradeTilePick.BOTTOM_RIGHT,
     comet: true
@@ -57,8 +59,8 @@ const cards : Card[] = [
     color: SchemeCardColor.RED,
     silverValue: 2,
     actions: [
-      Action.CARD_SPACE_SPEND_INFLUENCE_BLACK,
-      Action.PLACE_INFLUENCE_BLACK_TOWNSFOLK_CARD
+      { action: Action.CARD_SPACE, influenceCost: [Guild.BLACK,Guild.BLACK] },
+      { action: Action.CARD_TOWNSFOLK, influenceBonus: [Guild.BLACK] }
     ],
     specialUpgradeTilePick: SpecialUpgradeTilePick.BOTTOM_MIDDLE
   },
@@ -67,8 +69,8 @@ const cards : Card[] = [
     color: SchemeCardColor.RED,
     silverValue: 1,
     actions: [
-      Action.CARD_WATER_SPEND_INFLUENCE_BLUE,
-      Action.PLACE_INFLUENCE_BLUE_UPGRADE_TILE
+      { action: Action.CARD_WATER, influenceCost: [Guild.BLUE,Guild.BLUE] },
+      { action: Action.UPGRADE_TILE, influenceBonus: [Guild.BLUE] }
     ],
     specialUpgradeTilePick: SpecialUpgradeTilePick.BOTTOM_LEFT,
     comet: true
@@ -78,8 +80,8 @@ const cards : Card[] = [
     expansion: Expansion.TIDES_OF_TRADE,
     silverValue: 1,
     actions: [
-      Action.CARD_INSPIRATION_SPEND_INFLUENCE_RED,
-      Action.WORKER_UPGRADE_TILE_PLACE_INFLUENCE_RED
+      { action: Action.CARD_INSPIRATION, influenceCost: [Guild.RED,Guild.RED] },
+      { action: Action.UPGRADE_TILE_WORKER, influenceBonus: [Guild.RED,Guild.RED,Guild.RED] }
     ],
     drawNextCard: true
   }

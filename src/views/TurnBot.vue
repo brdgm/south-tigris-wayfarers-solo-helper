@@ -35,10 +35,10 @@ import PlayerPaySilver from '@/components/turn/PlayerPaySilver.vue'
 import Benefit from '@/services/enum/Benefit'
 import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import addResourceTrack from '@/util/addResourceTrack'
-import Action from '@/services/enum/Action'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import BotBenefits from '@/components/turn/BotBenefits.vue'
 import BotAction from '@/components/turn/BotAction.vue'
+import { CardAction } from '@/services/Card'
 
 export default defineComponent({
   name: 'TurnBot',
@@ -70,11 +70,11 @@ export default defineComponent({
     backButtonRouteTo() : string {
       return `/turn/${this.turn-1}/player`
     },
-    allActions() : Action[] {
+    allActions() : CardAction[] {
       // flatten action choice into a single list of actions - knowing that each pair of actions is a choice
       return this.botActions?.actions.flatMap(choice => choice.actions) ?? []
     },
-    currentAction() : Action {
+    currentAction() : CardAction {
       return this.allActions[this.action]
     },
     isChoiceAction() : boolean {

@@ -1,6 +1,6 @@
 import { BotResources } from '@/store/state'
 import CardDeck from './CardDeck'
-import Card from './Card'
+import Card, { CardAction } from './Card'
 import BotFocus from './enum/BotFocus'
 import Action from './enum/Action'
 import Benefit from './enum/Benefit'
@@ -49,9 +49,6 @@ export default class BotActions {
     if (resourceTrackBenefit) {
       benefits.push(resourceTrackBenefit)
     }
-    if (lastCard.comet) {
-      benefits.push(Benefit.COMET)
-    }
     const newCometTrack = botResources.cometTrack
         + benefits.filter(benefit => benefit == Benefit.COMET).length
     
@@ -68,12 +65,12 @@ export default class BotActions {
 }
 
 export interface ActionChoice {
-  actions: Action[]
+  actions: CardAction[]
 }
 
-function mapAction(action : Action, botFocus : BotFocus) : Action {
-  if (action == Action.FOCUS) {
-    return getBotFocusAction(botFocus)
+function mapAction(action : CardAction, botFocus : BotFocus) : CardAction {
+  if (action.action == Action.FOCUS) {
+    return { action: getBotFocusAction(botFocus) }
   }
   return action
 }

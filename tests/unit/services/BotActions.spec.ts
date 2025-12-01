@@ -3,6 +3,8 @@ import CardDeck from '@/services/CardDeck'
 import Action from '@/services/enum/Action'
 import Benefit from '@/services/enum/Benefit'
 import BotFocus from '@/services/enum/BotFocus'
+import Color from '@/services/enum/Color'
+import Guild from '@/services/enum/Guild'
 import { expect } from 'chai'
 
 describe('services/BotActions', () => {
@@ -11,7 +13,10 @@ describe('services/BotActions', () => {
     const underTest = BotActions.drawCard(deck, {resourceTrack: 0, cometTrack: 0}, BotFocus.JOURNAL)
 
     expect(underTest.actions).to.eql([
-      { actions: [Action.WORKER_GREEN, Action.JOURNAL] }
+      { actions: [
+        { action: Action.WORKER, workerColors: [Color.GREEN] },
+        { action: Action.JOURNAL }
+      ] }
     ])
     expect(underTest.benefits).to.eql([])
     expect(underTest.newBotResources).to.eql({resourceTrack: 2, cometTrack: 0})
@@ -22,11 +27,17 @@ describe('services/BotActions', () => {
     const underTest = BotActions.drawCard(deck, {resourceTrack: 0, cometTrack: 2}, BotFocus.JOURNAL)
 
     expect(underTest.actions).to.eql([
-      { actions: [Action.CARD_INSPIRATION_SPEND_INFLUENCE_RED, Action.WORKER_UPGRADE_TILE_PLACE_INFLUENCE_RED] },
-      { actions: [Action.WORKER_GREEN_OR_BLUE, Action.PLACE_INFLUENCE_BLUE_GREEN_BLACK] }
+      { actions: [
+        { action: Action.CARD_INSPIRATION, influenceCost: [Guild.RED,Guild.RED] },
+        { action: Action.UPGRADE_TILE_WORKER, influenceBonus: [Guild.RED,Guild.RED,Guild.RED] }
+      ] },
+      { actions: [
+        { action: Action.WORKER, workerColors: [Color.GREEN,Color.BLUE] },
+        { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE,Guild.YELLOW,Guild.BLACK] }
+      ] }
     ])
-    expect(underTest.benefits).to.eql([Benefit.COMET])
-    expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 3})
+    expect(underTest.benefits).to.eql([])
+    expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 2})
   })
 
   it('card-5-resourceTrackBenefit', () => {
@@ -34,7 +45,10 @@ describe('services/BotActions', () => {
     const underTest = BotActions.drawCard(deck, {resourceTrack: 3, cometTrack: 0}, BotFocus.JOURNAL)
 
     expect(underTest.actions).to.eql([
-      { actions: [Action.CARD_SPACE_SPEND_INFLUENCE_BLACK, Action.PLACE_INFLUENCE_BLACK_TOWNSFOLK_CARD] }
+      { actions: [
+        { action: Action.CARD_SPACE, influenceCost: [Guild.BLACK,Guild.BLACK] },
+        { action: Action.CARD_TOWNSFOLK, influenceBonus: [Guild.BLACK] }
+      ] }
     ])
     expect(underTest.benefits).to.eql([Benefit.INFLUENCE_BLACK])
     expect(underTest.newBotResources).to.eql({resourceTrack: 5, cometTrack: 0})
@@ -45,7 +59,10 @@ describe('services/BotActions', () => {
     const underTest = BotActions.drawCard(deck, {resourceTrack: 6, cometTrack: 0}, BotFocus.JOURNAL)
 
     expect(underTest.actions).to.eql([
-      { actions: [Action.WORKER_GREEN, Action.JOURNAL] }
+      { actions: [
+        { action: Action.WORKER, workerColors: [Color.GREEN] },
+        { action: Action.JOURNAL }
+      ] }
     ])
     expect(underTest.benefits).to.eql([])
     expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 0})

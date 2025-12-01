@@ -44,7 +44,7 @@ describe('util/NavigationState', () => {
     const underTest = navigationState('TurnBot', {turn:'4'})
     expect(underTest.turn).to.equal(4)
     expect(underTest.cardDeck.currentCard?.id).to.eq(2)
-    expect(underTest.botResources).to.eql({resourceTrack:2, cometTrack:2})
+    expect(underTest.botResources).to.eql({resourceTrack:2, cometTrack:1})
   })
 })
 

@@ -1,13 +1,22 @@
 <template>
-  <p>
-    action: <b>{{ action }}</b>
-  </p>
+  <div v-if="action.influenceCost" style="color:red">
+    influenceCost: <b>{{ action.influenceCost }}</b>
+  </div>
+  <div v-if="action.influenceBonus" style="color:green"> 
+    influenceBonus: <b>{{ action.influenceBonus }}</b>
+  </div>
+  <div>
+    action: <b>{{ action.action }}</b>
+  </div>
+  <div v-if="action.workerColors"> 
+    workerColors: <b>{{ action.workerColors }}</b>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Action from '@/services/enum/Action'
+import { CardAction } from '@/services/Card'
 
 export default defineComponent({
   name: 'BotAction',
@@ -17,7 +26,7 @@ export default defineComponent({
   },
   props: {
     action: {
-      type: Object as PropType<Action>,
+      type: Object as PropType<CardAction>,
       required: true
     }
   }
