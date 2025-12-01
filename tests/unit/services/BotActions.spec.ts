@@ -19,7 +19,7 @@ describe('services/BotActions', () => {
       ] }
     ])
     expect(underTest.restActions).to.eql([])
-    expect(underTest.benefits).to.eql([])
+    expect(underTest.benefit).to.undefined
     expect(underTest.newBotResources).to.eql({resourceTrack: 2, cometTrack: 0})
     expect(underTest.isRest).to.be.false
   })
@@ -39,7 +39,7 @@ describe('services/BotActions', () => {
       ] }
     ])
     expect(underTest.restActions).to.eql([])
-    expect(underTest.benefits).to.eql([])
+    expect(underTest.benefit).to.undefined
     expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 2})
     expect(underTest.isRest).to.be.false
   })
@@ -55,7 +55,7 @@ describe('services/BotActions', () => {
       ] }
     ])
     expect(underTest.restActions).to.eql([])
-    expect(underTest.benefits).to.eql([Benefit.INFLUENCE_BLACK])
+    expect(underTest.benefit).to.eq(Benefit.INFLUENCE_BLACK)
     expect(underTest.newBotResources).to.eql({resourceTrack: 5, cometTrack: 0})
     expect(underTest.isRest).to.be.false
   })
@@ -71,7 +71,7 @@ describe('services/BotActions', () => {
       ] }
     ])
     expect(underTest.restActions).to.eql([])
-    expect(underTest.benefits).to.eql([])
+    expect(underTest.benefit).to.undefined
     expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 0})
     expect(underTest.isRest).to.be.false
   })
@@ -85,7 +85,7 @@ describe('services/BotActions', () => {
       { action: Action.INFLUENCE_CARD },
       { action: Action.JOURNAL }
     ])
-    expect(underTest.benefits).to.eql([Benefit.COMET])
+    expect(underTest.benefit).to.eq(Benefit.COMET)
     expect(underTest.newBotResources).to.eql({resourceTrack: 6, cometTrack: 3})
     expect(underTest.isRest).to.be.true
   })

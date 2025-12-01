@@ -6,7 +6,7 @@
   </h1>
 
   <template v-if="botActions">
-    <BotBenefits :benefits="botActions.benefits"/>
+    <BotBenefit v-if="botActions.benefit" :benefit="botActions.benefit"/>
     <template v-if="botActions.isRest">
       <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction"/>
     </template>
@@ -16,7 +16,7 @@
   </template>
 
   <PlayerPaySilver v-model="playerPaySilver"/>
-  <BotBenefits :benefits="additionalResourceTrackBenefits"/>
+  <BotBenefit v-if="additionalResourceTrackBenefit" :benefit="additionalResourceTrackBenefit"/>
 
   <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
     {{t('turnBot.executed')}}
@@ -44,7 +44,7 @@ import Benefit from '@/services/enum/Benefit'
 import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import addResourceTrack from '@/util/addResourceTrack'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
-import BotBenefits from '@/components/turn/BotBenefits.vue'
+import BotBenefit from '@/components/turn/BotBenefit.vue'
 import BotAction from '@/components/turn/BotAction.vue'
 import { CardAction } from '@/services/Card'
 
@@ -55,7 +55,7 @@ export default defineComponent({
     SideBar,
     DebugInfo,
     PlayerPaySilver,
-    BotBenefits,
+    BotBenefit,
     BotAction
   },
   setup() {
@@ -97,9 +97,8 @@ export default defineComponent({
         return -1
       }
     },
-    additionalResourceTrackBenefits() : Benefit[] {
-      const benefit = getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.playerPaySilver), this.state.setup.botFocus)
-      return benefit ? [benefit] : []
+    additionalResourceTrackBenefit() : Benefit|undefined {
+      return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.playerPaySilver), this.state.setup.botFocus)
     }
   },
   methods: {

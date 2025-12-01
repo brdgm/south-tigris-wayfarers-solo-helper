@@ -1,5 +1,5 @@
 <template>
-  <p v-for="(benefit,index) of benefits" :key="index">
+  <p>
     benefit: <b>{{ benefit }}</b>
   </p>
 </template>
@@ -10,14 +10,14 @@ import { useI18n } from 'vue-i18n'
 import Benefit from '@/services/enum/Benefit'
 
 export default defineComponent({
-  name: 'BotBenefits',
+  name: 'BotBenefit',
   setup() {
     const { t } = useI18n()
     return { t }
   },
   props: {
-    benefits: {
-      type: Array as PropType<Benefit[]>,
+    benefit: {
+      type: Object as PropType<Benefit>,
       required: true
     }
   }

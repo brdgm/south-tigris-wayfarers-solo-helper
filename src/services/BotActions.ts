@@ -15,14 +15,14 @@ export default class BotActions {
 
   public readonly actionChoices : ActionChoice[]
   public readonly restActions : CardAction[]
-  public readonly benefits : Benefit[]
+  public readonly benefit? : Benefit
   public readonly newBotResources : BotResources
   public readonly isRest : boolean
 
-  private constructor(actionChoices : ActionChoice[], restActions : CardAction[], benefits : Benefit[], newBotResources : BotResources) {
+  private constructor(actionChoices : ActionChoice[], restActions : CardAction[], benefit : Benefit|undefined, newBotResources : BotResources) {
     this.actionChoices = actionChoices
     this.restActions = restActions
-    this.benefits = benefits
+    this.benefit = benefit
     this.newBotResources = newBotResources
     this.isRest = restActions.length > 0
   }
@@ -31,18 +31,18 @@ export default class BotActions {
 
     if (cardDeck.isRest) {
       // resting
-      const benefits : Benefit[] = []
+      let benefit : Benefit|undefined = undefined
       if (cardDeck.currentCard?.comet) {
-        benefits.push(Benefit.COMET)
+        benefit = Benefit.COMET
       }
       cardDeck.shuffle()
       const restActions = [
         { action: getBotFocusRestAction(botFocus) },
         { action: Action.JOURNAL }
       ]
-      return new BotActions([], restActions, benefits, {
+      return new BotActions([], restActions, benefit, {
         resourceTrack: botResources.resourceTrack,
-        cometTrack: getNewCometTrack(botResources, benefits)
+        cometTrack: getNewCometTrack(botResources, benefit)
       })
     }
     else {
@@ -66,19 +66,19 @@ export default class BotActions {
       let newResourceTrack = oldResourceTrack + advanceSteps
 
       // benefits from resource track and drawn card
-      const benefits : Benefit[] = []
+      let benefit : Benefit|undefined = undefined
       const resourceTrackBenefit = getResourceTrackBenefit(oldResourceTrack, advanceSteps, botFocus)
       if (resourceTrackBenefit) {
-        benefits.push(resourceTrackBenefit)
+        benefit = resourceTrackBenefit
       }
       
       if (newResourceTrack > 7) {
         newResourceTrack -= 8
       }
 
-      return new BotActions(actionChoices, [], benefits, {
+      return new BotActions(actionChoices, [], benefit, {
         resourceTrack: newResourceTrack,
-        cometTrack: getNewCometTrack(botResources, benefits)
+        cometTrack: getNewCometTrack(botResources, benefit)
       })
     }
   }
@@ -96,7 +96,6 @@ function mapAction(action : CardAction, botFocus : BotFocus) : CardAction {
   return action
 }
 
-function getNewCometTrack(botResources: BotResources, benefits: Benefit[]) : number {
-  return botResources.cometTrack
-    + benefits.filter(benefit => benefit == Benefit.COMET).length
+function getNewCometTrack(botResources: BotResources, benefit?: Benefit) : number {
+  return botResources.cometTrack + (benefit == Benefit.COMET ? 1 : 0)
 }
