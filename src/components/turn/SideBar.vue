@@ -5,6 +5,10 @@
       Resources: {{ navigationState.botResources.resourceTrack }}<br/>
       Comets: {{ navigationState.botResources.cometTrack }}
     </p>
+    <p class="mt-2">
+      Blue: {{ cardDeck.discardBlueCount }}<br/>
+      Red: {{ cardDeck.discardRedCount }}
+    </p>
   </div>
 </template>
 

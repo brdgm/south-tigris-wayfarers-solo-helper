@@ -31,6 +31,14 @@ export default class CardDeck {
     return this._discard.value
   }
 
+  public get discardBlueCount() : number {
+    return this.getCardColorCount(SchemeCardColor.BLUE)
+  }
+
+  public get discardRedCount() : number {
+    return this.getCardColorCount(SchemeCardColor.RED)
+  }
+
   /**
    * Returns true if the discard has 3 red or 3 blue cards.
    */

@@ -61,6 +61,8 @@ describe('services/CardDeck', () => {
     expect(deck.isRest).to.eq(true)
     expect(deck.colorMajority).to.eq(SchemeCardColor.RED)
     expect(deck.silverValueSum).to.eq(3)
+    expect(deck.discardBlueCount).to.eq(2)
+    expect(deck.discardRedCount).to.eq(3)
   })
 
   it('shuffle', () => {

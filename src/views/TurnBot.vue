@@ -1,10 +1,18 @@
 <template>
   <SideBar :navigationState="navigationState"/>
-  <h1>{{t(`turnBot.title`,{focus:t(`botFocus.${state.setup.botFocus}`)})}}</h1>
+  <h1>
+    {{t(`turnBot.title`,{focus:t(`botFocus.${state.setup.botFocus}`)})}}
+    <span v-if="botActions?.isRest">[REST]</span>
+  </h1>
 
   <template v-if="botActions">
     <BotBenefits :benefits="botActions.benefits"/>
-    <BotAction :action="currentAction"/>
+    <template v-if="botActions.isRest">
+      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction"/>
+    </template>
+    <template v-else>
+      <BotAction :action="currentAction"/>
+    </template>
   </template>
 
   <PlayerPaySilver v-model="playerPaySilver"/>
@@ -70,19 +78,19 @@ export default defineComponent({
     backButtonRouteTo() : string {
       return `/turn/${this.turn-1}/player`
     },
-    allActions() : CardAction[] {
+    allChoiceActions() : CardAction[] {
       // flatten action choice into a single list of actions - knowing that each pair of actions is a choice
-      return this.botActions?.actions.flatMap(choice => choice.actions) ?? []
+      return this.botActions?.actionChoices.flatMap(choice => choice.actions) ?? []
     },
     currentAction() : CardAction {
-      return this.allActions[this.action]
+      return this.allChoiceActions[this.action]
     },
     isChoiceAction() : boolean {
-      return this.action % 2 == 0
+      return this.allChoiceActions.length > 0 && this.action % 2 == 0
     },
     nextChoiceAction() : number {
       const actionChoice = (this.action - (this.action % 2)) / 2
-      if (this.allActions.length > (actionChoice + 1) * 2) {
+      if (this.allChoiceActions.length > (actionChoice + 1) * 2) {
         return (actionChoice + 1) * 2
       }
       else {

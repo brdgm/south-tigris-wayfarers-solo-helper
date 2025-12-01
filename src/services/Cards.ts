@@ -19,7 +19,7 @@ const cards : Card[] = [
       { action: Action.WORKER, workerColors: [Color.GREEN] },
       { action: Action.FOCUS }
     ],
-    specialUpgradeTilePick: SpecialUpgradeTilePick.TOP_LEFT,
+    specialUpgradeTilePick: SpecialUpgradeTilePick.TOP_LEFT
   },
   {
     id: 2,
