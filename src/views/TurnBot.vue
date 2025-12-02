@@ -2,7 +2,7 @@
   <SideBar :navigationState="navigationState"/>
   <h1>
     {{t(`turnBot.title`,{focus:t(`botFocus.${state.setup.botFocus}`)})}}
-    <span v-if="botActions?.isRest">[REST]</span>
+    <AppIcon v-if="botActions?.isRest" name="rest" class="restIcon"/>
   </h1>
 
   <template v-if="botActions">
@@ -47,6 +47,7 @@ import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import BotBenefit from '@/components/turn/BotBenefit.vue'
 import BotAction from '@/components/turn/BotAction.vue'
 import { CardAction } from '@/services/Card'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'TurnBot',
@@ -56,7 +57,8 @@ export default defineComponent({
     DebugInfo,
     PlayerPaySilver,
     BotBenefit,
-    BotAction
+    BotAction,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -125,7 +127,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  height: 4rem;
+.restIcon {
+  height: 2.5rem;
+  margin-top: -0.5rem;
 }
 </style>
