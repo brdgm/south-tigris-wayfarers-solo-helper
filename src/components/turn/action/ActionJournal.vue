@@ -3,6 +3,7 @@
     <template #action>
       <div class="action">
         <AppIcon type="action" :name="action.action" class="icon"/>
+        <AppIcon name="journal-additional-step-priority" class="icon additional-step-priority"/>
       </div>
     </template>
     <template #instruction>
@@ -17,6 +18,7 @@ import { useI18n } from 'vue-i18n'
 import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import NavigationState from '@/util/NavigationState'
 
 export default defineComponent({
   name: 'ActionJournal',
@@ -33,6 +35,10 @@ export default defineComponent({
     action: {
       type: Object as PropType<CardAction>,
       required: true
+    },
+    navigationState: {
+      type: NavigationState,
+      required: true
     }
   }
 })
@@ -48,5 +54,9 @@ export default defineComponent({
 }
 .icon {
   height: 3rem;
+  &.additional-step-priority {
+    height: 7rem;
+    margin-left: 1rem;
+  }
 }
 </style>

@@ -8,6 +8,9 @@
         </template>
       </div>
     </template>
+    <template #priority>
+      <CardPriorityIcon :navigationState="navigationState" :greenYellow="greenYellowWorker" :blueBlack="blueBlackWorker"/>
+    </template>
     <template #instruction>
       <p v-html="t('rules.action.worker.instruction')"/>
     </template>
@@ -20,13 +23,17 @@ import { useI18n } from 'vue-i18n'
 import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
+import NavigationState from '@/util/NavigationState'
+import Color from '@/services/enum/Color'
 
 export default defineComponent({
   name: 'ActionWorker',
   inheritAttrs: false,
   components: {
     ActionBox,
-    AppIcon
+    AppIcon,
+    CardPriorityIcon
   },
   setup() {
     const { t } = useI18n()
@@ -36,6 +43,20 @@ export default defineComponent({
     action: {
       type: Object as PropType<CardAction>,
       required: true
+    },
+    navigationState: {
+      type: NavigationState,
+      required: true
+    }
+  },
+  computed: {
+    greenYellowWorker() : boolean {
+      return (this.action.workerColors?.includes(Color.GREEN) ?? false)
+          || (this.action.workerColors?.includes(Color.YELLOW) ?? false)
+    },
+    blueBlackWorker() : boolean {
+      return (this.action.workerColors?.includes(Color.BLUE) ?? false)
+          || (this.action.workerColors?.includes(Color.BLACK) ?? false)
     }
   }
 })

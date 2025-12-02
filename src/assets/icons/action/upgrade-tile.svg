@@ -3,114 +3,97 @@
   <defs>
     <style>
       .cls-1 {
-        clip-path: url(#clippath-4);
-      }
-
-      .cls-2 {
         fill: url(#linear-gradient-2);
       }
 
-      .cls-3 {
+      .cls-2 {
         stroke-width: .5px;
       }
 
-      .cls-3, .cls-4, .cls-5 {
+      .cls-2, .cls-3, .cls-4 {
         fill: none;
       }
 
-      .cls-3, .cls-5 {
+      .cls-2, .cls-4 {
         stroke: #fff;
         stroke-miterlimit: 10;
       }
 
-      .cls-6 {
+      .cls-5 {
         fill: url(#linear-gradient-4);
       }
 
-      .cls-5 {
+      .cls-4 {
         stroke-width: .75px;
       }
 
-      .cls-7 {
+      .cls-6 {
         fill: url(#linear-gradient-3);
       }
 
-      .cls-8 {
+      .cls-7 {
         clip-path: url(#clippath-1);
       }
 
-      .cls-9 {
-        fill: url(#linear-gradient-5);
-      }
-
-      .cls-10 {
+      .cls-8 {
         clip-path: url(#clippath-3);
       }
 
-      .cls-11 {
+      .cls-9 {
         clip-path: url(#clippath-2);
       }
 
-      .cls-12 {
+      .cls-10 {
         fill: url(#linear-gradient);
       }
 
-      .cls-13 {
+      .cls-11 {
         clip-path: url(#clippath);
       }
     </style>
     <clipPath id="clippath">
-      <polygon class="cls-4" points="9.89 21.73 25.73 21.73 26.73 18.6 26.33 14.92 9.89 21.73"/>
+      <polygon class="cls-3" points="2.38 .37 1.84 5.33 25.08 3.54 24.73 .37 2.38 .37"/>
     </clipPath>
-    <linearGradient id="linear-gradient" x1="-467.97" y1="889.56" x2="-466.97" y2="889.56" gradientTransform="translate(7892.25 15001.83) scale(16.84 -16.84)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#b57a99"/>
-      <stop offset="1" stop-color="#80298f"/>
+    <linearGradient id="linear-gradient" x1="-335.57" y1="56.24" x2="-334.57" y2="56.24" gradientTransform="translate(6081.53 1021.83) scale(18.12 -18.12)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#72bf44"/>
+      <stop offset=".78" stop-color="#0b6b37"/>
+      <stop offset=".81" stop-color="#0b6b37"/>
+      <stop offset="1" stop-color="#0b6b37"/>
     </linearGradient>
     <clipPath id="clippath-1">
-      <polygon class="cls-4" points="2.38 .38 1.84 5.34 25.08 3.55 24.73 .38 2.38 .38"/>
+      <polygon class="cls-3" points="1.84 5.33 1.18 11.31 25.45 7.96 25.08 3.54 1.84 5.33"/>
     </clipPath>
-    <linearGradient id="linear-gradient-2" x1="-467.97" y1="889.56" x2="-466.97" y2="889.56" gradientTransform="translate(10877.52 20676.32) scale(23.24 -23.24)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#70be44"/>
-      <stop offset=".78" stop-color="#0a6b37"/>
-      <stop offset="1" stop-color="#0a6b37"/>
-    </linearGradient>
-    <clipPath id="clippath-2">
-      <polygon class="cls-4" points="1.84 5.34 1.18 11.32 25.45 6.96 25.08 3.55 1.84 5.34"/>
-    </clipPath>
-    <linearGradient id="linear-gradient-3" x1="-467.97" y1="889.56" x2="-466.97" y2="889.56" gradientTransform="translate(11359.9 21599.09) scale(24.27 -24.27)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#96999b"/>
+    <linearGradient id="linear-gradient-2" x1="-335.57" y1="56.25" x2="-334.57" y2="56.25" gradientTransform="translate(8146.37 1372.71) scale(24.27 -24.27)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#97999c"/>
       <stop offset="1" stop-color="#000"/>
     </linearGradient>
-    <clipPath id="clippath-3">
-      <polygon class="cls-4" points="1.18 11.32 .38 18.6 25.88 10.82 25.45 6.96 1.18 11.32"/>
+    <clipPath id="clippath-2">
+      <polygon class="cls-3" points="1.18 11.31 .38 18.6 25.88 12.82 25.45 7.96 1.18 11.31"/>
     </clipPath>
-    <linearGradient id="linear-gradient-4" x1="-467.97" y1="889.56" x2="-466.97" y2="889.56" gradientTransform="translate(11931.28 22692.1) scale(25.5 -25.5)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e9c002"/>
-      <stop offset="1" stop-color="#a36e08"/>
+    <linearGradient id="linear-gradient-3" x1="-335.57" y1="56.2" x2="-334.57" y2="56.2" gradientTransform="translate(8555.84 1446.19) scale(25.5 -25.5)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9c103"/>
+      <stop offset="1" stop-color="#a46e08"/>
     </linearGradient>
-    <clipPath id="clippath-4">
-      <polygon class="cls-4" points=".38 18.6 1.38 21.73 9.89 21.73 26.33 14.92 25.88 10.82 .38 18.6"/>
+    <clipPath id="clippath-3">
+      <polygon class="cls-3" points=".38 18.6 1.35 21.62 25.77 21.62 26.73 18.6 25.88 12.82 .38 18.6"/>
     </clipPath>
-    <linearGradient id="linear-gradient-5" x1="-467.97" y1="889.56" x2="-466.97" y2="889.56" gradientTransform="translate(12141.96 23096.07) scale(25.95 -25.95)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#00adee"/>
-      <stop offset="1" stop-color="#004c6c"/>
+    <linearGradient id="linear-gradient-4" x1="-335.57" y1="56.25" x2="-334.57" y2="56.25" gradientTransform="translate(8842.58 1499.31) scale(26.35 -26.35)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00aeef"/>
+      <stop offset="1" stop-color="#004d6d"/>
     </linearGradient>
   </defs>
-  <g class="cls-13">
-    <rect class="cls-12" x="9.89" y="14.92" width="16.84" height="6.81"/>
+  <g class="cls-11">
+    <rect class="cls-10" x="1.84" y=".37" width="23.24" height="4.96"/>
+  </g>
+  <g class="cls-7">
+    <rect class="cls-1" x="1.18" y="3.54" width="24.27" height="7.77"/>
+  </g>
+  <g class="cls-9">
+    <rect class="cls-6" x=".38" y="7.96" width="25.5" height="10.64"/>
   </g>
   <g class="cls-8">
-    <rect class="cls-2" x="1.84" y=".38" width="23.24" height="4.96"/>
+    <rect class="cls-5" x=".38" y="12.82" width="26.35" height="8.81"/>
   </g>
-  <g class="cls-11">
-    <rect class="cls-7" x="1.18" y="3.55" width="24.27" height="7.77"/>
-  </g>
-  <g class="cls-10">
-    <rect class="cls-6" x=".38" y="6.96" width="25.5" height="11.64"/>
-  </g>
-  <g class="cls-1">
-    <rect class="cls-9" x=".38" y="10.82" width="25.94" height="10.92"/>
-  </g>
-  <polygon class="cls-5" points="25.73 21.73 1.38 21.73 .38 18.6 2.38 .38 24.73 .38 26.73 18.6 25.73 21.73"/>
-  <line class="cls-3" x1=".38" y1="18.6" x2="26.73" y2="18.6"/>
+  <polygon class="cls-4" points="25.73 21.73 1.38 21.73 .38 18.6 2.38 .38 24.73 .38 26.73 18.6 25.73 21.73"/>
+  <line class="cls-2" x1=".38" y1="18.6" x2="26.73" y2="18.6"/>
 </svg>

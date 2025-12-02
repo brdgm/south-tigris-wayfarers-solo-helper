@@ -12,6 +12,9 @@
         <AppIcon name="multiple" class="multiple"/>
       </div>
     </div>
+    <div class="priority" v-if="hasPriority">
+      <slot name="priority"></slot>
+    </div>
   </div>
 
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
@@ -54,6 +57,9 @@ export default defineComponent({
     }
   },
   computed: {
+    hasPriority() : boolean {
+      return this.$slots.priority !== undefined
+    },
     hasInstruction() : boolean {
       return this.$slots.instruction !== undefined
     }
@@ -118,6 +124,13 @@ export default defineComponent({
       margin-left: 0.5rem;
       margin-right: -0.25rem;
     }
+  }
+  .priority {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
   }
 }
 </style>

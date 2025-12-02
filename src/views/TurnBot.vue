@@ -8,10 +8,10 @@
   <template v-if="botActions">
     <BotBenefit v-if="botActions.benefit" :benefit="botActions.benefit"/>
     <template v-if="botActions.isRest">
-      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction"/>
+      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState"/>
     </template>
     <template v-else>
-      <BotAction :action="currentAction"/>
+      <BotAction :action="currentAction" :navigationState="navigationState"/>
     </template>
   </template>
 

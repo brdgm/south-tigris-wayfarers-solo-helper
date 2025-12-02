@@ -5,6 +5,10 @@
         <AppIcon type="action" :name="action.action" class="icon"/>
       </div>
     </template>
+    <template #priority>
+      <ColorPriority :navigationState="navigationState"/>
+      <CardPriorityIcon :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
+    </template>
     <template #instruction>
       <p v-html="t('rules.action.upgradeTile.instruction')"/>
     </template>
@@ -17,13 +21,18 @@ import { useI18n } from 'vue-i18n'
 import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import NavigationState from '@/util/NavigationState'
+import ColorPriority from '@/components/structure/ColorPriority.vue'
+import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
 
 export default defineComponent({
   name: 'ActionUpgradeTile',
   inheritAttrs: false,
   components: {
     ActionBox,
-    AppIcon
+    AppIcon,
+    ColorPriority,
+    CardPriorityIcon
   },
   setup() {
     const { t } = useI18n()
@@ -32,6 +41,10 @@ export default defineComponent({
   props: {
     action: {
       type: Object as PropType<CardAction>,
+      required: true
+    },
+    navigationState: {
+      type: NavigationState,
       required: true
     }
   }
