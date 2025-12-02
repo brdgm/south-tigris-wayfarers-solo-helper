@@ -33,9 +33,8 @@ export default defineComponent({
   gap: 1rem;
 }
 .color {
-  height: 2rem;
-  width: 1.5rem;
   height: 1.5rem;
+  width: 1.5rem;
   border: 1.5px solid #fff;
   &.black {
     background-color: #000;
