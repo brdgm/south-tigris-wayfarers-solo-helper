@@ -1,14 +1,22 @@
 <template>
   <div class="sidebar">
     {{t('sideBar.turn', {turn})}}
-    <p class="mt-2">
-      Resources: {{ navigationState.botResources.resourceTrack }}<br/>
-      Comets: {{ navigationState.botResources.cometTrack }}
-    </p>
-    <p class="mt-2">
-      Blue: {{ cardDeck.discardBlueCount }}<br/>
-      Red: {{ cardDeck.discardRedCount }}
-    </p>
+    <div class="metric">
+      <div class="label"><AppIcon name="resource-tracker" class="icon"/></div>
+      <div>{{ navigationState.botResources.resourceTrack }}</div>
+    </div>
+    <div class="metric">
+      <div class="label"><AppIcon name="comet" class="icon comet"/></div>
+      <div>{{ navigationState.botResources.cometTrack }}</div>
+    </div>
+    <div class="metric">
+      <div class="label"><AppIcon name="scheme-cards-blue" class="icon cards"/></div>
+      <div>{{ cardDeck.discardBlueCount }}</div>
+    </div>
+    <div class="metric">
+      <div class="label"><AppIcon name="scheme-cards-red" class="icon cards"/></div>
+      <div>{{ cardDeck.discardRedCount }}</div>
+    </div>
   </div>
 </template>
 
@@ -18,9 +26,13 @@ import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import CardDeck from '@/services/CardDeck'
+import AppIcon from '../structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'SideBar',
+  components: {
+    AppIcon
+  },
   setup() {
     const { t } = useI18n()
     const state = useStateStore()
@@ -57,6 +69,28 @@ export default defineComponent({
   @media (max-width: 600px) {
     font-size: 0.9rem;
     width: 120px;
+  }
+}
+.metric {
+  display: flex;
+  width: 60px;
+  justify-content: space-between;
+  margin-top: 10px;
+  .label {
+    display: flex;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.icon {
+  height: 1.75rem;
+  &.comet {
+    height: 2.5rem;
+    margin: -0.5rem;
+  }
+  &.cards {
+    margin-top: -0.25rem;
   }
 }
 </style>

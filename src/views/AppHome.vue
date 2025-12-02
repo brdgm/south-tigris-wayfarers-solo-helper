@@ -2,7 +2,7 @@
 
   <div class="float-end m-2 w-25">
     <a href="https://boardgamegeek.com/boardgame/350316/wayfarers-of-the-south-tigris" target="_blank" rel="noopener">
-      <img src="../assets/game-south-tigris-wayfarers.webp" class="rounded shadow w-100 mb-3" alt=""/>
+      <img src="@/assets/game-south-tigris-wayfarers.webp" class="rounded shadow w-100 mb-3" alt=""/>
     </a>
   </div>
 
