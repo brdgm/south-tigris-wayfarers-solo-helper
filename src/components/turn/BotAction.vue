@@ -20,6 +20,7 @@ import ActionInfluence from './action/ActionInfluence.vue'
 import ActionInfluenceCard from './action/ActionInfluenceCard.vue'
 import ActionJournal from './action/ActionJournal.vue'
 import NavigationState from '@/util/NavigationState'
+import ActionComet from './action/ActionComet.vue'
 
 export default defineComponent({
   name: 'BotAction',
@@ -34,7 +35,8 @@ export default defineComponent({
     ActionUpgradeTileWorker,
     ActionInfluence,
     ActionInfluenceCard,
-    ActionJournal
+    ActionJournal,
+    ActionComet
   },
   setup() {
     const { t } = useI18n()

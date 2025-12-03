@@ -12,7 +12,9 @@
       <CardPriorityIcon :navigationState="navigationState" :greenYellow="greenYellowWorker" :blueBlack="blueBlackWorker"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.worker.instruction')"/>
+      <p v-html="t('rules.action.worker.placeWorker')"/>
+      <p v-html="t('rules.action.worker.workerColors')"/>
+      <p v-html="t('rules.action.worker.printedActions')"/>
     </template>
   </ActionBox>
 </template>

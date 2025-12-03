@@ -20,6 +20,8 @@
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
     <template #body>
       <slot name="instruction"></slot>
+      <p v-html="t('rules.action.general.spendInfluencePossible')" v-if="action.influenceCost"/>
+      <p v-html="t('rules.action.general.gainInfluence')" v-if="action.influenceBonus"/>
     </template>
   </ModalDialog>
 </template>
@@ -31,6 +33,7 @@ import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 import AppIcon from '../structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import { nanoid } from 'nanoid'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ActionBox',
@@ -39,8 +42,9 @@ export default defineComponent({
     AppIcon
   },
   setup() {
+    const { t } = useI18n()
     const modalId = `modal-${nanoid()}`
-    return { modalId }
+    return { t, modalId }
   },
   props: {
     action: {

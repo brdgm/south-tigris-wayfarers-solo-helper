@@ -6,24 +6,31 @@
   </h1>
 
   <template v-if="botActions">
-    <BotBenefit v-if="botActions.benefit" :benefit="botActions.benefit"/>
     <template v-if="botActions.isRest">
       <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState"/>
     </template>
     <template v-else>
       <BotAction :action="currentAction" :navigationState="navigationState"/>
     </template>
+    <BotAction v-if="botActions.benefit" :action="botActions.benefit" :navigationState="navigationState"/>
   </template>
 
   <PlayerPaySilver v-model="playerPaySilver"/>
-  <BotBenefit v-if="additionalResourceTrackBenefit" :benefit="additionalResourceTrackBenefit"/>
+  <BotAction v-if="additionalResourceTrackBenefit" :action="additionalResourceTrackBenefit" :navigationState="navigationState"/>
 
-  <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
-    {{t('turnBot.executed')}}
-  </button>
-  <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()" v-if="isChoiceAction">
-    {{t('turnBot.notPossible')}}
-  </button>
+  <template v-if="isChoiceAction">
+    <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
+      {{t('turnBot.executed')}}
+    </button>
+    <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()" v-if="isChoiceAction">
+      {{t('turnBot.notPossible')}}
+    </button>
+  </template>
+  <template v-else>
+    <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
+      {{t('action.next')}}
+    </button>
+  </template>
 
   <DebugInfo :navigationState="navigationState"/>
 
@@ -40,11 +47,9 @@ import { useStateStore } from '@/store/state'
 import SideBar from '@/components/turn/SideBar.vue'
 import DebugInfo from '@/components/turn/DebugInfo.vue'
 import PlayerPaySilver from '@/components/turn/PlayerPaySilver.vue'
-import Benefit from '@/services/enum/Benefit'
 import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import addResourceTrack from '@/util/addResourceTrack'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
-import BotBenefit from '@/components/turn/BotBenefit.vue'
 import BotAction from '@/components/turn/BotAction.vue'
 import { CardAction } from '@/services/Card'
 import AppIcon from '@/components/structure/AppIcon.vue'
@@ -56,7 +61,6 @@ export default defineComponent({
     SideBar,
     DebugInfo,
     PlayerPaySilver,
-    BotBenefit,
     BotAction,
     AppIcon
   },
@@ -99,7 +103,7 @@ export default defineComponent({
         return -1
       }
     },
-    additionalResourceTrackBenefit() : Benefit|undefined {
+    additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.playerPaySilver), this.state.setup.botFocus)
     }
   },

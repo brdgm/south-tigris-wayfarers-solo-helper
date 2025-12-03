@@ -1,7 +1,6 @@
 import BotActions from '@/services/BotActions'
 import CardDeck from '@/services/CardDeck'
 import Action from '@/services/enum/Action'
-import Benefit from '@/services/enum/Benefit'
 import BotFocus from '@/services/enum/BotFocus'
 import Color from '@/services/enum/Color'
 import Guild from '@/services/enum/Guild'
@@ -55,7 +54,7 @@ describe('services/BotActions', () => {
       ] }
     ])
     expect(underTest.restActions).to.eql([])
-    expect(underTest.benefit).to.eq(Benefit.INFLUENCE_BLACK)
+    expect(underTest.benefit).to.eql({ action: Action.INFLUENCE, influenceBonus: [Guild.BLACK] })
     expect(underTest.newBotResources).to.eql({resourceTrack: 5, cometTrack: 0})
     expect(underTest.isRest).to.be.false
   })
@@ -85,7 +84,7 @@ describe('services/BotActions', () => {
       { action: Action.INFLUENCE_CARD },
       { action: Action.JOURNAL }
     ])
-    expect(underTest.benefit).to.eq(Benefit.COMET)
+    expect(underTest.benefit).to.eql({ action: Action.COMET })
     expect(underTest.newBotResources).to.eql({resourceTrack: 6, cometTrack: 3})
     expect(underTest.isRest).to.be.true
   })

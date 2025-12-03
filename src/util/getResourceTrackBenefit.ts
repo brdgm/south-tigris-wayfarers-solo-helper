@@ -1,5 +1,7 @@
-import Benefit from '@/services/enum/Benefit'
+import { CardAction } from '@/services/Card'
+import Action from '@/services/enum/Action'
 import BotFocus from '@/services/enum/BotFocus'
+import Guild from '@/services/enum/Guild'
 
 /**
  * Get benefit form resource track when moving from pos. 4 to 5.
@@ -8,7 +10,7 @@ import BotFocus from '@/services/enum/BotFocus'
  * @param botFocus Bot focus
  * @returns Resource track benefit or undefined if the position does not match
  */
-export default function getResourceTrackBenefit(resourceTrack: number, resourceTrackAdd: number, botFocus : BotFocus) : Benefit|undefined {
+export default function getResourceTrackBenefit(resourceTrack: number, resourceTrackAdd: number, botFocus : BotFocus) : CardAction|undefined {
   const newResourceTrack = (resourceTrack + resourceTrackAdd) % 8
   let oldResourceTrack = resourceTrack
   if (resourceTrack + resourceTrackAdd > 7) {
@@ -17,13 +19,13 @@ export default function getResourceTrackBenefit(resourceTrack: number, resourceT
   if (oldResourceTrack < 5 && newResourceTrack >= 5) {
     switch (botFocus) {
       case BotFocus.TOWNSFOLK:
-        return Benefit.TOWNSFOLK_CARD
+        return { action: Action.CARD_TOWNSFOLK }
       case BotFocus.UPGRADE:
-        return Benefit.INFLUENCE_YELLOW
+        return { action: Action.INFLUENCE, influenceBonus: [Guild.YELLOW] }
       case BotFocus.SPACE:
-        return Benefit.COMET
+        return { action: Action.COMET }
       case BotFocus.JOURNAL:
-        return Benefit.INFLUENCE_BLACK
+        return { action: Action.INFLUENCE, influenceBonus: [Guild.BLACK] }
       default:
         throw new Error(`Invalid bot focus: ${botFocus}`)
     }

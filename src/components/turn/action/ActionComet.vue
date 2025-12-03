@@ -1,17 +1,12 @@
 <template>
-  <ActionBox :action="action" :instruction-title="t('rules.action.journal.title')" :modalSizeLg="true">
+  <ActionBox :action="action" :instruction-title="t('rules.action.comet.title')">
     <template #action>
       <div class="action">
-        <AppIcon type="action" :name="action.action" class="icon"/>
-        <AppIcon v-if="navigationState.botActions" type="journal-direction" :name="navigationState.botActions?.colorMajority" class="icon direction"/>
-        <AppIcon name="journal-additional-step-priority" class="icon additional-step-priority"/>
+        <AppIcon name="comet" class="icon"/>
       </div>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.journal.moveJournalTrack')"/>
-      <p v-html="t('rules.action.journal.lastColumn')"/>
-      <AppIcon name="journal-additional-step-priority" class="icon additional-step-priority float-start"/>
-      <p v-html="t('rules.action.journal.additionalStepPriority')"/>
+      <p v-html="t('rules.action.comet.instruction')"/>
     </template>
   </ActionBox>
 </template>
@@ -25,7 +20,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 
 export default defineComponent({
-  name: 'ActionJournal',
+  name: 'ActionComet',
   inheritAttrs: false,
   components: {
     ActionBox,
@@ -58,20 +53,5 @@ export default defineComponent({
 }
 .icon {
   height: 3rem;
-  &.direction {
-    height: 2rem;
-    margin-left: -0.5rem;
-  }
-  &.additional-step-priority {
-    height: 5rem;
-    margin-left: 1rem;
-  }
-}
-.modal {
-  .icon.additional-step-priority {
-    height: 10rem;
-    margin-left: 0;
-    margin: 0.5rem;
-  }
 }
 </style>

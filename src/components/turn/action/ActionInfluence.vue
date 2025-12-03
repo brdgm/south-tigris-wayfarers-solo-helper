@@ -5,7 +5,6 @@
       </div>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.influence.instruction')"/>
     </template>
   </ActionBox>
 </template>
@@ -18,7 +17,7 @@ import ActionBox from '../ActionBox.vue'
 import NavigationState from '@/util/NavigationState'
 
 export default defineComponent({
-  name: 'ActionInfluence',
+  name: 'ActionComet',
   inheritAttrs: false,
   components: {
     ActionBox

@@ -13,6 +13,7 @@ enum Action {
   CARD_SPACE = 'card-space',
   CARD_TOWNSFOLK = 'card-townsfolk',
   CARD_INSPIRATION = 'card-inspiration',
-  JOURNAL = 'journal'
+  JOURNAL = 'journal',
+  COMET = 'comet'
 }
 export default Action

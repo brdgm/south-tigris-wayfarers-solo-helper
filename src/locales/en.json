@@ -56,6 +56,65 @@
     "space": "Space",
     "journal": "Journal"
   },
+  "rules": {
+    "action": {
+      "general": {
+        "spendInfluencePossible": "If it cannot spend the depicted Influence, the action is not possible.",
+        "gainInfluence": "The AI gains the depicted Influence."
+      },
+      "cardInspiration": {
+        "title": "Inspiration Card",
+        "instruction": "The AI gains 1 Inspiration Card."
+      },
+      "cardLand": {
+        "title": "Land Card",
+        "instruction": "The AI gains 1 Land Card."
+      },
+      "cardSpace": {
+        "title": "Space Card",
+        "instruction": "The AI gains 1 Space Card."
+      },
+      "cardWater": {
+        "title": "Water Card",
+        "instruction": "The AI gains 1 Water Card."
+      },
+      "cardTownsfolk": {
+        "title": "Townsfolk Card",
+        "instruction": "The AI gains 1 Townsfolk Card."
+      },
+      "comet": {
+        "title": "Comet",
+        "instruction": "The AI gains 1 Comet (managed by the app)."
+      },
+      "influence": {
+        "title": "Gain Influence"
+      },
+      "influenceCard": {
+        "title": "Influence Card",
+        "instruction": "The AI places 1 Influence on a Card. Choose by color and card priority."
+      },
+      "journal": {
+        "title": "Journal",
+        "moveJournalTrack": "The AI advances on the Journal Track. If it has a choice, it follows the direction of the arrow.",
+        "lastColumn": "When moving into the last column of the Journal Track, the AI will never take the middle option. If you blocked the space they would have moved into, they instead move into the other available space in that final column. For the final space of the Journal Track, they will take a Special Upgrade Tile, not an Inspiration Card.",
+        "additionalStepPriority": "Before Journaling, first check to see where the AI’s Player Marker is in reference to your own. If they are behind, they will spend 1 Black Influence to move an extra space if possible. If they are in the same column, this will cost 2 Black Influence, and if they are ahead, this will cost 3 Black Influence. Note that it is possible for them to gain the required Black Influence during their first movement. However, it is their position before that first movement that dictates the Influence cost. They will only move a 2nd time if they have the required Black Influence available to spend."
+      },
+      "upgradeTile": {
+        "title": "Upgrade Tile",
+        "instruction": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the color preference)."
+      },
+      "upgradeTileWorker": {
+        "title": "Worker Upgrade Tile",
+        "instruction": "The AI gains 1 Worker Upgrade Tile."
+      },
+      "worker": {
+        "title": "Place Worker",
+        "placeWorker": "The AI places 1 Worker of the depicted color (if available in their supply).",
+        "workerColors": "The AI will only ever place Green Workers on Townsfolk Cards, Yellow Workers on Land Cards, and Blue Workers on Water Cards.",
+        "printedActions": "They <b>resolve all printed actions</b> of a space when placing a Worker."
+      }
+    }
+  },
   "notfound": {
     "title": "Not Found"
   },

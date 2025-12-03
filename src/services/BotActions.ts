@@ -3,10 +3,10 @@ import CardDeck from './CardDeck'
 import Card, { CardAction } from './Card'
 import BotFocus from './enum/BotFocus'
 import Action from './enum/Action'
-import Benefit from './enum/Benefit'
 import getBotFocusAction from '@/util/getBotFocusAction'
 import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import getBotFocusRestAction from '@/util/getBotFocusRestAction'
+import SchemeCardColor from './enum/SchemeCardColor'
 
 /**
  * Bot actions derived from scheme card deck.
@@ -15,26 +15,30 @@ export default class BotActions {
 
   public readonly actionChoices : ActionChoice[]
   public readonly restActions : CardAction[]
-  public readonly benefit? : Benefit
+  public readonly benefit? : CardAction
   public readonly newBotResources : BotResources
   public readonly isRest : boolean
+  public readonly colorMajority : SchemeCardColor
 
-  private constructor(actionChoices : ActionChoice[], restActions : CardAction[], benefit : Benefit|undefined, newBotResources : BotResources) {
+  private constructor(actionChoices : ActionChoice[], restActions : CardAction[], benefit : CardAction|undefined,
+      newBotResources : BotResources, colorMajority : SchemeCardColor) {
     this.actionChoices = actionChoices
     this.restActions = restActions
     this.benefit = benefit
     this.newBotResources = newBotResources
     this.isRest = restActions.length > 0
+    this.colorMajority = colorMajority
   }
 
   public static drawCard(cardDeck : CardDeck, botResources : BotResources, botFocus : BotFocus) : BotActions {
 
     if (cardDeck.isRest) {
       // resting
-      let benefit : Benefit|undefined = undefined
+      let benefit : CardAction|undefined = undefined
       if (cardDeck.currentCard?.comet) {
-        benefit = Benefit.COMET
+        benefit = { action: Action.COMET }
       }
+      const colorMajority = cardDeck.colorMajority
       cardDeck.shuffle()
       const restActions = [
         { action: getBotFocusRestAction(botFocus) },
@@ -43,7 +47,7 @@ export default class BotActions {
       return new BotActions([], restActions, benefit, {
         resourceTrack: botResources.resourceTrack,
         cometTrack: getNewCometTrack(botResources, benefit)
-      })
+      }, colorMajority)
     }
     else {
       // draw card
@@ -66,7 +70,7 @@ export default class BotActions {
       let newResourceTrack = oldResourceTrack + advanceSteps
 
       // benefits from resource track and drawn card
-      let benefit : Benefit|undefined = undefined
+      let benefit : CardAction|undefined = undefined
       const resourceTrackBenefit = getResourceTrackBenefit(oldResourceTrack, advanceSteps, botFocus)
       if (resourceTrackBenefit) {
         benefit = resourceTrackBenefit
@@ -79,7 +83,7 @@ export default class BotActions {
       return new BotActions(actionChoices, [], benefit, {
         resourceTrack: newResourceTrack,
         cometTrack: getNewCometTrack(botResources, benefit)
-      })
+      }, cardDeck.colorMajority)
     }
   }
 
@@ -96,6 +100,6 @@ function mapAction(action : CardAction, botFocus : BotFocus) : CardAction {
   return action
 }
 
-function getNewCometTrack(botResources: BotResources, benefit?: Benefit) : number {
-  return botResources.cometTrack + (benefit == Benefit.COMET ? 1 : 0)
+function getNewCometTrack(botResources: BotResources, benefit?: CardAction) : number {
+  return botResources.cometTrack + (benefit?.action == Action.COMET ? 1 : 0)
 }
