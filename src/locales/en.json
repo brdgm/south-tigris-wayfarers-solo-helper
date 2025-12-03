@@ -47,6 +47,29 @@
     "executed": "Executed",
     "notPossible": "Not Possible"
   },
+  "gameEnd": {
+    "title": "End of Game",
+    "botCards": {
+      "title": "AI Card Count",
+      "cards": "Cards",
+      "vp": "VP",
+      "townsfolk": "Townsfolk Cards",
+      "landWater": "Land/Water Cards",
+      "space": "Space Cards",
+      "inspiration": "Inspiration Cards"
+    },
+    "scoring": {
+      "title": "Victory Points",
+      "primaryLandWaterTags": "Primary Land/Water Tags",
+      "secondaryLandWaterTags": "Secondary Land/Water Tags",
+      "spaceInspirationCards": "Space/Inspiration Cards",
+      "upgradeTiles": "Caravan: Upgrade Tiles",
+      "caravanSquare": "Caravan: 1VP per Square",
+      "guildMajorities": "Guild Majorities",
+      "fullHourglass": "2VP for a Full Hourglass",
+      "totalVP": "Total VP"
+    }
+  },
   "sideBar": {
     "turn": "Turn {turn}"
   },
