@@ -70,7 +70,6 @@ export default defineComponent({
 .modal {
   .icon.additional-step-priority {
     height: 10rem;
-    margin-left: 0;
     margin: 0.5rem;
   }
 }
