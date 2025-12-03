@@ -76,7 +76,7 @@
         </tr>
         <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.primaryLandWaterTags')"></span><br/>
+            <span v-html="t('gameEnd.scoring.primaryLandWaterTags')"></span>
           </th>
           <td>
             <NumberInput v-model="playerPrimaryLandWaterTagsVP"/>
@@ -87,7 +87,7 @@
         </tr>
         <tr>
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.secondaryLandWaterTags')"></span><br/>
+            <span v-html="t('gameEnd.scoring.secondaryLandWaterTags')"></span>
           </th>
           <td>
             <NumberInput v-model="playerSecondaryLandWaterTagsVP"/>
@@ -97,7 +97,7 @@
         </tr>
         <tr>
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.spaceInspirationCards')"></span><br/>
+            <span v-html="t('gameEnd.scoring.spaceInspirationCards')"></span>
           </th>
           <td>
             <NumberInput v-model="playerSpaceInspirationCardsVP"/>
@@ -108,7 +108,7 @@
         </tr>
         <tr>
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.upgradeTiles')"></span><br/>
+            <span v-html="t('gameEnd.scoring.upgradeTiles')"></span>
           </th>
           <td>
             <NumberInput v-model="playerUpgradeTilesVP"/>
@@ -119,7 +119,7 @@
         </tr>
         <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.caravanSquare')"></span><br/>
+            <span v-html="t('gameEnd.scoring.caravanSquare')"></span>
           </th>
           <td>
             <NumberInput v-model="playerCaravanSquareVP"/>
@@ -129,7 +129,7 @@
         </tr>
         <tr>
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.guildMajorities')"></span><br/>
+            <span v-html="t('gameEnd.scoring.guildMajorities')"></span>
           </th>
           <td>
             <NumberInput v-model="playerGuildMajoritiesVP"/>
@@ -140,7 +140,7 @@
         </tr>
         <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
-            <span v-html="t('gameEnd.scoring.fullHourglass')"></span><br/>
+            <span v-html="t('gameEnd.scoring.fullHourglass')"></span>
           </th>
           <td>
             <NumberInput v-model="playerFullHourglassVP"/>
