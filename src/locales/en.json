@@ -60,7 +60,7 @@
     "action": {
       "general": {
         "spendInfluencePossible": "If it cannot spend the depicted Influence, the action is not possible.",
-        "gainInfluence": "The AI gains the depicted Influence."
+        "gainInfluence": "The AI places the depicted Influence on Guild(s)."
       },
       "cardInspiration": {
         "title": "Inspiration Card",
@@ -84,7 +84,7 @@
       },
       "comet": {
         "title": "Comet",
-        "instruction": "The AI gains 1 Comet (managed by the app)."
+        "instruction": "The AI gains 1 Comet (managed by the application)."
       },
       "influence": {
         "title": "Gain Influence"
