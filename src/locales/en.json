@@ -59,8 +59,8 @@
   "rules": {
     "action": {
       "general": {
-        "spendInfluencePossible": "If it cannot spend the depicted Influence, the action is not possible.",
-        "gainInfluence": "The AI places the depicted Influence on Guild(s)."
+        "spendInfluencePossible": "If it cannot spend the indicated Influence, the action is not possible.",
+        "gainInfluence": "The AI places the indicated Influence on Guild(s)."
       },
       "cardInspiration": {
         "title": "Inspiration Card",
@@ -91,7 +91,7 @@
       },
       "influenceCard": {
         "title": "Influence Card",
-        "instruction": "The AI places 1 Influence on a Card. Choose by color and card priority."
+        "instruction": "The AI places 1 Influence on a Card. Choose by colour and card priority."
       },
       "journal": {
         "title": "Journal",
@@ -101,7 +101,7 @@
       },
       "upgradeTile": {
         "title": "Upgrade Tile",
-        "instruction": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the color preference)."
+        "instruction": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the colour preference)."
       },
       "upgradeTileWorker": {
         "title": "Worker Upgrade Tile",
@@ -109,7 +109,7 @@
       },
       "worker": {
         "title": "Place Worker",
-        "placeWorker": "The AI places 1 Worker of the depicted color (if available in their supply).",
+        "placeWorker": "The AI places 1 Worker of the indicated colour (if available in their supply).",
         "workerColors": "The AI will only ever place Green Workers on Townsfolk Cards, Yellow Workers on Land Cards, and Blue Workers on Water Cards.",
         "printedActions": "They <b>resolve all printed actions</b> of a space when placing a Worker."
       }
