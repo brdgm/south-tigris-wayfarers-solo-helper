@@ -74,7 +74,7 @@
             <span class="fw-bold">{{t('turnBot.title')}}</span>
           </th>
         </tr>
-        <tr>
+        <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
             <span v-html="t('gameEnd.scoring.primaryLandWaterTags')"></span><br/>
           </th>
@@ -117,7 +117,7 @@
             <NumberInput v-model="botUpgradeTilesVP"/>
           </td>
         </tr>
-        <tr>
+        <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
             <span v-html="t('gameEnd.scoring.caravanSquare')"></span><br/>
           </th>
@@ -138,7 +138,7 @@
             <NumberInput v-model="botGuildMajoritiesVP"/>
           </td>
         </tr>
-        <tr>
+        <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
             <span v-html="t('gameEnd.scoring.fullHourglass')"></span><br/>
           </th>
@@ -172,6 +172,7 @@ import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vu
 import NavigationState from '@/util/NavigationState'
 import { useRoute } from 'vue-router'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
+import Expansion from '@/services/enum/Expansion'
 
 export default defineComponent({
   name: 'FinalScoring',
@@ -250,6 +251,9 @@ export default defineComponent({
         + this.botInspirationCardsVP
         + toNumber(this.botUpgradeTilesVP)
         + toNumber(this.botGuildMajoritiesVP)
+    },
+    hasTidesOfTimeExpansion(): boolean {
+      return this.state.setup.expansions.includes(Expansion.TIDES_OF_TRADE)
     }
   }
 })
