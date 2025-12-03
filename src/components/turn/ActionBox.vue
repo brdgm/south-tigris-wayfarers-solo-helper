@@ -1,13 +1,13 @@
 <template>
   <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
     <div class="actionWrapper">
-      <div class="influence" v-if="action.influenceCost">
+      <div class="cost" v-if="action.influenceCost">
         <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence-cost" :name="guild" class="icon"/>
         <AppIcon name="multiple" class="multiple"/>
         <AppIcon name="arrow" class="arrow"/>
       </div>
       <slot name="action"></slot>
-      <div class="influence" v-if="action.influenceBonus">
+      <div class="bonus" v-if="action.influenceBonus">
         <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
         <AppIcon name="multiple" class="multiple"/>
       </div>
@@ -107,7 +107,7 @@ export default defineComponent({
     justify-content: center;
     gap: 1rem;
   }
-  .influence {
+  .cost, .bonus {
     display: flex;
     flex-direction: row;
     align-items: center;
