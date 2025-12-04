@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
     component: TurnBot
   },
   {
-    path: '/turn/:turn/bot/action/:action',
+    path: '/turn/:turn/bot/action/:actionChoice/:action',
     name: 'TurnBotAction',
     component: TurnBot
   },

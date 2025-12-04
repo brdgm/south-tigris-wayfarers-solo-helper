@@ -7,6 +7,7 @@ import getBotFocusAction from '@/util/getBotFocusAction'
 import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import getBotFocusRestAction from '@/util/getBotFocusRestAction'
 import SchemeCardColor from './enum/SchemeCardColor'
+import { cloneDeep } from 'lodash'
 
 /**
  * Bot actions derived from scheme card deck.
@@ -61,8 +62,14 @@ export default class BotActions {
         cards.push(lastCard)
       }
 
-      // derive actions from card(s), replacing focus actions with actual actions
-      const actionChoices = cards.map(card => ({ actions: card.actions.map(action => mapAction(action, botFocus)) }))
+      // derive actions from card(s)
+      const actionChoices : ActionChoice[] = cards.map(card => {
+        const actions : CardAction[] = []
+        for (const action of card.actions) {
+          actions.push(...mapActions(action, botFocus))
+        }
+        return { actions }
+      })
 
       // resource track advancements
       const advanceSteps = lastCard.silverValue
@@ -93,11 +100,20 @@ export interface ActionChoice {
   actions: CardAction[]
 }
 
-function mapAction(action : CardAction, botFocus : BotFocus) : CardAction {
+function mapActions(action : CardAction, botFocus : BotFocus) : CardAction[] {
   if (action.action == Action.FOCUS) {
-    return { action: getBotFocusAction(botFocus) }
+    // replace focus action with actual action depending on bot focus
+    return [{ action: getBotFocusAction(botFocus) }]
   }
-  return action
+  if (action.action == Action.WORKER && action.workerColors) {
+    // replace alternative worker colors with individual actions
+    return action.workerColors.map(color => {
+      const workerAction = cloneDeep(action)
+      workerAction.workerColors = [color]
+      return workerAction
+    })
+  }
+  return [action]
 }
 
 function getNewCometTrack(botResources: BotResources, benefit?: CardAction) : number {

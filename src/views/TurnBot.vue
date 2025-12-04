@@ -18,11 +18,11 @@
   <BotSilver v-model="botSilver"/>
   <BotAction v-if="additionalResourceTrackBenefit" :action="additionalResourceTrackBenefit" :navigationState="navigationState"/>
 
-  <template v-if="isChoiceAction">
+  <template v-if="hasMoreActions">
     <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
       {{t('turnBot.executed')}}
     </button>
-    <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()" v-if="isChoiceAction">
+    <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()">
       {{t('turnBot.notPossible')}}
     </button>
   </template>
@@ -53,6 +53,7 @@ import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import BotAction from '@/components/turn/BotAction.vue'
 import { CardAction } from '@/services/Card'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import { ActionChoice } from '@/services/BotActions'
 
 export default defineComponent({
   name: 'TurnBot',
@@ -71,9 +72,9 @@ export default defineComponent({
     const state = useStateStore()
 
     const navigationState = new NavigationState(route, state)
-    const { turn, action, botActions } = navigationState
+    const { turn, actionChoice, action, botActions } = navigationState
 
-    return { t, router, navigationState, state, turn, action, botActions }
+    return { t, router, navigationState, state, turn, actionChoice, action, botActions }
   },
   data() {
     return {
@@ -84,24 +85,17 @@ export default defineComponent({
     backButtonRouteTo() : string {
       return `/turn/${this.turn-1}/player`
     },
-    allChoiceActions() : CardAction[] {
-      // flatten action choice into a single list of actions - knowing that each pair of actions is a choice
-      return this.botActions?.actionChoices.flatMap(choice => choice.actions) ?? []
+    currentActionChoice() : ActionChoice|undefined {
+      return this.botActions?.actionChoices[this.actionChoice]
+    },
+    currentActions() : CardAction[] {
+      return this.currentActionChoice?.actions || []
     },
     currentAction() : CardAction {
-      return this.allChoiceActions[this.action]
+      return this.currentActions[this.action]
     },
-    isChoiceAction() : boolean {
-      return this.allChoiceActions.length > 0 && this.action % 2 == 0
-    },
-    nextChoiceAction() : number {
-      const actionChoice = (this.action - (this.action % 2)) / 2
-      if (this.allChoiceActions.length > (actionChoice + 1) * 2) {
-        return (actionChoice + 1) * 2
-      }
-      else {
-        return -1
-      }
+    hasMoreActions() : boolean {
+      return this.currentActions.length > this.action + 1
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver), this.state.setup.botFocus)
@@ -109,11 +103,11 @@ export default defineComponent({
   },
   methods: {
     notPossible() : void {
-      this.router.push(`/turn/${this.turn}/bot/action/${this.action+1}`)
+      this.router.push(`/turn/${this.turn}/bot/action/${this.actionChoice}/${this.action+1}`)
     },
     next() : void {
-      if (this.nextChoiceAction > 0) {
-        this.router.push(`/turn/${this.turn}/bot/action/${this.nextChoiceAction}`)
+      if (this.actionChoice < (this.botActions?.actionChoices.length ?? 0) - 1) {
+        this.router.push(`/turn/${this.turn}/bot/action/${this.actionChoice+1}/0`)
         return
       }
       this.state.storeTurn({

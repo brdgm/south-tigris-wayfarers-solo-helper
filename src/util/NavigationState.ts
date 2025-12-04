@@ -9,6 +9,7 @@ export default class NavigationState {
 
   readonly turn : number
   readonly player : Player
+  readonly actionChoice : number
   readonly action : number
   readonly cardDeck: CardDeck
   readonly botActions? : BotActions
@@ -17,6 +18,7 @@ export default class NavigationState {
   constructor(route: RouteLocation, state: State) {    
     this.turn = getIntRouteParam(route, 'turn')
     this.player = (route.name == 'TurnPlayer') ? Player.PLAYER : Player.BOT
+    this.actionChoice = getIntRouteParam(route, 'actionChoice')
     this.action = getIntRouteParam(route, 'action')
 
     const lastTurn = (route.name == 'GameEnd')
