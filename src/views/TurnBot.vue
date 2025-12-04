@@ -15,7 +15,7 @@
     <BotAction v-if="botActions.benefit" :action="botActions.benefit" :navigationState="navigationState"/>
   </template>
 
-  <PlayerPaySilver v-model="playerPaySilver"/>
+  <BotSilver v-model="botSilver"/>
   <BotAction v-if="additionalResourceTrackBenefit" :action="additionalResourceTrackBenefit" :navigationState="navigationState"/>
 
   <template v-if="isChoiceAction">
@@ -46,7 +46,7 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStateStore } from '@/store/state'
 import SideBar from '@/components/turn/SideBar.vue'
 import DebugInfo from '@/components/turn/DebugInfo.vue'
-import PlayerPaySilver from '@/components/turn/PlayerPaySilver.vue'
+import BotSilver from '@/components/turn/BotSilver.vue'
 import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import addResourceTrack from '@/util/addResourceTrack'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
@@ -60,7 +60,7 @@ export default defineComponent({
     FooterButtons,
     SideBar,
     DebugInfo,
-    PlayerPaySilver,
+    BotSilver,
     BotAction,
     AppIcon
   },
@@ -77,7 +77,7 @@ export default defineComponent({
   },
   data() {
     return {
-      playerPaySilver: 0
+      botSilver: 0
     }
   },
   computed: {
@@ -104,7 +104,7 @@ export default defineComponent({
       }
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
-      return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.playerPaySilver), this.state.setup.botFocus)
+      return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver), this.state.setup.botFocus)
     }
   },
   methods: {
@@ -121,7 +121,7 @@ export default defineComponent({
         player: this.navigationState.player,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          botResources: addResourceTrack(this.navigationState.botResources, toNumber(this.playerPaySilver))
+          botResources: addResourceTrack(this.navigationState.botResources, toNumber(this.botSilver))
         }
       })
       this.router.push(`/turn/${this.turn+1}/player`)

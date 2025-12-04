@@ -1,10 +1,11 @@
 <template>
   <div class="resourcesWrapper">
     <div class="resources">
-      <p v-html="t('turnPlayer.playerPaySilver')"></p>
+      <p v-html="t('turnPlayer.botSilver')"></p>
       <div class="option">
         <label for="inputSilverValue">
           <AppIcon name="silver" class="icon" extension="webp"/>
+          <AppIcon name="provision" class="icon" extension="webp"/>
         </label>
         <NumberInput id="inputSilverValue" v-model="silverValue" :min="0" :max="7"/>
       </div>
@@ -19,7 +20,7 @@ import AppIcon from '../structure/AppIcon.vue'
 import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
 
 export default defineComponent({
-  name: 'PlayerPaySilver',
+  name: 'BotSilver',
   emits: ['update:modelValue'],  
   components: {
     AppIcon,
@@ -73,7 +74,8 @@ export default defineComponent({
   }
 }
 .icon {
-  height: 2rem;
+  height: 1.75rem;
+  margin-right: 0.25rem;
   filter: drop-shadow(1px 0 0 white)
     drop-shadow(-1px 0 0 white)
     drop-shadow(0 1px 0 white)

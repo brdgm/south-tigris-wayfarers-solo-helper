@@ -40,7 +40,7 @@
   "turnPlayer": {
     "title": "Player",
     "execute": "Execute you turn.",
-    "playerPaySilver": "Silver/Provisions you paid to the AI:"
+    "botSilver": "Silver/Provisions gained by the AI:"
   },
   "turnBot": {
     "title": "{focus} AI",
