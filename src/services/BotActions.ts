@@ -109,7 +109,8 @@ function mapActions(action : CardAction, botFocus : BotFocus) : CardAction[] {
     // replace alternative worker colors with individual actions
     return action.workerColors.map(color => {
       const workerAction = cloneDeep(action)
-      workerAction.workerColors = [color]
+      delete workerAction.workerColors
+      workerAction.color = color
       return workerAction
     })
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="actionItem">
-    <component :is="componentName" :action="action" :navigationState="navigationState"/>
+    <component :is="componentName" :action="action" :navigationState="navigationState" @addActions="addActions"/>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ import ActionInfluenceCard from './action/ActionInfluenceCard.vue'
 import ActionJournal from './action/ActionJournal.vue'
 import NavigationState from '@/util/NavigationState'
 import ActionComet from './action/ActionComet.vue'
+import ActionGetWorker from './action/ActionGetWorker.vue'
 
 export default defineComponent({
   name: 'BotAction',
@@ -36,7 +37,11 @@ export default defineComponent({
     ActionInfluence,
     ActionInfluenceCard,
     ActionJournal,
-    ActionComet
+    ActionComet,
+    ActionGetWorker
+  },
+  emits: {
+    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -56,6 +61,11 @@ export default defineComponent({
     componentName() : string {
       return `action-${this.action.action}`
     }
+  },
+  methods: {
+    addActions(actions: CardAction[]) {
+      this.$emit('addActions', actions)
+    }
   }
 })
 </script>
@@ -63,7 +73,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .actionItem {
   margin-top: 15px;
-  max-width: 32rem;
+  max-width: 40rem;
   padding-right: 10rem;
   @media (max-width: 600px) {
     padding-right: 8rem;

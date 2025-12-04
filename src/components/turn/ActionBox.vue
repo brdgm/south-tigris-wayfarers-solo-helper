@@ -1,19 +1,27 @@
 <template>
-  <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
-    <div class="actionWrapper">
-      <div class="cost" v-if="action.influenceCost">
-        <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence-cost" :name="guild" class="icon"/>
-        <AppIcon name="multiple" class="multiple"/>
-        <AppIcon name="arrow" class="arrow"/>
+  <div class="widthLimitation">
+    <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
+      <div class="actionWrapper">
+        <div class="cost" v-if="action.influenceCost">
+          <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence-cost" :name="guild" class="icon"/>
+          <AppIcon name="multiple" class="multiple"/>
+          <AppIcon name="arrow" class="arrow"/>
+        </div>
+        <slot name="action"></slot>
+        <div class="bonus" v-if="action.influenceBonus">
+          <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
+          <AppIcon name="multiple" class="multiple"/>
+        </div>
+        <div class="bonus" v-if="action.silverBonus">
+          <AppIcon v-for="index of action.silverBonus" :key="index" name="silver" extension="webp" class="icon silver"/>
+        </div>
       </div>
-      <slot name="action"></slot>
-      <div class="bonus" v-if="action.influenceBonus">
-        <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
-        <AppIcon name="multiple" class="multiple"/>
+      <div class="priority" v-if="hasPriority">
+        <slot name="priority"></slot>
       </div>
     </div>
-    <div class="priority" v-if="hasPriority">
-      <slot name="priority"></slot>
+    <div v-if="hasFollowUpAction" class="actionBox followUp col">
+      <slot name="followUpAction"></slot>
     </div>
   </div>
 
@@ -64,6 +72,9 @@ export default defineComponent({
     hasPriority() : boolean {
       return this.$slots.priority !== undefined
     },
+    hasFollowUpAction() : boolean {
+      return this.$slots.followUpAction !== undefined
+    },
     hasInstruction() : boolean {
       return this.$slots.instruction !== undefined
     }
@@ -93,12 +104,23 @@ export default defineComponent({
   padding-left: 2rem;
   padding-right: 2rem;
   min-height: 7rem;
+  z-index: 20;
   &.instruction {
     cursor: pointer;
     background-image: url('@/assets/icons/help-semi-transparent.webp');
     background-repeat: no-repeat;
     background-position: right 5px top 5px;
     background-size: 1.25rem;
+  }
+  &.followUp {
+    margin-top: -15px;
+    padding-top: 25px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-style: none;
+    background-color: #caac8c;
+    min-height: 0;
+    z-index: 10;
   }
   .actionWrapper {
     display: flex;
@@ -114,6 +136,12 @@ export default defineComponent({
     gap: 0.25rem;
     .icon {
       height: 2.75rem;
+      &.silver {
+        filter: drop-shadow(1px 0 0 white)
+          drop-shadow(-1px 0 0 white)
+          drop-shadow(0 1px 0 white)
+          drop-shadow(0 -1px 0 white);
+      }
     }
     .icon + .icon {
       margin-left: -1rem;

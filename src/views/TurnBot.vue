@@ -10,8 +10,9 @@
       <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState"/>
     </template>
     <template v-else>
-      <BotAction :action="currentAction" :navigationState="navigationState"/>
+      <BotAction :action="currentAction" :navigationState="navigationState" @addActions="addActions"/>
     </template>
+    <BotAction v-for="(additionalAction,index) of additionalActions" :key="index" :action="additionalAction" :navigationState="navigationState"/>
     <BotAction v-if="botActions.benefit" :action="botActions.benefit" :navigationState="navigationState"/>
   </template>
 
@@ -78,6 +79,7 @@ export default defineComponent({
   },
   data() {
     return {
+      additionalActions: [] as CardAction[],
       botSilver: 0
     }
   },
@@ -119,6 +121,9 @@ export default defineComponent({
         }
       })
       this.router.push(`/turn/${this.turn+1}/player`)
+    },
+    addActions(actions: CardAction[]) {
+      this.additionalActions = actions
     }
   }
 })

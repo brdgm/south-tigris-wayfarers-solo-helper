@@ -26,6 +26,9 @@ import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
 export default defineComponent({
   name: 'ActionCardLand',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox,
     AppIcon,

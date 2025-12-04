@@ -14,6 +14,7 @@ enum Action {
   CARD_TOWNSFOLK = 'card-townsfolk',
   CARD_INSPIRATION = 'card-inspiration',
   JOURNAL = 'journal',
-  COMET = 'comet'
+  COMET = 'comet',
+  GET_WORKER = 'get-worker'
 }
 export default Action

@@ -19,6 +19,9 @@ import NavigationState from '@/util/NavigationState'
 export default defineComponent({
   name: 'ActionComet',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox
   },

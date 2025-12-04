@@ -13,7 +13,7 @@ describe('services/BotActions', () => {
 
     expect(underTest.actionChoices).to.eql([
       { actions: [
-        { action: Action.WORKER, workerColors: [Color.GREEN] },
+        { action: Action.WORKER, color: Color.GREEN },
         { action: Action.JOURNAL }
       ] }
     ])
@@ -33,8 +33,8 @@ describe('services/BotActions', () => {
         { action: Action.UPGRADE_TILE_WORKER, influenceBonus: [Guild.RED,Guild.RED,Guild.RED] }
       ] },
       { actions: [
-        { action: Action.WORKER, workerColors: [Color.GREEN] },
-        { action: Action.WORKER, workerColors: [Color.BLUE] },
+        { action: Action.WORKER, color: Color.GREEN },
+        { action: Action.WORKER, color: Color.BLUE },
         { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE,Guild.YELLOW,Guild.BLACK] }
       ] }
     ])
@@ -66,7 +66,7 @@ describe('services/BotActions', () => {
 
     expect(underTest.actionChoices).to.eql([
       { actions: [
-        { action: Action.WORKER, workerColors: [Color.GREEN] },
+        { action: Action.WORKER, color: Color.GREEN },
         { action: Action.JOURNAL }
       ] }
     ])

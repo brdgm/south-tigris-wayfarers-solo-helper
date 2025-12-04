@@ -1,16 +1,15 @@
 <template>
-  <ActionBox :action="action" :instruction-title="t('rules.action.influenceCard.title')">
+  <ActionBox :action="action" :instruction-title="t('rules.action.getWorker.title')">
     <template #action>
       <div class="action">
-        <AppIcon v-for="index of actionCount" :key="index" type="action" :name="action.action" class="icon"/>
+        <AppIcon type="action" :name="action.action" class="icon"/>
       </div>
     </template>
     <template #priority>
       <ColorPriority :navigationState="navigationState"/>
-      <CardPriorityIcon :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.influenceCard.instruction')"/>
+      <p v-html="t('rules.action.getWorker.instruction')"/>
     </template>
   </ActionBox>
 </template>
@@ -20,13 +19,12 @@ import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
-import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
+import AppIcon from '@/components/structure/AppIcon.vue'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
-import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
 
 export default defineComponent({
-  name: 'ActionInfluenceCard',
+  name: 'ActionGetWorker',
   inheritAttrs: false,
   emits: {
     addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -34,8 +32,7 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon,
-    ColorPriority,
-    CardPriorityIcon
+    ColorPriority
   },
   setup() {
     const { t } = useI18n()
@@ -50,11 +47,6 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
-  },
-  computed: {
-    actionCount() : number {
-      return this.action.count ?? 1
-    }
   }
 })
 </script>
@@ -68,6 +60,6 @@ export default defineComponent({
   gap: 10px;
 }
 .icon {
-  height: 3rem;
+  height: 4rem;
 }
 </style>
