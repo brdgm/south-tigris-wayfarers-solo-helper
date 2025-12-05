@@ -29,14 +29,18 @@
       "playerMarker": "Place the Player Marker of their colour on the starting space of the Journal Track.",
       "workers": "They start with 1 Yellow Worker and 1 Blue Worker.",
       "secondPlayer": "The AI will always be the 2nd player. They do not gain any Provisions or Silver, but do start the game with <b>1 Influence in the Yellow Guild and 1 in Blue</b>. Place their remaining Influence into their supply.",
-      "noSchemeCards": "The AI does not need the scheme cards - the card deck, the AI resource track and the comet track is managed by this application."
+      "noSchemeCards": "The AI does not need the scheme cards - the card deck, the AI resource track and the comet track is managed by this application. If you need help on an AI action, tap on the action to get the rules."
     },
     "ruleChanges": {
       "title": "Rule Changes",
       "influenceLimits": "<b>Influence Limits</b>: Unlike human players, the AI is not limited by the Influence in their supply. If they run out, use Influence of an unused colour. This is still considered to be their Influence.",
-      "costs": "The AI <b>ignores all costs</b> <i>(other than those on their Scheme Cards)</i>, and ignores all requirements on the Journal Track. They still gain all rewards from the Journal Track. In the final column, they gain a Pink Upgrade, not an Inspiration Card.",
+      "costs": "The AI <b>ignores all costs</b> <i>(other than those on their Scheme Cards)</i>, and ignores all requirements on the Journal Track. They still gain all rewards from the Journal Track.",
       "icons": "The AI <b>ignores all icons on all Cards and Upgrade Tiles</b> they acquire. This includes Comets, Influence, free Upgrades, etc - everything! However, they do still gain Victory Points from acquired Upgrade Tiles.",
-      "resourceTrack": "The AI <b>resolves all icons on the Resource Track</b> just as a player would. Along the top of the AI Board are shown some key changes to certain icons. If they would ever gain the effect on the left, they instead resolve that shown on the right."
+      "influenceCard": {
+        "title": "<b>Influence on Cards</b>: If the AI has an Influence on a Card that you want to interact with, you still need to pay them - enter the amount in the app on the current screen. If the AI wants to interact with a Card that you have an Influence on, you have a choice:",
+        "letThem": "Let them interact. You may then choose to take 1 Provision, or 1 Silver from the Main Supply.",
+        "denyThem": "Deny them. You may pay 1 Provision or 1 Silver to have them move to the next Card, based on their usual priority rules. You can do this multiple times, so long as you can afford to. You cannot fully deny them a certain Card type."
+      }
     }
   },
   "turnPlayer": {
@@ -156,6 +160,9 @@
         "title": "Retrieve Worker",
         "instruction": "Retrieve a Worker from a Faceup Card following the colour priority."
       }
+    },
+    "priority": {
+      "title": "AI Priorities"
     }
   },
   "notfound": {

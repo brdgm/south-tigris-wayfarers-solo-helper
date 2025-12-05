@@ -24,7 +24,11 @@
           <li v-html="t('setupBot.ruleChanges.influenceLimits')"></li>
           <li v-html="t('setupBot.ruleChanges.costs')"></li>
           <li v-html="t('setupBot.ruleChanges.icons')"></li>
-          <li v-html="t('setupBot.ruleChanges.resourceTrack')"></li>
+          <li v-html="t('setupBot.ruleChanges.influenceCard.title')"></li>
+          <ul>
+            <li v-html="t('setupBot.ruleChanges.influenceCard.letThem')"></li>
+            <li v-html="t('setupBot.ruleChanges.influenceCard.denyThem')"></li>
+          </ul>
         </ul>
       </div>
     </div>

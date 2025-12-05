@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import NavigationState from '@/util/NavigationState'
 import Color from '@/services/enum/Color'
 import getResourceTrackColor from '@/util/getResourceTrackColor'
@@ -17,15 +17,28 @@ export default defineComponent({
       type: NavigationState,
       required: true
     },
-    hideBlack: {
-      type: Boolean,
+    hideColors: {
+      type: Array as PropType<Color[]>,
+      required: false
+    },
+    prioritizeColor: {
+      type: String as PropType<Color>,
       required: false
     }
   },
   computed: {
     colors() : Color[] {
-      return getResourceTrackColor(this.navigationState.botResources.resourceTrack)
-        .filter(color => !(this.hideBlack && color === Color.BLACK))
+      const colors = getResourceTrackColor(this.navigationState.botResources.resourceTrack)
+        .filter(color => !(this.hideColors ?? []).includes(color))
+      if (this.prioritizeColor) {
+        return [
+          this.prioritizeColor,
+          ...colors.filter(color => color !== this.prioritizeColor)
+        ]
+      }
+      else {
+        return colors
+      }
     }
   }
 })

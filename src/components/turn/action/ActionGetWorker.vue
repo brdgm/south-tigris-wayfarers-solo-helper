@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #priority>
-      <ColorPriority :navigationState="navigationState" :hideBlack="true"/>
+      <ColorPriority :navigationState="navigationState" :hideColors="hideColors" :prioritizeColor="prioritizeColor"/>
     </template>
     <template #instruction>
       <p v-html="t('rules.action.getWorker.instruction')"/>
@@ -22,6 +22,7 @@ import ActionBox from '../ActionBox.vue'
 import NavigationState from '@/util/NavigationState'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
+import Color from '@/services/enum/Color'
 
 export default defineComponent({
   name: 'ActionGetWorker',
@@ -46,6 +47,14 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    }
+  },
+  computed: {
+    hideColors() : Color[] {
+      return [Color.BLACK]
+    },
+    prioritizeColor() : Color {
+      return Color.GREEN
     }
   }
 })
