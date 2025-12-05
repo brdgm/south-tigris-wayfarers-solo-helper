@@ -50,7 +50,7 @@ import ColorPriority from '@/components/structure/ColorPriority.vue'
 import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
 import Action from '@/services/enum/Action'
 import Guild from '@/services/enum/Guild'
-import { eq, isEqual } from 'lodash'
+import { isEqual } from 'lodash'
 
 export default defineComponent({
   name: 'ActionUpgradeTile',
@@ -110,8 +110,8 @@ export default defineComponent({
     }
   },
   watch: {
-    selectedBenefitActions(newValue: number|undefined) {
-      this.$emit('addActions', this.selectedBenefitActions)
+    selectedBenefitActions(newValue: CardAction[]) {
+      this.$emit('addActions', newValue)
     }
   }
 })

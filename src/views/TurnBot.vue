@@ -7,7 +7,7 @@
 
   <template v-if="botActions">
     <template v-if="botActions.isRest">
-      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState"/>
+      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState" @addActions="addActions"/>
     </template>
     <template v-else>
       <BotAction :action="currentAction" :navigationState="navigationState" @addActions="addActions"/>

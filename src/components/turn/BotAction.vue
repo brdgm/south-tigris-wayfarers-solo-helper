@@ -16,12 +16,14 @@ import ActionCardTownsfolk from './action/ActionCardTownsfolk.vue'
 import ActionCardInspiration from './action/ActionCardInspiration.vue'
 import ActionUpgradeTile from './action/ActionUpgradeTile.vue'
 import ActionUpgradeTileWorker from './action/ActionUpgradeTileWorker.vue'
+import ActionUpgradeTileSpecial from './action/ActionUpgradeTileSpecial.vue'
 import ActionInfluence from './action/ActionInfluence.vue'
 import ActionInfluenceCard from './action/ActionInfluenceCard.vue'
 import ActionJournal from './action/ActionJournal.vue'
 import NavigationState from '@/util/NavigationState'
 import ActionComet from './action/ActionComet.vue'
 import ActionGetWorker from './action/ActionGetWorker.vue'
+import ActionSilver from './action/ActionSilver.vue'
 
 export default defineComponent({
   name: 'BotAction',
@@ -34,11 +36,13 @@ export default defineComponent({
     ActionCardInspiration,
     ActionUpgradeTile,
     ActionUpgradeTileWorker,
+    ActionUpgradeTileSpecial,
     ActionInfluence,
     ActionInfluenceCard,
     ActionJournal,
     ActionComet,
-    ActionGetWorker
+    ActionGetWorker,
+    ActionSilver
   },
   emits: {
     addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars

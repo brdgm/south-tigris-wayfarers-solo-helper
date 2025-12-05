@@ -15,7 +15,8 @@
     },
     "expansions": {
       "title": "Expansions",
-      "tides-of-trade": "Tides of Trade"
+      "tides-of-trade": "Tides of Trade",
+      "moonsaga-promo-tiles": "Moonsaga Promo Tiles"
     }
   },
   "setupBot": {
@@ -114,6 +115,9 @@
       },
       "influence": {
         "title": "Gain Influence"
+      },
+      "silver": {
+        "title": "Gain Silver"
       },
       "influenceCard": {
         "title": "Influence Card",
