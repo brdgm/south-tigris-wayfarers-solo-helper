@@ -83,27 +83,30 @@
     "action": {
       "general": {
         "spendInfluencePossible": "If it cannot spend the indicated Influence, the action is not possible.",
-        "gainInfluence": "The AI places the indicated Influence on Guild(s)."
+        "gainInfluence": "The AI places the indicated Influence on Guild(s).",
+        "silverBonus": "The AI gains the indicated amount of silver (managed by the application)."
       },
       "cardInspiration": {
         "title": "Inspiration Card",
-        "instruction": "The AI gains 1 Inspiration Card."
+        "gainCard": "The AI gains 1 Inspiration Card."
       },
       "cardLand": {
         "title": "Land Card",
-        "instruction": "The AI gains 1 Land Card."
+        "gainCard": "The AI gains 1 Land Card.",
+        "drawPile": "The AI draws 1 Land Card from the pile."
       },
       "cardSpace": {
         "title": "Space Card",
-        "instruction": "The AI gains 1 Space Card."
+        "gainCard": "The AI gains 1 Space Card."
       },
       "cardWater": {
         "title": "Water Card",
-        "instruction": "The AI gains 1 Water Card."
+        "gainCard": "The AI gains 1 Water Card.",
+        "drawPile": "The AI draws 1 Water Card from the pile."
       },
       "cardTownsfolk": {
         "title": "Townsfolk Card",
-        "instruction": "The AI gains 1 Townsfolk Card."
+        "gainCard": "The AI gains 1 Townsfolk Card."
       },
       "comet": {
         "title": "Comet",
@@ -132,10 +135,9 @@
       },
       "worker": {
         "title": "Place Worker",
-        "chosenSpace": "Chosen space:",
         "placeWorker": "The AI places 1 Worker of the indicated colour (if available in their supply).",
         "workerColors": "The AI will only ever place Green Workers on Townsfolk Cards, Yellow Workers on Land Cards, and Blue Workers on Water Cards.",
-        "printedActions": "They <b>resolve all printed actions</b> of a space when placing a Worker."
+        "printedActions": "Click on the <b>chosen worker space</b> listed below to show the follow-up actions the AI will resolve."
       },
       "getWorker": {
         "title": "Retrieve Worker",

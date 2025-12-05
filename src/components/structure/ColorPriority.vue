@@ -16,11 +16,16 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    },
+    hideBlack: {
+      type: Boolean,
+      required: false
     }
   },
   computed: {
     colors() : Color[] {
       return getResourceTrackColor(this.navigationState.botResources.resourceTrack)
+        .filter(color => !(this.hideBlack && color === Color.BLACK))
     }
   }
 })

@@ -2,14 +2,16 @@
   <ActionBox :action="action" :instruction-title="t('rules.action.cardWater.title')">
     <template #action>
       <div class="action">
-        <AppIcon type="action" :name="action.action" class="icon"/>
+        <AppIcon v-if="action.drawPile" type="action" name="card-water-pile" extension="webp" class="icon"/>
+        <AppIcon v-else type="action" name="card-water" class="icon"/>
       </div>
     </template>
     <template #priority>
-      <CardPriorityIcon :navigationState="navigationState" :blueBlack="true"/>
+      <CardPriorityIcon v-if="!action.drawPile" :navigationState="navigationState" :blueBlack="true"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.cardWater.instruction')"/>
+      <p v-if="action.drawPile" v-html="t('rules.action.cardWater.drawPile')"/>
+      <p v-else v-html="t('rules.action.cardWater.gainCard')"/>
     </template>
   </ActionBox>
 </template>

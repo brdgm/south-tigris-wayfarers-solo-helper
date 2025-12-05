@@ -9,7 +9,6 @@
       <CardPriorityIcon :navigationState="navigationState" :greenYellow="isGreenWorker||isYellowWorker" :blueBlack="isBlueWorker"/>
     </template>
     <template #followUpAction>
-      <div class="mb-2">{{t('rules.action.worker.chosenSpace')}}</div>
       <div class="btn-group flex-wrap">
         <template v-for="index of 4" :key="index">
           <input type="radio" class="btn-check" name="workerSpaceSelection" :id="`workerSpaceSelectionOption${index}`" autocomplete="off" v-model="workerSpace" :value="index">
@@ -118,7 +117,7 @@ function getGreenWorkerActions(workerSpace: number) : CardAction[] {
 function getYellowWorkerActions(workerSpace: number) : CardAction[] {
   switch (workerSpace) {
     case 1:
-      return [{ action: Action.CARD_LAND }]
+      return [{ action: Action.CARD_LAND, drawPile: true }]
     case 2:
       return [{ action: Action.UPGRADE_TILE, color: Color.YELLOW }]
     case 3:
@@ -139,7 +138,7 @@ function getBlueWorkerActions(workerSpace: number) : CardAction[] {
     case 3:
       return [{ action: Action.UPGRADE_TILE, color: Color.BLUE }]
     case 4:
-      return [{ action: Action.CARD_WATER }]
+      return [{ action: Action.CARD_WATER, drawPile: true }]
     default:
       return []
   }
@@ -164,7 +163,7 @@ function getBlueWorkerActions(workerSpace: number) : CardAction[] {
   font-size: 2rem;
 }
 .workerAction {
-  height: 1.75rem;
+  height: 1.4rem;
 }
 .button-group.flex-wrap {
   white-space: normal;

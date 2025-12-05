@@ -28,8 +28,9 @@
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
     <template #body>
       <slot name="instruction"></slot>
-      <p v-html="t('rules.action.general.spendInfluencePossible')" v-if="action.influenceCost"/>
-      <p v-html="t('rules.action.general.gainInfluence')" v-if="action.influenceBonus"/>
+      <p v-if="action.influenceCost" v-html="t('rules.action.general.spendInfluencePossible')"/>
+      <p v-if="action.influenceBonus" v-html="t('rules.action.general.gainInfluence')"/>
+      <p v-if="action.silverBonus" v-html="t('rules.action.general.silverBonus')"/>
     </template>
   </ModalDialog>
 </template>

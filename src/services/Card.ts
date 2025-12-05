@@ -24,4 +24,5 @@ export interface CardAction {
   influenceCost?: Guild[]
   influenceBonus?: Guild[]
   silverBonus?: number
+  drawPile?: boolean  // used for land and water cards
 }

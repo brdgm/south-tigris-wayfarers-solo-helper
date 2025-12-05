@@ -9,7 +9,7 @@
       <CardPriorityInspirationIcon :navigationState="navigationState"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.cardInspiration.instruction')"/>
+      <p v-html="t('rules.action.cardInspiration.gainCard')"/>
     </template>
   </ActionBox>
 </template>

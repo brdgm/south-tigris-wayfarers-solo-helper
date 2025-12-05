@@ -2,7 +2,8 @@
   <ActionBox :action="action" :instruction-title="t('rules.action.upgradeTile.title')">
     <template #action>
       <div class="action">
-        <AppIcon type="action" :name="action.action" class="icon"/>
+        <AppIcon v-if="action.color" type="action" :name="`upgrade-tile-${action.color}`" extension="webp" class="icon"/>
+        <AppIcon v-else type="action" name="upgrade-tile" class="icon"/>
       </div>
     </template>
     <template #priority>

@@ -9,7 +9,7 @@
       <CardPriorityIcon :navigationState="navigationState" :greenYellow="true"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.cardTownsfolk.instruction')"/>
+      <p v-html="t('rules.action.cardTownsfolk.gainCard')"/>
     </template>
   </ActionBox>
 </template>

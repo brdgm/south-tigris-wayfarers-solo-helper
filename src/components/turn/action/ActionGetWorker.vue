@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #priority>
-      <ColorPriority :navigationState="navigationState"/>
+      <ColorPriority :navigationState="navigationState" :hideBlack="true"/>
     </template>
     <template #instruction>
       <p v-html="t('rules.action.getWorker.instruction')"/>
