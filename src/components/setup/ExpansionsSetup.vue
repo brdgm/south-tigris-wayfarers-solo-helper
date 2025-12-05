@@ -12,6 +12,12 @@
       </div>
     </div>
   </div>
+
+  <div class="row mt-3" v-if="hasMoonSagaPromoTilesWithoutTidesOfTradeExpansion">
+    <div class="col">
+      <div class="alert alert-warning" v-html="t('setup.expansions.moonSagaPromoTilesWithoutTidesOfTradeExpansion')"></div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -30,6 +36,9 @@ export default defineComponent({
   computed: {
     expansions() : Expansion[] {
       return Object.values(Expansion)
+    },
+    hasMoonSagaPromoTilesWithoutTidesOfTradeExpansion() : boolean {
+      return this.state.setup.expansions.includes(Expansion.MOONSAGA_PROMO_TILES) && !this.state.setup.expansions.includes(Expansion.TIDES_OF_TRADE)
     }
   },
   methods: {

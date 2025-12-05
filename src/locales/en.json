@@ -15,6 +15,7 @@
     },
     "expansions": {
       "title": "Expansions",
+      "moonSagaPromoTilesWithoutTidesOfTradeExpansion": "Some of the Moonsaga Promo Tiles are referencing features of the Tides of Trade expansion. If you are not using that, sort out the related tiles.",
       "tides-of-trade": "Tides of Trade",
       "moonsaga-promo-tiles": "Moonsaga Promo Tiles"
     }
