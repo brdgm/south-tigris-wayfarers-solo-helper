@@ -1,28 +1,26 @@
 <template>
-  <div class="widthLimitation">
-    <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
-      <div class="actionWrapper">
-        <div class="cost" v-if="action.influenceCost">
-          <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence-cost" :name="guild" class="icon"/>
-          <AppIcon name="multiple" class="multiple"/>
-          <AppIcon name="arrow" class="arrow"/>
-        </div>
-        <slot name="action"></slot>
-        <div class="bonus" v-if="action.influenceBonus">
-          <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
-          <AppIcon name="multiple" class="multiple"/>
-        </div>
-        <div class="bonus" v-if="action.silverBonus">
-          <AppIcon v-for="index of action.silverBonus" :key="index" name="silver" extension="webp" class="icon silver"/>
-        </div>
+  <div class="actionBox" :class="{'instruction': hasInstruction}" @click="showInstructions">
+    <div class="actionWrapper">
+      <div class="cost" v-if="action.influenceCost">
+        <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence-cost" :name="guild" class="icon"/>
+        <AppIcon name="multiple" class="multiple"/>
+        <AppIcon name="arrow" class="arrow"/>
       </div>
-      <div class="priority" v-if="hasPriority">
-        <slot name="priority"></slot>
+      <slot name="action"></slot>
+      <div class="bonus" v-if="action.influenceBonus">
+        <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
+        <AppIcon name="multiple" class="multiple"/>
+      </div>
+      <div class="bonus" v-if="action.silverBonus">
+        <AppIcon v-for="index of action.silverBonus" :key="index" name="silver" extension="webp" class="icon silver"/>
       </div>
     </div>
-    <div v-if="hasFollowUpAction" class="actionBox followUp col">
-      <slot name="followUpAction"></slot>
+    <div class="priority" v-if="hasPriority">
+      <slot name="priority"></slot>
     </div>
+  </div>
+  <div v-if="hasFollowUpAction" class="actionBox followUp col">
+    <slot name="followUpAction"></slot>
   </div>
 
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
@@ -116,8 +114,6 @@ export default defineComponent({
   &.followUp {
     margin-top: -15px;
     padding-top: 25px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     border-style: none;
     background-color: #caac8c;
     min-height: 0;
