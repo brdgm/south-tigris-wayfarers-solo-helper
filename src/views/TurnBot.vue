@@ -7,13 +7,16 @@
 
   <template v-if="botActions">
     <template v-if="botActions.isRest">
-      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState" @addActions="actions => addActions(actions,0)"/>
+      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState"
+          @addActions="(actionId,actions) => addActions(actionId,actions,0)"/>
     </template>
     <template v-else>
-      <BotAction :action="currentAction" :navigationState="navigationState" @addActions="actions => addActions(actions,0)"/>
+      <BotAction :action="currentAction" :navigationState="navigationState"
+          @addActions="(actionId,actions) => addActions(actionId,actions,0)"/>
     </template>
     <template v-for="item of additionalActions" :key="item.level">
-      <BotAction v-for="(action,index) of item.actions" :key="index" :action="action" :navigationState="navigationState" @addActions="actions => addActions(actions,item.level+1)"/>
+      <BotAction v-for="(action,index) of item.actions" :key="index" :action="action" :navigationState="navigationState"
+          @addActions="(actionId,actions) => addActions(actionId,actions,item.level+1)"/>
     </template>
     <BotAction v-if="botActions.benefit" :action="botActions.benefit" :navigationState="navigationState"/>
   </template>
@@ -132,14 +135,15 @@ export default defineComponent({
       })
       this.router.push(`/turn/${this.turn+1}/player`)
     },
-    addActions(actions: CardAction[], level: number) {
-      this.additionalActions = this.additionalActions.filter(item => item.level < level)
-      this.additionalActions.push({ level, actions })
+    addActions(actionId: string, actions: CardAction[], level: number) {
+      this.additionalActions = this.additionalActions.filter(item => (item.level < level) || (item.level == level && item.actionId != actionId))
+      this.additionalActions.push({ actionId, level, actions })
     }
   }
 })
 
 interface AdditionalActions {
+  actionId: string
   level: number
   actions: CardAction[]
 }

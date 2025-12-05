@@ -45,7 +45,7 @@ export default defineComponent({
   name: 'ActionJournal',
   inheritAttrs: false,
   emits: {
-    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   components: {
     ActionBox,
@@ -123,7 +123,7 @@ export default defineComponent({
   },
   watch: {
     selectedBenefits(newValue: JournalBenefit[]) {
-      this.$emit('addActions', newValue.flatMap(benefit => benefit.actions))
+      this.$emit('addActions', this.uid, newValue.flatMap(benefit => benefit.actions))
     }
   }
 })

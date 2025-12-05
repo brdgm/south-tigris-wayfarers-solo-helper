@@ -85,7 +85,7 @@
       "general": {
         "spendInfluencePossible": "If it cannot spend the indicated Influence, the action is not possible.",
         "gainInfluence": "The AI places the indicated Influence on Guild(s).",
-        "silverBonus": "The AI gains the indicated amount of silver (managed by the application)."
+        "silverBonus": "The AI gains the indicated amount of silver <i>(managed by the application)</i>."
       },
       "cardInspiration": {
         "title": "Inspiration Card",
@@ -111,7 +111,7 @@
       },
       "comet": {
         "title": "Comet",
-        "instruction": "The AI gains 1 Comet (managed by the application)."
+        "instruction": "The AI gains 1 Comet <i>(managed by the application)</i>."
       },
       "influence": {
         "title": "Gain Influence"

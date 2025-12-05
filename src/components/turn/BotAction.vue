@@ -45,7 +45,7 @@ export default defineComponent({
     ActionSilver
   },
   emits: {
-    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -67,8 +67,8 @@ export default defineComponent({
     }
   },
   methods: {
-    addActions(actions: CardAction[]) {
-      this.$emit('addActions', actions)
+    addActions(actionId: string, actions: CardAction[]) {
+      this.$emit('addActions', actionId, actions)
     }
   }
 })

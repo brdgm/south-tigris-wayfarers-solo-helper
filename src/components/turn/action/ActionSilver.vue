@@ -20,7 +20,7 @@ export default defineComponent({
   name: 'ActionSilver',
   inheritAttrs: false,
   emits: {
-    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   components: {
     ActionBox

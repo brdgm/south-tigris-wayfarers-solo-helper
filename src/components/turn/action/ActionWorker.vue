@@ -48,7 +48,7 @@ export default defineComponent({
     CardPriorityIcon
   },
   emits: {
-    addActions: (_actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -96,7 +96,7 @@ export default defineComponent({
           actions = getBlueWorkerActions(newValue)
         }
       }
-      this.$emit('addActions', actions)
+      this.$emit('addActions', this.uid, actions)
     }
   }
 })
