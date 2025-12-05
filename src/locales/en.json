@@ -126,18 +126,24 @@
       "journal": {
         "title": "Journal",
         "moveJournalTrack": "The AI advances on the Journal Track. If it has a choice, it follows the direction of the arrow.",
-        "lastColumn": "When moving into the last column of the Journal Track, the AI will never take the middle option. If you blocked the space they would have moved into, they instead move into the other available space in that final column. For the final space of the Journal Track, they will take a Special Upgrade Tile, not an Inspiration Card.",
-        "additionalStepPriority": "Before Journaling, first check to see where the AI’s Player Marker is in reference to your own. If they are behind, they will spend 1 Black Influence to move an extra space if possible. If they are in the same column, this will cost 2 Black Influence, and if they are ahead, this will cost 3 Black Influence. Note that it is possible for them to gain the required Black Influence during their first movement. However, it is their position before that first movement that dictates the Influence cost. They will only move a 2nd time if they have the required Black Influence available to spend."
+        "lastColumn": "When moving into the last column of the Journal Track, the AI will never take the middle option. If you blocked the space they would have moved into, they instead move into the other available space in that final column.",
+        "additionalStepPriority": "Before Journaling, first check to see where the AI’s Player Marker is in reference to your own. If they are behind, they will spend 1 Black Influence to move an extra space if possible. If they are in the same column, this will cost 2 Black Influence, and if they are ahead, this will cost 3 Black Influence. Note that it is possible for them to gain the required Black Influence during their first movement. However, it is their position before that first movement that dictates the Influence cost. They will only move a 2nd time if they have the required Black Influence available to spend.",
+        "benefits": "For each space the AI moved onto, <b>select the effect</b> to show the follow-up actions."
       },
       "upgradeTile": {
         "title": "Upgrade Tile",
         "gainTile": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the colour preference).",
-        "placeBoard": "The AI places it onto their Board, starting in the bottom-left corner of their Caravan. From here they continue placing Upgrade Tiles, filling the bottom row from left to right, then the middle row from right to left, and finally the top row from left to right. Rotate rectangular Tiles as needed, in order to keep them from breaking out of this winding path. If the AI gains more Upgrade Tiles than they have room for, simply place any further Tiles alongside their Board.",
-        "benefits": "When placing an Upgrade Tile, immediately resolve the effects of any icons covered in their Caravan - <b>select the chosen benefits below to show the follow-up actions</b>."
+        "placeBoard": "The AI places it onto their Board, starting in the bottom-left corner of their Caravan. From here they continue placing Upgrade Tiles, filling the bottom row from left to right, then the middle row from right to left, and finally the top row from left to right. Rotate rectangular Tiles as needed, in order to keep them from breaking out of this winding path.",
+        "benefits": "When placing an Upgrade Tile, <b>select the effects</b> (as covered in their Caravan) to show the follow-up actions.",
+        "moreTiles": "If the AI gains more Upgrade Tiles than they have room for, simply place any further Tiles alongside their Board (without gaining any benefits)."
       },
       "upgradeTileWorker": {
         "title": "Worker Upgrade Tile",
-        "instruction": "The AI gains 1 Worker Upgrade Tile."
+        "gainTile": "The AI gains 1 Worker Upgrade Tile."
+      },
+      "upgradeTileSpecial": {
+        "title": "Special Upgrade Tile",
+        "gainTile": "The AI gains 1 Special Upgrade Tile."
       },
       "worker": {
         "title": "Place Worker",

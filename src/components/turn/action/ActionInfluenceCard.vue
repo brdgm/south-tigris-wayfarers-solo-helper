@@ -7,7 +7,7 @@
     </template>
     <template #priority>
       <ColorPriority :navigationState="navigationState"/>
-      <CardPriorityIcon :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
+      <CardPriority :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
     </template>
     <template #instruction>
       <p v-html="t('rules.action.influenceCard.instruction')"/>
@@ -23,7 +23,7 @@ import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
-import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
+import CardPriority from '@/components/structure/CardPriority.vue'
 
 export default defineComponent({
   name: 'ActionInfluenceCard',
@@ -35,7 +35,7 @@ export default defineComponent({
     ActionBox,
     AppIcon,
     ColorPriority,
-    CardPriorityIcon
+    CardPriority
   },
   setup() {
     const { t } = useI18n()

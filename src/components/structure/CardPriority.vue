@@ -11,7 +11,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 
 export default defineComponent({
-  name: 'CardPriorityIcon',
+  name: 'CardPriority',
   components: {
     AppIcon
   },

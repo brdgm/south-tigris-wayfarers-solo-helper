@@ -8,33 +8,16 @@
     </template>
     <template #priority>
       <ColorPriority :navigationState="navigationState"/>
-      <CardPriorityIcon :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
+      <CardPriority :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
     </template>
     <template #followUpAction>
-      <div class="btn-group flex-wrap">
-        <template v-for="(action,index) of benefitActions" :key="index">
-          <input type="checkbox" class="btn-check" :id="`${uid}-benefitActionOption${index}`" autocomplete="off" v-model="selectedBenefitActions" :value="action" :disabled="isCheckboxDisabled(action)">
-          <label class="btn btn-outline-secondary" :for="`${uid}-benefitActionOption${index}`">
-            <AppIcon type="action" :name="action.action" class="benefit"/>
-          </label>
-        </template>
-      </div>
-      <div class="btn-group flex-wrap mt-1">
-        <template v-for="(action,index) of benefitActionsInfluence" :key="index">
-          <input type="checkbox" class="btn-check" :id="`${uid}-benefitActionInfluenceOption${index}`" autocomplete="off" v-model="selectedBenefitActions" :value="action" :disabled="isCheckboxDisabled(action)">
-          <label class="btn btn-outline-secondary" :for="`${uid}-benefitActionInfluenceOption${index}`">
-            <div class="influence" v-if="action.influenceBonus">
-              <AppIcon type="influence" :name="action.influenceBonus[0]" class="benefit"/>
-              <AppIcon name="multiple" class="multiple"/>
-            </div>
-          </label>
-        </template>
-      </div>
+      <UpgradeTileFollowUpActions @addActions="(actionId,actions) => $emit('addActions', actionId,actions)"/>
     </template>
     <template #instruction>
       <p v-html="t('rules.action.upgradeTile.gainTile')"/>
       <p v-html="t('rules.action.upgradeTile.placeBoard')"/>
       <p v-html="t('rules.action.upgradeTile.benefits')"/>
+      <p v-html="t('rules.action.upgradeTile.moreTiles')"/>
     </template>
   </ActionBox>
 </template>
@@ -47,11 +30,8 @@ import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
-import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
-import Action from '@/services/enum/Action'
-import Guild from '@/services/enum/Guild'
-import { isEqual } from 'lodash'
-import { nanoid } from 'nanoid'
+import CardPriority from '@/components/structure/CardPriority.vue'
+import UpgradeTileFollowUpActions from './followup/UpgradeTileFollowUpActions.vue'
 
 export default defineComponent({
   name: 'ActionUpgradeTile',
@@ -63,17 +43,12 @@ export default defineComponent({
     ActionBox,
     AppIcon,
     ColorPriority,
-    CardPriorityIcon
+    CardPriority,
+    UpgradeTileFollowUpActions
   },
   setup() {
     const { t } = useI18n()
-    const uid = nanoid()
-    return { t, uid }
-  },
-  data() {
-    return {
-      selectedBenefitActions: [] as CardAction[]
-    }
+    return { t }
   },
   props: {
     action: {
@@ -83,37 +58,6 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
-    }
-  },
-  computed: {
-    benefitActions() : CardAction[] {
-      return [
-        { action: Action.CARD_LAND },
-        { action: Action.CARD_WATER },
-        { action: Action.CARD_SPACE },
-        { action: Action.CARD_TOWNSFOLK },
-        { action: Action.CARD_INSPIRATION },
-        { action: Action.INFLUENCE_CARD },
-        { action: Action.COMET }
-      ]
-    },
-    benefitActionsInfluence() : CardAction[] {
-      return [
-        { action: Action.INFLUENCE, influenceBonus: [Guild.YELLOW] },
-        { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE] },
-        { action: Action.INFLUENCE, influenceBonus: [Guild.BLACK] },
-        { action: Action.INFLUENCE, influenceBonus: [Guild.ANY] }
-      ]
-    }
-  },
-  methods: {
-    isCheckboxDisabled(action: CardAction) : boolean {
-      return this.selectedBenefitActions.length >= 2 && !this.selectedBenefitActions.find(item => isEqual(item, action))
-    }
-  },
-  watch: {
-    selectedBenefitActions(newValue: CardAction[]) {
-      this.$emit('addActions', this.uid, newValue)
     }
   }
 })
@@ -129,16 +73,5 @@ export default defineComponent({
 }
 .icon {
   height: 3rem;
-}
-.benefit {
-  height: 1.6rem;
-}
-.influence {
-  white-space: nowrap;
-  .multiple {
-    height: 0.9rem;
-    margin-top: 0.4rem;
-    margin-left: -0.5rem;
-  }
 }
 </style>

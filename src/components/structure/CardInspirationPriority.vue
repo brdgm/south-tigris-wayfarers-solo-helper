@@ -11,7 +11,7 @@ import NavigationState from '@/util/NavigationState'
 import getResourceTrackInspirationPosition from '@/util/getResourceTrackInspirationPosition'
 
 export default defineComponent({
-  name: 'CardPriorityInspirationIcon',
+  name: 'CardInspirationPriority',
   components: {
     AppIcon
   },

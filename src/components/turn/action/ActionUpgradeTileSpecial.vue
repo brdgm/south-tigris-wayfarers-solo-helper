@@ -6,10 +6,16 @@
       </div>
     </template>
     <template #priority>
-      <CardPriorityIcon :navigationState="navigationState" :greenYellow="true"/>
+      <UpgradeTileSpecialPriority :navigationState="navigationState"/>
+    </template>
+    <template #followUpAction>
+      <UpgradeTileFollowUpActions @addActions="(actionId,actions) => $emit('addActions', actionId,actions)"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.upgradeTileSpecial.instruction')"/>
+      <p v-html="t('rules.action.upgradeTileSpecial.gainTile')"/>
+      <p v-html="t('rules.action.upgradeTile.placeBoard')"/>
+      <p v-html="t('rules.action.upgradeTile.benefits')"/>
+      <p v-html="t('rules.action.upgradeTile.moreTiles')"/>
     </template>
   </ActionBox>
 </template>
@@ -21,7 +27,8 @@ import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
-import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
+import UpgradeTileFollowUpActions from './followup/UpgradeTileFollowUpActions.vue'
+import UpgradeTileSpecialPriority from '@/components/structure/UpgradeTileSpecialPriority.vue'
 
 export default defineComponent({
   name: 'ActionUpgradeTileSpecial',
@@ -32,7 +39,8 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon,
-    CardPriorityIcon
+    UpgradeTileSpecialPriority,
+    UpgradeTileFollowUpActions
   },
   setup() {
     const { t } = useI18n()

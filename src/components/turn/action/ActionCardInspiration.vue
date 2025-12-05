@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #priority>
-      <CardPriorityInspirationIcon :navigationState="navigationState"/>
+      <CardInspirationPriority :navigationState="navigationState"/>
     </template>
     <template #instruction>
       <p v-html="t('rules.action.cardInspiration.gainCard')"/>
@@ -21,7 +21,7 @@ import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
-import CardPriorityInspirationIcon from '@/components/structure/CardPriorityInspirationIcon.vue'
+import CardInspirationPriority from '@/components/structure/CardInspirationPriority.vue'
 
 export default defineComponent({
   name: 'ActionCardInspiration',
@@ -32,7 +32,7 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon,
-    CardPriorityInspirationIcon
+    CardInspirationPriority
   },
   setup() {
     const { t } = useI18n()
