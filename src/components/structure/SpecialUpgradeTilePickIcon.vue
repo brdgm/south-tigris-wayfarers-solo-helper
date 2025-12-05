@@ -332,13 +332,12 @@ export default defineComponent({
         case SpecialUpgradeTilePick.TOP_RIGHT:
           return 'tile-top-5'
         case SpecialUpgradeTilePick.BOTTOM_LEFT:
+        default:
           return 'tile-bottom-1'
         case SpecialUpgradeTilePick.BOTTOM_MIDDLE:
           return 'tile-bottom-3'
         case SpecialUpgradeTilePick.BOTTOM_RIGHT:
           return 'tile-bottom-5'
-        default:
-          return undefined
       }
     }
   }

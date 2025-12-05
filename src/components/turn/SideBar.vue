@@ -17,7 +17,12 @@
       <div class="label"><AppIcon name="scheme-cards-red" class="icon cards"/></div>
       <div>{{ cardDeck.discardRedCount }}</div>
     </div>
+    <div class="mt-3">
+      <a data-bs-toggle="modal" href="#priorityModal" class="rule">{{t('rules.priority.title')}}</a>
+    </div>
   </div>
+
+  <PriorityModal :navigationState="navigationState"/>
 </template>
 
 <script lang="ts">
@@ -27,11 +32,13 @@ import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import CardDeck from '@/services/CardDeck'
 import AppIcon from '../structure/AppIcon.vue'
+import PriorityModal from '../rules/PriorityModal.vue'
 
 export default defineComponent({
   name: 'SideBar',
   components: {
-    AppIcon
+    AppIcon,
+    PriorityModal
   },
   setup() {
     const { t } = useI18n()
