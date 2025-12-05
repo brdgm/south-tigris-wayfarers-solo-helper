@@ -4,6 +4,7 @@ import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRoutePa
 import CardDeck from '@/services/CardDeck'
 import Player from '@/services/enum/Player'
 import BotActions from '@/services/BotActions'
+import Card from '@/services/Card'
 
 export default class NavigationState {
 
@@ -13,6 +14,7 @@ export default class NavigationState {
   readonly action : number
   readonly cardDeck: CardDeck
   readonly botActions? : BotActions
+  readonly currentCard? : Card
   readonly botResources : BotResources
 
   constructor(route: RouteLocation, state: State) {    
@@ -26,7 +28,15 @@ export default class NavigationState {
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
 
     if (this.player == Player.BOT) {
+      let currentCard
+      if (this.cardDeck.isRest) {
+        currentCard = this.cardDeck.currentCard
+      }
       this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources, state.setup.botFocus)
+      if (!this.botActions.isRest) {
+        currentCard = this.cardDeck.currentCard
+      }
+      this.currentCard = currentCard
       this.botResources = this.botActions.newBotResources
     }
     else {

@@ -2,7 +2,7 @@
   <div class="mt-4" v-if="state.setup.debugMode">
     <hr/>
     <p class="debug">
-      <b>currentCard</b>: {{cardDeck.currentCard}}<br/>
+      <b>currentCard</b>: {{navigationState.currentCard}}<br/>
       <template v-if="currentCardDrawNext">
         <b>currentCard</b>: {{currentCardDrawNext}}<br/>
       </template>

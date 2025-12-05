@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #priority>
-      <SpecialUpgradeTilePickIcon :special-upgrade-tile-pick="navigationState.cardDeck.currentCard?.specialUpgradeTilePick" class="icon priority"/>
+      <SpecialUpgradeTilePickIcon :special-upgrade-tile-pick="navigationState.currentCard?.specialUpgradeTilePick" class="icon priority"/>
     </template>
     <template #followUpAction>
       <UpgradeTileFollowUpActions @addActions="(actionId,actions) => $emit('addActions', actionId,actions)"/>
