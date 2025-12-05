@@ -13,16 +13,16 @@
     <template #followUpAction>
       <div class="btn-group flex-wrap">
         <template v-for="(action,index) of benefitActions" :key="index">
-          <input type="checkbox" class="btn-check" :id="`benefitActionOption${index}`" autocomplete="off" v-model="selectedBenefitActions" :value="action" :disabled="isCheckboxDisabled(action)">
-          <label class="btn btn-outline-secondary" :for="`benefitActionOption${index}`">
+          <input type="checkbox" class="btn-check" :id="`${uid}-benefitActionOption${index}`" autocomplete="off" v-model="selectedBenefitActions" :value="action" :disabled="isCheckboxDisabled(action)">
+          <label class="btn btn-outline-secondary" :for="`${uid}-benefitActionOption${index}`">
             <AppIcon type="action" :name="action.action" class="benefit"/>
           </label>
         </template>
       </div>
       <div class="btn-group flex-wrap mt-1">
         <template v-for="(action,index) of benefitActionsInfluence" :key="index">
-          <input type="checkbox" class="btn-check" :id="`benefitActionInfluenceOption${index}`" autocomplete="off" v-model="selectedBenefitActions" :value="action" :disabled="isCheckboxDisabled(action)">
-          <label class="btn btn-outline-secondary" :for="`benefitActionInfluenceOption${index}`">
+          <input type="checkbox" class="btn-check" :id="`${uid}-benefitActionInfluenceOption${index}`" autocomplete="off" v-model="selectedBenefitActions" :value="action" :disabled="isCheckboxDisabled(action)">
+          <label class="btn btn-outline-secondary" :for="`${uid}-benefitActionInfluenceOption${index}`">
             <div class="influence" v-if="action.influenceBonus">
               <AppIcon type="influence" :name="action.influenceBonus[0]" class="benefit"/>
               <AppIcon name="multiple" class="multiple"/>
@@ -51,6 +51,7 @@ import CardPriorityIcon from '@/components/structure/CardPriorityIcon.vue'
 import Action from '@/services/enum/Action'
 import Guild from '@/services/enum/Guild'
 import { isEqual } from 'lodash'
+import { nanoid } from 'nanoid'
 
 export default defineComponent({
   name: 'ActionUpgradeTile',
@@ -66,7 +67,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const uid = nanoid()
+    return { t, uid }
   },
   data() {
     return {

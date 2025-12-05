@@ -11,8 +11,8 @@
     <template #followUpAction>
       <div class="btn-group flex-wrap">
         <template v-for="index of 4" :key="index">
-          <input type="radio" class="btn-check" name="workerSpaceSelection" :id="`workerSpaceSelectionOption${index}`" autocomplete="off" v-model="workerSpace" :value="index">
-          <label class="btn btn-outline-secondary" :for="`workerSpaceSelectionOption${index}`">
+          <input type="radio" class="btn-check" name="workerSpaceSelection" :id="`${uid}-workerSpaceSelectionOption${index}`" autocomplete="off" v-model="workerSpace" :value="index">
+          <label class="btn btn-outline-secondary" :for="`${uid}-workerSpaceSelectionOption${index}`">
             <AppIcon type="worker-action" :name="`${workerColor}-${index}`" extension="webp" class="workerAction"/>
           </label>
         </template>
@@ -37,6 +37,7 @@ import NavigationState from '@/util/NavigationState'
 import Color from '@/services/enum/Color'
 import Action from '@/services/enum/Action'
 import Guild from '@/services/enum/Guild'
+import { nanoid } from 'nanoid'
 
 export default defineComponent({
   name: 'ActionWorker',
@@ -51,7 +52,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const uid = nanoid()
+    return { t, uid }
   },
   data() {
     return {

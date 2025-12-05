@@ -10,8 +10,8 @@
     <template #followUpAction>
       <div class="btn-group flex-wrap mt-1" v-for="(benefitGroup,group) of benefits" :key="group">
         <template v-for="(benefit,index) of benefitGroup" :key="index">
-          <input type="checkbox" class="btn-check" :id="`benefitActionOption${group}_${index}`" autocomplete="off" v-model="selectedBenefits" :value="benefit" :disabled="isCheckboxDisabled(benefit)">
-          <label class="btn btn-outline-secondary" :for="`benefitActionOption${group}_${index}`">
+          <input type="checkbox" class="btn-check" :id="`${uid}-benefitActionOption${group}_${index}`" autocomplete="off" v-model="selectedBenefits" :value="benefit" :disabled="isCheckboxDisabled(benefit)">
+          <label class="btn btn-outline-secondary" :for="`${uid}-benefitActionOption${group}_${index}`">
             <AppIcon :type="benefit.type" :name="benefit.name" :extension="benefit.extension" :class="['benefit',benefit.class]"/>
           </label>
         </template>
@@ -39,6 +39,7 @@ import { isEqual } from 'lodash'
 import Expansion from '@/services/enum/Expansion'
 import Color from '@/services/enum/Color'
 import { useStateStore } from '@/store/state'
+import { nanoid } from 'nanoid'
 
 export default defineComponent({
   name: 'ActionJournal',
@@ -53,7 +54,8 @@ export default defineComponent({
   setup() {
     const { t } = useI18n()
     const state = useStateStore()
-    return { t, state }
+    const uid = nanoid()
+    return { t, state, uid }
   },
   data() {
     return {

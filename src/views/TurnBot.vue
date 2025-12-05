@@ -7,13 +7,14 @@
 
   <template v-if="botActions">
     <template v-if="botActions.isRest">
-      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState" @addActions="addActions"/>
+      <BotAction v-for="(restAction,index) of botActions.restActions" :key="index" :action="restAction" :navigationState="navigationState" @addActions="actions => addActions(actions,0)"/>
     </template>
     <template v-else>
-      <BotAction :action="currentAction" :navigationState="navigationState" @addActions="addActions"/>
+      <BotAction :action="currentAction" :navigationState="navigationState" @addActions="actions => addActions(actions,0)"/>
     </template>
-    <BotAction v-for="(additionalAction,index) of additionalActions" :key="index" :action="additionalAction" :navigationState="navigationState"  @addActions="addSecondaryActions"/>
-    <BotAction v-for="(additionalAction,index) of secondaryAdditionalActions" :key="index" :action="additionalAction" :navigationState="navigationState"/>
+    <template v-for="item of additionalActions" :key="item.level">
+      <BotAction v-for="(action,index) of item.actions" :key="index" :action="action" :navigationState="navigationState" @addActions="actions => addActions(actions,item.level+1)"/>
+    </template>
     <BotAction v-if="botActions.benefit" :action="botActions.benefit" :navigationState="navigationState"/>
   </template>
 
@@ -82,8 +83,7 @@ export default defineComponent({
   },
   data() {
     return {
-      additionalActions: [] as CardAction[],
-      secondaryAdditionalActions: [] as CardAction[],
+      additionalActions: [] as AdditionalActions[],
       botSilver: 0
     }
   },
@@ -104,12 +104,10 @@ export default defineComponent({
       return this.currentActions.length > this.action + 1
     },
     additionalActionsSilverBonus() : number {
-      return this.additionalActions.reduce((sum, action) => sum + (action.silverBonus ?? 0), 0)
-          + this.secondaryAdditionalActions.reduce((sum, action) => sum + (action.silverBonus ?? 0), 0)
+      return this.additionalActions.flatMap(item => item.actions) .reduce((sum, action) => sum + (action.silverBonus ?? 0), 0)
     },
     additionalActionsComets() : number {
-      return this.additionalActions.filter(action => action.action==Action.COMET).length
-          + this.secondaryAdditionalActions.filter(action => action.action==Action.COMET).length
+      return this.additionalActions.flatMap(item => item.actions).filter(action => action.action==Action.COMET).length
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver)+this.additionalActionsSilverBonus, this.state.setup.botFocus)
@@ -134,14 +132,17 @@ export default defineComponent({
       })
       this.router.push(`/turn/${this.turn+1}/player`)
     },
-    addActions(actions: CardAction[]) {
-      this.additionalActions = actions
-    },
-    addSecondaryActions(actions: CardAction[]) {
-      this.secondaryAdditionalActions = actions
+    addActions(actions: CardAction[], level: number) {
+      this.additionalActions = this.additionalActions.filter(item => item.level < level)
+      this.additionalActions.push({ level, actions })
     }
   }
 })
+
+interface AdditionalActions {
+  level: number
+  actions: CardAction[]
+}
 </script>
 
 <style lang="scss" scoped>
