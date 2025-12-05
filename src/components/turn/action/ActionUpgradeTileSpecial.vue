@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #priority>
-      <UpgradeTileSpecialPriority :navigationState="navigationState"/>
+      <SpecialUpgradeTilePickIcon :special-upgrade-tile-pick="navigationState.cardDeck.currentCard?.specialUpgradeTilePick" class="icon priority"/>
     </template>
     <template #followUpAction>
       <UpgradeTileFollowUpActions @addActions="(actionId,actions) => $emit('addActions', actionId,actions)"/>
@@ -28,7 +28,7 @@ import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 import UpgradeTileFollowUpActions from './followup/UpgradeTileFollowUpActions.vue'
-import UpgradeTileSpecialPriority from '@/components/structure/UpgradeTileSpecialPriority.vue'
+import SpecialUpgradeTilePickIcon from '@/components/structure/SpecialUpgradeTilePickIcon.vue'
 
 export default defineComponent({
   name: 'ActionUpgradeTileSpecial',
@@ -39,7 +39,7 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon,
-    UpgradeTileSpecialPriority,
+    SpecialUpgradeTilePickIcon,
     UpgradeTileFollowUpActions
   },
   setup() {
@@ -69,5 +69,8 @@ export default defineComponent({
 }
 .icon {
   height: 3rem;
+  &.priority {
+    height: 2rem;
+  }
 }
 </style>
