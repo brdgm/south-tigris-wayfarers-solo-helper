@@ -6,7 +6,7 @@
       <div>{{ navigationState.botResources.resourceTrack+1 }}</div>
     </div>
     <div class="metric">
-      <div class="label"><AppIcon name="comet" class="icon comet"/></div>
+      <div class="label"><AppIcon type="action" name="comet" class="icon comet"/></div>
       <div>{{ navigationState.botResources.cometTrack }}</div>
     </div>
     <div class="metric">

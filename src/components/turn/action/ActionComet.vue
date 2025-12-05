@@ -2,7 +2,7 @@
   <ActionBox :action="action" :instruction-title="t('rules.action.comet.title')">
     <template #action>
       <div class="action">
-        <AppIcon name="comet" class="icon"/>
+        <AppIcon type="action" name="comet" class="icon"/>
       </div>
     </template>
     <template #instruction>

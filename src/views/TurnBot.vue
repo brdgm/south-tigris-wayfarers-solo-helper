@@ -12,7 +12,8 @@
     <template v-else>
       <BotAction :action="currentAction" :navigationState="navigationState" @addActions="addActions"/>
     </template>
-    <BotAction v-for="(additionalAction,index) of additionalActions" :key="index" :action="additionalAction" :navigationState="navigationState"/>
+    <BotAction v-for="(additionalAction,index) of additionalActions" :key="index" :action="additionalAction" :navigationState="navigationState"  @addActions="addSecondaryActions"/>
+    <BotAction v-for="(additionalAction,index) of secondaryAdditionalActions" :key="index" :action="additionalAction" :navigationState="navigationState"/>
     <BotAction v-if="botActions.benefit" :action="botActions.benefit" :navigationState="navigationState"/>
   </template>
 
@@ -82,6 +83,7 @@ export default defineComponent({
   data() {
     return {
       additionalActions: [] as CardAction[],
+      secondaryAdditionalActions: [] as CardAction[],
       botSilver: 0
     }
   },
@@ -102,12 +104,12 @@ export default defineComponent({
       return this.currentActions.length > this.action + 1
     },
     additionalActionsSilverBonus() : number {
-      return this.additionalActions.reduce((sum, action) => {
-        return sum + (action.silverBonus ?? 0)
-      }, 0)
+      return this.additionalActions.reduce((sum, action) => sum + (action.silverBonus ?? 0), 0)
+          + this.secondaryAdditionalActions.reduce((sum, action) => sum + (action.silverBonus ?? 0), 0)
     },
     additionalActionsComets() : number {
       return this.additionalActions.filter(action => action.action==Action.COMET).length
+          + this.secondaryAdditionalActions.filter(action => action.action==Action.COMET).length
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver)+this.additionalActionsSilverBonus, this.state.setup.botFocus)
@@ -134,6 +136,9 @@ export default defineComponent({
     },
     addActions(actions: CardAction[]) {
       this.additionalActions = actions
+    },
+    addSecondaryActions(actions: CardAction[]) {
+      this.secondaryAdditionalActions = actions
     }
   }
 })

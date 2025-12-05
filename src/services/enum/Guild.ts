@@ -5,6 +5,7 @@ enum Guild {
   BLUE = 'blue',
   YELLOW = 'yellow',
   BLACK = 'black',
-  RED = 'red'
+  RED = 'red',
+  ANY = 'any'
 }
 export default Guild

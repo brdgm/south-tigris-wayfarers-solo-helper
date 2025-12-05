@@ -127,7 +127,9 @@
       },
       "upgradeTile": {
         "title": "Upgrade Tile",
-        "instruction": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the colour preference)."
+        "gainTile": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the colour preference).",
+        "placeBoard": "The AI places it onto their Board, starting in the bottom-left corner of their Caravan. From here they continue placing Upgrade Tiles, filling the bottom row from left to right, then the middle row from right to left, and finally the top row from left to right. Rotate rectangular Tiles as needed, in order to keep them from breaking out of this winding path. If the AI gains more Upgrade Tiles than they have room for, simply place any further Tiles alongside their Board.",
+        "benefits": "When placing an Upgrade Tile, immediately resolve the effects of any icons covered in their Caravan - <b>select the chosen benefits below to show the follow-up actions</b>."
       },
       "upgradeTileWorker": {
         "title": "Worker Upgrade Tile",
