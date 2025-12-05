@@ -87,7 +87,7 @@ export default defineComponent({
   data() {
     return {
       additionalActions: [] as AdditionalActions[],
-      botSilver: 0
+      botSilver: undefined as number|undefined
     }
   },
   computed: {

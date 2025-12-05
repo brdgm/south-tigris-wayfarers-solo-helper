@@ -11,12 +11,9 @@ import Guild from '@/services/enum/Guild'
  * @returns Resource track benefit or undefined if the position does not match
  */
 export default function getResourceTrackBenefit(resourceTrack: number, resourceTrackAdd: number, botFocus : BotFocus) : CardAction|undefined {
-  const newResourceTrack = (resourceTrack + resourceTrackAdd) % 8
-  let oldResourceTrack = resourceTrack
-  if (resourceTrack + resourceTrackAdd > 7) {
-    oldResourceTrack = 0
-  }
-  if (oldResourceTrack < 5 && newResourceTrack >= 5) {
+  const oldReachedCount = getBenefitReachedCount(resourceTrack)
+  const newReachedCount = getBenefitReachedCount(resourceTrack + resourceTrackAdd)
+  if (newReachedCount > oldReachedCount) {
     switch (botFocus) {
       case BotFocus.TOWNSFOLK:
         return { action: Action.CARD_TOWNSFOLK }
@@ -33,4 +30,10 @@ export default function getResourceTrackBenefit(resourceTrack: number, resourceT
   else {
     return undefined
   }
+}
+
+function getBenefitReachedCount(resourceTrack: number) : number {
+  const wrapOverCount = Math.floor(resourceTrack / 8)
+  const reached = (resourceTrack % 8) >= 5
+  return wrapOverCount + (reached ? 1 : 0)
 }

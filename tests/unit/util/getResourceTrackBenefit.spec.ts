@@ -15,5 +15,7 @@ describe('util/getResourceTrackBenefit', () => {
 
   it('getResourceTrackBenefit-wrap-over', () => {
     expect(getResourceTrackBenefit(6,7,BotFocus.TOWNSFOLK)).to.eql({ action: Action.CARD_TOWNSFOLK })
+    expect(getResourceTrackBenefit(3,5,BotFocus.TOWNSFOLK)).to.eql({ action: Action.CARD_TOWNSFOLK })
+    expect(getResourceTrackBenefit(6,2,BotFocus.TOWNSFOLK)).to.undefined
   })
 })
