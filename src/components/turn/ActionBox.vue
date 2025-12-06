@@ -27,8 +27,14 @@
     <template #body>
       <slot name="instruction"></slot>
       <p v-if="action.influenceCost" v-html="t('rules.action.general.spendInfluencePossible')"/>
-      <p v-if="action.influenceBonus" v-html="t('rules.action.general.gainInfluence')"/>
-      <p v-if="action.silverBonus" v-html="t('rules.action.general.silverBonus')"/>
+      <template v-if="action.influenceBonus">
+        <hr/>
+        <p v-html="t('rules.action.general.gainInfluence')"/>
+      </template>
+      <template v-if="action.silverBonus">
+        <hr/>
+        <p v-html="t('rules.action.general.silverBonus')"/>
+      </template>
     </template>
   </ModalDialog>
 </template>
@@ -161,5 +167,8 @@ export default defineComponent({
     margin-top: 1rem;
     gap: 0.5rem;
   }
+}
+.modal hr:first-child {
+  display: none;
 }
 </style>
