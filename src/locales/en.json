@@ -45,7 +45,7 @@
   },
   "turnPlayer": {
     "title": "Player",
-    "execute": "Execute you turn.",
+    "execute": "Execute your turn.",
     "botSilver": "Silver/Provisions you pay to the AI:"
   },
   "turnBot": {
@@ -170,7 +170,7 @@
       },
       "colourPriority": {
         "title": "Colour Priority",
-        "description": "When getting a worker, influencing a card or getting any upgrade tile, follow the colour priority. If it's not available, choose the next color in the row."
+        "description": "When getting a worker, influencing a card or getting any upgrade tile, follow the colour priority. If it's not available, choose the next colour in the row."
       },
       "inspirationCardPriority": {
         "title": "Inspiration Card Priority",
