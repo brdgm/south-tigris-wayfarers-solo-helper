@@ -1,0 +1,211 @@
+{
+  "gameTitle": "Wayfarers of the South Tigris",
+  "home": {
+    "title": "Wayfarers of the South Tigris Solo Helper",
+    "play1": "Play <a href='https://boardgamegeek.com/boardgame/350316/wayfarers-of-the-south-tigris' target='_blank' rel='noopener'><b>Wayfarers of the South Tigris</b></a> solo against the AI.",
+    "play2": "This application replaces scheme cards, manages most of the AI player board and guides you through the game and solo ruleset. It supports all AI focuses.",
+    "play3": "You can also play with the <a href='https://boardgamegeek.com/boardgameexpansion/427130/wayfarers-of-the-south-tigris-tides-of-trade' target='_blank' rel='noopener'>Tides of Trade</a> expansion.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Setup",
+    "botFocusSelection": {
+      "title": "AI Focus",
+      "feelDifferent": "Each AI Focus will feel different to play against."
+    },
+    "expansions": {
+      "title": "Expansions",
+      "moonSagaPromoTilesWithoutTidesOfTradeExpansion": "Some of the Moonsaga Promo Tiles are referencing features of the Tides of Trade expansion. If you are not using that, sort out the related tiles.",
+      "tides-of-trade": "Tides of Trade",
+      "moonsaga-promo-tiles": "Moonsaga Promo Tiles"
+    }
+  },
+  "setupBot": {
+    "title": "Setup AI",
+    "instructions": {
+      "intro": "Setup the game for a 2-player game, with the following changes for the AI:",
+      "aiBoard": "On the backside of the player boards you find the AI sides. Find the board with this symbol (<b>{focus} focus</b>):",
+      "noDice": "The AI is not using any Dice.",
+      "playerMarker": "Place the Player Marker of their colour on the starting space of the Journal Track.",
+      "workers": "They start with 1 Yellow Worker and 1 Blue Worker.",
+      "secondPlayer": "The AI will always be the 2nd player. They do not gain any Provisions or Silver, but do start the game with <b>1 Influence in the Yellow Guild and 1 in Blue</b>. Place their remaining Influence into their supply.",
+      "noSchemeCards": "The AI does not need the scheme cards - the card deck, the AI resource track and the comet track is managed by this application. If you need help on an AI action, tap on the action to get the rules."
+    },
+    "ruleChanges": {
+      "title": "Rule Changes",
+      "influenceLimits": "<b>Influence Limits</b>: Unlike human players, the AI is not limited by the Influence in their supply. If they run out, use Influence of an unused colour. This is still considered to be their Influence.",
+      "costs": "The AI <b>ignores all costs</b> <i>(other than those on their Scheme Cards)</i>, and ignores all requirements on the Journal Track. They still gain all rewards from the Journal Track.",
+      "icons": "The AI <b>ignores all icons on all Cards and Upgrade Tiles</b> they acquire. This includes Comets, Influence, free Upgrades, etc - everything! However, they do still gain Victory Points from acquired Upgrade Tiles.",
+      "influenceCard": {
+        "title": "<b>Influence on Cards</b>: If the AI has an Influence on a Card that you want to interact with, you still need to pay them - enter the amount in the app on the current screen. If the AI wants to interact with a Card that you have an Influence on, you have a choice:",
+        "letThem": "Let them interact. You may then choose to take 1 Provision, or 1 Silver from the Main Supply.",
+        "denyThem": "Deny them. You may pay 1 Provision or 1 Silver to have them move to the next Card, based on their usual priority rules. You can do this multiple times, so long as you can afford to. You cannot fully deny them a certain Card type."
+      }
+    }
+  },
+  "turnPlayer": {
+    "title": "Player",
+    "execute": "Execute your turn.",
+    "botSilver": "Silver/Provisions you pay to the AI:"
+  },
+  "turnBot": {
+    "title": "{focus} AI",
+    "executed": "Executed",
+    "notPossible": "Not Possible"
+  },
+  "gameEnd": {
+    "title": "End of Game",
+    "botCards": {
+      "title": "AI Card Count",
+      "cards": "Cards",
+      "vp": "VP",
+      "townsfolk": "Townsfolk Cards",
+      "landWater": "Land/Water Cards",
+      "space": "Space Cards",
+      "inspiration": "Inspiration Cards"
+    },
+    "scoring": {
+      "title": "Victory Points",
+      "primaryLandWaterTags": "Primary Land/Water Tags",
+      "secondaryLandWaterTags": "Secondary Land/Water Tags",
+      "spaceInspirationCards": "Space/Inspiration Cards",
+      "upgradeTiles": "Caravan: Upgrade Tiles",
+      "caravanSquare": "Caravan: 1VP per Square",
+      "guildMajorities": "Guild Majorities",
+      "fullHourglass": "2VP for a Full Hourglass",
+      "totalVP": "Total VP"
+    }
+  },
+  "sideBar": {
+    "turn": "Turn {turn}"
+  },
+  "botFocus": {
+    "townsfolk": "Townsfolk",
+    "upgrade": "Upgrade",
+    "space": "Space",
+    "journal": "Journal"
+  },
+  "rules": {
+    "action": {
+      "general": {
+        "spendInfluencePossible": "If it cannot spend the indicated Influence, the action is not possible.",
+        "gainInfluence": "The AI places the indicated Influence on Guild(s).",
+        "silverBonus": "The AI gains the indicated amount of silver <i>(managed by the application)</i>."
+      },
+      "cardInspiration": {
+        "title": "Inspiration Card",
+        "gainCard": "The AI gains 1 Inspiration Card."
+      },
+      "cardLand": {
+        "title": "Land Card",
+        "gainCard": "The AI gains 1 Land Card.",
+        "drawPile": "The AI draws 1 Land Card from the pile."
+      },
+      "cardSpace": {
+        "title": "Space Card",
+        "gainCard": "The AI gains 1 Space Card."
+      },
+      "cardWater": {
+        "title": "Water Card",
+        "gainCard": "The AI gains 1 Water Card.",
+        "drawPile": "The AI draws 1 Water Card from the pile."
+      },
+      "cardTownsfolk": {
+        "title": "Townsfolk Card",
+        "gainCard": "The AI gains 1 Townsfolk Card."
+      },
+      "comet": {
+        "title": "Comet",
+        "instruction": "The AI gains 1 Comet <i>(managed by the application)</i>."
+      },
+      "influence": {
+        "title": "Gain Influence"
+      },
+      "silver": {
+        "title": "Gain Silver"
+      },
+      "influenceCard": {
+        "title": "Influence Card",
+        "instruction": "The AI places 1 Influence on a Card. Choose by colour and card priority."
+      },
+      "journal": {
+        "title": "Journal",
+        "moveJournalTrack": "The AI advances on the Journal Track. If it has a choice, it follows the direction of the arrow.",
+        "lastColumn": "When moving into the last column of the Journal Track, the AI will never take the middle option. If you blocked the space they would have moved into, they instead move into the other available space in that final column.",
+        "additionalStepPriority": "Before Journaling, first check to see where the AI’s Player Marker is in reference to your own. If they are behind, they will spend 1 Black Influence to move an extra space if possible. If they are in the same column, this will cost 2 Black Influence, and if they are ahead, this will cost 3 Black Influence. Note that it is possible for them to gain the required Black Influence during their first movement. However, it is their position before that first movement that dictates the Influence cost. They will only move a 2nd time if they have the required Black Influence available to spend.",
+        "benefits": "For each space the AI moved onto, <b>select the effect</b> to show the follow-up actions."
+      },
+      "upgradeTile": {
+        "title": "Upgrade Tile",
+        "gainTile": "The AI gains 1 Upgrade Tile (green, black, yellow or blue - according to the colour preference).",
+        "placeBoard": "The AI places it onto their Board, starting in the bottom-left corner of their Caravan. From here they continue placing Upgrade Tiles, filling the bottom row from left to right, then the middle row from right to left, and finally the top row from left to right. Rotate rectangular Tiles as needed, in order to keep them from breaking out of this winding path.",
+        "benefits": "When placing an Upgrade Tile, <b>select the effects</b> (as covered in their Caravan) to show the follow-up actions.",
+        "moreTiles": "If the AI gains more Upgrade Tiles than they have room for, simply place any further Tiles alongside their Board (without gaining any benefits)."
+      },
+      "upgradeTileWorker": {
+        "title": "Worker Upgrade Tile",
+        "gainTile": "The AI gains 1 Worker Upgrade Tile."
+      },
+      "upgradeTileSpecial": {
+        "title": "Special Upgrade Tile",
+        "gainTile": "The AI gains 1 Special Upgrade Tile."
+      },
+      "worker": {
+        "title": "Place Worker",
+        "placeWorker": "The AI places 1 Worker of the indicated colour (if available in their supply).",
+        "workerColors": "The AI will only ever place Green Workers on Townsfolk Cards, Yellow Workers on Land Cards, and Blue Workers on Water Cards.",
+        "printedActions": "Click on the <b>chosen worker space</b> listed below to show the follow-up actions the AI will resolve."
+      },
+      "getWorker": {
+        "title": "Retrieve Worker",
+        "instruction": "Retrieve a Worker from a Faceup Card following the colour priority."
+      }
+    },
+    "priority": {
+      "title": "AI Priorities",
+      "intro": "Most AI actions show a priority for choosing cards, upgrade tiles and workers.",
+      "positionPriority": {
+        "title": "Position Priority",
+        "description": "When picking cards or upgrade tiles, follow these priority icon to pick the desired one. If it's not available, or denied by you, choose the next-possible one following the direction of the arrow, wrapping around if required."
+      },
+      "colourPriority": {
+        "title": "Colour Priority",
+        "description": "When getting a worker, influencing a card or getting any upgrade tile, follow the colour priority. If it's not available, choose the next colour in the row."
+      },
+      "inspirationCardPriority": {
+        "title": "Inspiration Card Priority",
+        "description": "When the AI gains an inspiration card, follow these icons targeting the bottom-most 3 inspiration cards in a preferred order."
+      },
+      "specialUpgradeTilePriority": {
+        "title": "Special Upgrade Tile Priority",
+        "description": "When the AI gains a Special Upgrade Tile, it prefers the highlighted one. If it's not available, pick the next available one in clockwise direction."
+      }
+    }
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "nextRound": "Next Round",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "endGameGoToScoringConfirm": "End this game and go to scoring screen?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close",
+    "ok": "OK"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Refresh Application",
+    "notice": "The application was updated - do you want to refresh to use the latest version?"
+  }
+}
