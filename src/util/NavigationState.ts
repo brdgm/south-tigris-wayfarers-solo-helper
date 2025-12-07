@@ -19,7 +19,7 @@ export default class NavigationState {
 
   constructor(route: RouteLocation, state: State) {    
     this.turn = getIntRouteParam(route, 'turn')
-    this.player = (route.name == 'TurnBot') ? Player.BOT : Player.PLAYER
+    this.player = (route.name == 'TurnBot' || route.name == 'TurnBotAction') ? Player.BOT : Player.PLAYER
     this.actionChoice = getIntRouteParam(route, 'actionChoice')
     this.action = getIntRouteParam(route, 'action')
 
