@@ -29,7 +29,7 @@
       "playerMarker": "Place the Player Marker of their colour on the starting space of the Journal Track.",
       "workers": "They start with 1 Yellow Worker and 1 Blue Worker.",
       "secondPlayer": "The AI will always be the 2nd player. They do not gain any Provisions or Silver, but do start the game with <b>1 Influence in the Yellow Guild and 1 in Blue</b>. Place their remaining Influence into their supply.",
-      "noSchemeCards": "The AI does not need the scheme cards - the card deck, the AI resource track and the comet track is managed by this application. If you need help on an AI action, tap on the action to get the rules."
+      "noSchemeCards": "The AI does not need the scheme cards - the card deck, the AI Resource Track and the Comet Track is managed by this application. If you need help on an AI action, tap on the action to get the rules."
     },
     "ruleChanges": {
       "title": "Rule Changes",
@@ -55,15 +55,6 @@
   },
   "gameEnd": {
     "title": "End of Game",
-    "botCards": {
-      "title": "AI Card Count",
-      "cards": "Cards",
-      "vp": "VP",
-      "townsfolk": "Townsfolk Cards",
-      "landWater": "Land/Water Cards",
-      "space": "Space Cards",
-      "inspiration": "Inspiration Cards"
-    },
     "scoring": {
       "title": "Victory Points",
       "primaryLandWaterTags": "Primary Land/Water Tags",
@@ -77,7 +68,12 @@
     }
   },
   "sideBar": {
-    "turn": "Turn {turn}"
+    "turn": "Turn {turn}",
+    "cardVP": {
+      "title": "AI Cards VP",
+      "vp": "VP",
+      "endGameScoringHint": "VP printed on gained upgrade tiles and Guild majorities are added in end game scoring."      
+    }
   },
   "botFocus": {
     "townsfolk": "Townsfolk",
@@ -90,7 +86,7 @@
       "general": {
         "spendInfluencePossible": "If it cannot spend the indicated Influence, the action is not possible.",
         "gainInfluence": "The AI places the indicated Influence on Guild(s).",
-        "silverBonus": "The AI gains the indicated amount of silver <i>(managed by the application)</i>."
+        "silverBonus": "The AI moves the Resource Track marker the indicated amount of steps <i>(managed by the application)</i>."
       },
       "cardInspiration": {
         "title": "Inspiration Card",

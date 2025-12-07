@@ -62,4 +62,9 @@ export interface CardDeckPersistence {
 export interface BotResources {
   resourceTrack: number
   cometTrack: number
+  townsfolkCards: number
+  landCards: number
+  waterCards: number
+  spaceCards: number
+  inspirationCards: number
 }

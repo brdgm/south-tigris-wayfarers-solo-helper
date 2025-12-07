@@ -19,7 +19,7 @@ export default class NavigationState {
 
   constructor(route: RouteLocation, state: State) {    
     this.turn = getIntRouteParam(route, 'turn')
-    this.player = (route.name == 'TurnPlayer') ? Player.PLAYER : Player.BOT
+    this.player = (route.name == 'TurnBot' || route.name == 'TurnBotAction') ? Player.BOT : Player.PLAYER
     this.actionChoice = getIntRouteParam(route, 'actionChoice')
     this.action = getIntRouteParam(route, 'action')
 
@@ -52,7 +52,12 @@ function getBotPersistence(state: State, turn: number, lastTurn: boolean) : BotP
       cardDeck: state.setup.initialCardDeck ?? CardDeck.new(state.setup.expansions).toPersistence(),
       botResources: {
         resourceTrack: 0,
-        cometTrack: 0
+        cometTrack: 0,
+        townsfolkCards: 0,
+        landCards: 0,
+        waterCards: 0,
+        spaceCards: 0,
+        inspirationCards: 0
       }
     }
 }

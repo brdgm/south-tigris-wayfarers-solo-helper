@@ -7,8 +7,14 @@ import { BotResources } from '@/store/state'
  * @returns New bot resources
  */
 export default function addResourceTrack(botResources: BotResources, value: number) : BotResources {
+  const { townsfolkCards, landCards, waterCards, spaceCards, inspirationCards } = botResources
   return {
     resourceTrack: (botResources.resourceTrack + value) % 8,
-    cometTrack: botResources.cometTrack
+    cometTrack: botResources.cometTrack,
+    townsfolkCards,
+    landCards,
+    waterCards,
+    spaceCards,
+    inspirationCards
   }
 }

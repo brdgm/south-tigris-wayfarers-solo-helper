@@ -4,67 +4,6 @@
       <tbody>
         <tr>
           <th scope="col">
-            <h5>{{t('gameEnd.botCards.title')}}</h5>
-          </th>
-          <th scope="col">
-            <span class="fw-bold">{{t('gameEnd.botCards.cards')}}</span>
-          </th>
-          <th scope="col">
-            <span class="fw-bold">{{t('gameEnd.botCards.vp')}}</span>
-          </th>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.botCards.townsfolk')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botTownsfolkCardCount"/>
-          </td>
-          <td>
-            {{botTownsfolkCardVP}}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.botCards.landWater')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botWaterLandCardCount"/>
-          </td>
-          <td>
-            {{botWaterLandCardVP}}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.botCards.space')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botSpaceCardCount"/>
-          </td>
-          <td>
-            {{botSpaceCardVP}}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.botCards.inspiration')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botInspirationCardsCount"/>
-          </td>
-          <td>
-            {{botInspirationCardsVP}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="tableWrapper mt-3">
-    <table>
-      <tbody>
-        <tr>
-          <th scope="col">
             <h5>{{t('gameEnd.scoring.title')}}</h5>
           </th>
           <th scope="col">
@@ -74,7 +13,17 @@
             <span class="fw-bold">{{t('turnBot.title')}}</span>
           </th>
         </tr>
-        <tr v-if="hasTidesOfTimeExpansion">
+        <tr>
+          <th scope="row">
+            <a data-bs-toggle="modal" href="#cardVPModal" v-html="t('sideBar.cardVP.title')"></a>
+          </th>
+          <td>
+          </td>
+          <td>
+            {{ cardVP.total }}
+          </td>
+        </tr>
+        <tr>
           <th scope="row">
             <span v-html="t('gameEnd.scoring.primaryLandWaterTags')"></span>
           </th>
@@ -82,10 +31,9 @@
             <NumberInput v-model="playerPrimaryLandWaterTagsVP"/>
           </td>
           <td>
-            {{botTownsfolkCardVP + botWaterLandCardVP}}
           </td>
         </tr>
-        <tr>
+        <tr v-if="hasTidesOfTimeExpansion">
           <th scope="row">
             <span v-html="t('gameEnd.scoring.secondaryLandWaterTags')"></span>
           </th>
@@ -103,7 +51,6 @@
             <NumberInput v-model="playerSpaceInspirationCardsVP"/>
           </td>
           <td>
-            {{botSpaceCardVP + botInspirationCardsVP}}
           </td>
         </tr>
         <tr>
@@ -173,6 +120,7 @@ import NavigationState from '@/util/NavigationState'
 import { useRoute } from 'vue-router'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import Expansion from '@/services/enum/Expansion'
+import getCardVP, { CardVP } from '@/util/getCardVP'
 
 export default defineComponent({
   name: 'FinalScoring',
@@ -223,17 +171,8 @@ export default defineComponent({
     }
   },
   computed: {
-    botTownsfolkCardVP () : number {
-      return toNumber(this.botTownsfolkCardCount)
-    },
-    botWaterLandCardVP () : number {
-      return toNumber(this.botWaterLandCardCount) * 2
-    },
-    botSpaceCardVP () : number {
-      return toNumber(this.botSpaceCardCount) * 3
-    },
-    botInspirationCardsVP () : number {
-      return toNumber(this.botInspirationCardsCount) * 4
+    cardVP() : CardVP {
+      return getCardVP(this.navigationState.botResources)
     },
     playerTotalVP(): number {
       return toNumber(this.playerPrimaryLandWaterTagsVP)
@@ -245,10 +184,7 @@ export default defineComponent({
         + toNumber(this.playerFullHourglassVP)
     },
     botTotalVP(): number {
-      return this.botTownsfolkCardVP
-        + this.botWaterLandCardVP
-        + this.botSpaceCardVP
-        + this.botInspirationCardsVP
+      return this.cardVP.total
         + toNumber(this.botUpgradeTilesVP)
         + toNumber(this.botGuildMajoritiesVP)
     },

@@ -4,6 +4,9 @@
       <div class="action">
       </div>
     </template>
+    <template #priority>
+      <ColorPriority v-if="isAnyInfluence" :navigationState="navigationState"/>
+    </template>
     <template #instruction>
     </template>
   </ActionBox>
@@ -15,6 +18,8 @@ import { useI18n } from 'vue-i18n'
 import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import NavigationState from '@/util/NavigationState'
+import ColorPriority from '@/components/structure/ColorPriority.vue'
+import Guild from '@/services/enum/Guild'
 
 export default defineComponent({
   name: 'ActionComet',
@@ -23,7 +28,8 @@ export default defineComponent({
     addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   components: {
-    ActionBox
+    ActionBox,
+    ColorPriority
   },
   setup() {
     const { t } = useI18n()
@@ -37,6 +43,11 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    }
+  },
+  computed: {
+    isAnyInfluence() : boolean {
+      return (this.action.influenceBonus ?? []).includes(Guild.ANY)
     }
   }
 })

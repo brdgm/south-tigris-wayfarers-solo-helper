@@ -1,7 +1,7 @@
 <template>
   <div class="icons">
-    <AppIcon v-if="greenYellow" type="card-priority-green-yellow" :name="iconName" class="icon"/>
-    <AppIcon v-if="blueBlack" type="card-priority-blue-black" :name="iconName" class="icon"/>
+    <AppIcon v-if="greenYellow" type="card-priority-green-yellow" :name="iconName" class="icon" :class="{ 'upgrade-tile-left': upgradeTile }"/>
+    <AppIcon v-if="blueBlack" type="card-priority-blue-black" :name="iconName" class="icon" :class="{ 'upgrade-tile-right': upgradeTile }"/>
   </div>
 </template>
 
@@ -24,6 +24,10 @@ export default defineComponent({
       type: Boolean,
       required: false
     },
+    upgradeTile: {
+      type: Boolean,
+      required: false
+    },
     navigationState: {
       type: NavigationState,
       required: true
@@ -31,7 +35,11 @@ export default defineComponent({
   },
   computed: {
     silverValueSum() : number {
-      return this.navigationState.cardDeck.silverValueSum
+      const silverValueSum = this.navigationState.botActions?.silverValueSum ?? this.navigationState.cardDeck.silverValueSum
+      if (this.upgradeTile && silverValueSum == 4) {
+        return 3
+      }
+      return silverValueSum
     },
     iconName() : string {
       if (this.silverValueSum == 0) {
@@ -53,5 +61,13 @@ export default defineComponent({
 }
 .icon {
   height: 2rem;
+  &.upgrade-tile-left {
+    clip-path: inset(0 0 0 25%);
+    margin-left: -0.5rem;
+  }
+  &.upgrade-tile-right {
+    clip-path: inset(0 25% 0 0);
+    margin-right: -0.5rem;
+  }
 }
 </style>
