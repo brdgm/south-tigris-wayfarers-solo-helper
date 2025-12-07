@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #priority>
-      <CardPriority :navigationState="navigationState" :greenYellow="true"/>
+      <CardPriority :navigationState="navigationState" :greenYellow="true" :upgradeTile="true"/>
     </template>
     <template #followUpAction>
       <UpgradeTileFollowUpActions @addActions="(actionId,actions) => $emit('addActions', actionId,actions)"/>

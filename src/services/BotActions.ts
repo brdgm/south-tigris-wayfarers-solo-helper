@@ -18,17 +18,19 @@ export default class BotActions {
   public readonly restActions : CardAction[]
   public readonly benefit? : CardAction
   public readonly newBotResources : BotResources
-  public readonly isRest : boolean
   public readonly colorMajority : SchemeCardColor
+  public readonly silverValueSum : number
+  public readonly isRest : boolean
 
   private constructor(actionChoices : ActionChoice[], restActions : CardAction[], benefit : CardAction|undefined,
-      newBotResources : BotResources, colorMajority : SchemeCardColor) {
+      newBotResources : BotResources, colorMajority : SchemeCardColor, silverValueSum : number) {
     this.actionChoices = actionChoices
     this.restActions = restActions
     this.benefit = benefit
     this.newBotResources = newBotResources
-    this.isRest = restActions.length > 0
     this.colorMajority = colorMajority
+    this.silverValueSum = silverValueSum
+    this.isRest = restActions.length > 0
   }
 
   public static drawCard(cardDeck : CardDeck, botResources : BotResources, botFocus : BotFocus) : BotActions {
@@ -40,6 +42,7 @@ export default class BotActions {
         benefit = { action: Action.COMET }
       }
       const colorMajority = cardDeck.colorMajority
+      const silverValueSum = cardDeck.silverValueSum
       cardDeck.shuffle()
       const restActions = [
         { action: getBotFocusRestAction(botFocus) },
@@ -48,7 +51,7 @@ export default class BotActions {
       return new BotActions([], restActions, benefit, {
         resourceTrack: botResources.resourceTrack,
         cometTrack: getNewCometTrack(botResources, benefit)
-      }, colorMajority)
+      }, colorMajority, silverValueSum)
     }
     else {
       // draw card
@@ -90,7 +93,7 @@ export default class BotActions {
       return new BotActions(actionChoices, [], benefit, {
         resourceTrack: newResourceTrack,
         cometTrack: getNewCometTrack(botResources, benefit)
-      }, cardDeck.colorMajority)
+      }, cardDeck.colorMajority, cardDeck.silverValueSum)
     }
   }
 

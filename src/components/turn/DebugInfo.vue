@@ -6,7 +6,10 @@
       <template v-if="currentCardDrawNext">
         <b>currentCard</b>: {{currentCardDrawNext}}<br/>
       </template>
-      <b>cardDeck</b>: {{cardDeck.toPersistence()}}<br/>
+      <b>cardDeck</b>: {{cardDeck.toPersistence()}},
+        <b>silverValueSum:</b> {{navigationState.botActions?.silverValueSum ?? navigationState.cardDeck.silverValueSum}},
+        <b>colorMajority</b>: {{navigationState.botActions?.colorMajority ?? cardDeck.colorMajority}},
+        <b>isRest</b>: {{isRest}}<br/>
       <b>botResources</b>: {{navigationState.botResources}}<br/>
     </p>
   </div>
@@ -39,6 +42,9 @@ export default defineComponent({
     },
     currentCardDrawNext() : Card|undefined {
       return this.cardDeck.discard.slice(0, 2).find(card => card.drawNextCard)
+    },
+    isRest() : boolean {
+      return this.navigationState.botActions?.isRest ?? false
     }
   }
 })
