@@ -10,12 +10,12 @@
             <span class="fw-bold">{{t('turnPlayer.title')}}</span>
           </th>
           <th scope="col">
-            <span class="fw-bold">{{t('turnBot.title')}}</span>
+            <span class="fw-bold">{{t(`turnBot.title`,{focus:t(`botFocus.${state.setup.botFocus}`)})}}</span>
           </th>
         </tr>
         <tr>
           <th scope="row">
-            <a data-bs-toggle="modal" href="#cardVPModal" v-html="t('sideBar.cardVP.title')"></a>
+            <a data-bs-toggle="modal" href="#cardVPModal" v-html="t('cardVP.title')"></a>
           </th>
           <td>
           </td>
@@ -106,9 +106,19 @@
             {{botTotalVP}}
           </td>
         </tr>
+        <tr>
+          <th scope="row">
+          </th>
+          <td>
+          </td>
+          <td class="comets">
+            <AppIcon type="action" name="comet" class="icon"/> {{ navigationState.botResources.cometTrack }}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
+  <CardVPModal :navigationState="navigationState" :endGame="true" />
 </template>
 
 <script lang="ts">
@@ -120,12 +130,16 @@ import NavigationState from '@/util/NavigationState'
 import { useRoute } from 'vue-router'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import Expansion from '@/services/enum/Expansion'
+import CardVPModal from '../scoring/CardVPModal.vue'
 import getCardVP, { CardVP } from '@/util/getCardVP'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'FinalScoring',
   components: {
-    NumberInput
+    NumberInput, 
+    CardVPModal,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -211,10 +225,23 @@ th:nth-child(1) {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+tr:last-child {
+  background-color: #fff;
+}
 th {
   vertical-align: middle;
 }
 input {
   width: 5rem;
+}
+.comets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  .icon {
+    height: 2.5rem;
+    margin: -0.5rem;
+  }
 }
 </style>
