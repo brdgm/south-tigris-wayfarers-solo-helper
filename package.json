@@ -1,6 +1,6 @@
 {
   "name": "@brdgm/south-tigris-wayfarers-solo-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Wayfarers of the South Tigris Solo Helper",
   "appDeployName": "south-tigris-wayfarers",
