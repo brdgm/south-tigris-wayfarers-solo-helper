@@ -305,7 +305,7 @@
 import Expansion from '@/services/enum/Expansion'
 import SpecialUpgradeTilePick from '@/services/enum/SpecialUpgradeTilePick'
 import { useStateStore } from '@/store/state'
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid'
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({

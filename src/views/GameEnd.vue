@@ -1,4 +1,5 @@
 <template>
+  <SideBar :navigationState="navigationState"/>
   <h1>{{t('gameEnd.title')}}</h1>
 
   <FinalScoring/>
@@ -18,12 +19,14 @@ import NavigationState from '@/util/NavigationState'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStateStore } from '@/store/state'
 import FinalScoring from '@/components/scoring/FinalScoring.vue'
+import SideBar from '@/components/turn/SideBar.vue'
 
 export default defineComponent({
   name: 'GameEnd',
   components: {
     FooterButtons,
-    FinalScoring
+    FinalScoring,
+    SideBar
   },
   setup() {
     const { t } = useI18n()

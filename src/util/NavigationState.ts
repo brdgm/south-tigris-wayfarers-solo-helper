@@ -19,7 +19,7 @@ export default class NavigationState {
 
   constructor(route: RouteLocation, state: State) {    
     this.turn = getIntRouteParam(route, 'turn')
-    this.player = (route.name == 'TurnPlayer') ? Player.PLAYER : Player.BOT
+    this.player = (route.name == 'TurnBot') ? Player.BOT : Player.PLAYER
     this.actionChoice = getIntRouteParam(route, 'actionChoice')
     this.action = getIntRouteParam(route, 'action')
 
@@ -28,6 +28,7 @@ export default class NavigationState {
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
 
     if (this.player == Player.BOT) {
+      console.log('draw card ' + route.name?.toString())
       let currentCard
       if (this.cardDeck.isRest) {
         currentCard = this.cardDeck.currentCard

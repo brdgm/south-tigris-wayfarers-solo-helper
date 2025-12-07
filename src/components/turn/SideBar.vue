@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    {{t('sideBar.turn', {turn})}}
+    <template v-if="turn>0">{{t('sideBar.turn', {turn})}}</template>
     <div class="metric">
       <div class="label"><AppIcon name="resource-tracker" class="icon resourceTracker"/></div>
       <div>{{ navigationState.botResources.resourceTrack+1 }}</div>
