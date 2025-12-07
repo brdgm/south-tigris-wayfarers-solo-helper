@@ -7,6 +7,7 @@
     </template>
     <template #priority>
       <ColorPriority :navigationState="navigationState" :hideColors="hideColors" :prioritizeColor="prioritizeColor"/>
+      <CardPriority :navigationState="navigationState" :greenYellow="true" :blueBlack="true"/>
     </template>
     <template #instruction>
       <p v-html="t('rules.action.getWorker.instruction')"/>
@@ -23,6 +24,7 @@ import NavigationState from '@/util/NavigationState'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
 import Color from '@/services/enum/Color'
+import CardPriority from '@/components/structure/CardPriority.vue'
 
 export default defineComponent({
   name: 'ActionGetWorker',
@@ -33,7 +35,8 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon,
-    ColorPriority
+    ColorPriority,
+    CardPriority
   },
   setup() {
     const { t } = useI18n()
