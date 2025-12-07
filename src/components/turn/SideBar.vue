@@ -31,37 +31,7 @@
     </div>
   </div>
 
-  <ModalDialog id="cardVPModal" :title="t('sideBar.cardVP.title')">
-    <template #body>
-      <div>
-        {{ botResources.townsfolkCards }} x 
-        <AppIcon type="action" name="card-townsfolk" class="icon"/>
-        = {{ cardVP.townsfolk }} {{ t('sideBar.cardVP.vp') }}
-      </div>
-      <div class="mt-1">
-        {{ botResources.landCards }} x 
-        <AppIcon type="action" name="card-land" class="icon"/>
-        = {{ cardVP.land }} {{ t('gameEnd.botCards.vp') }}
-      </div>
-      <div class="mt-1">
-        {{ botResources.waterCards }} x 
-        <AppIcon type="action" name="card-water" class="icon"/>
-        = {{ cardVP.water }} {{ t('gameEnd.botCards.vp') }}
-      </div>
-      <div class="mt-1">
-        {{ botResources.spaceCards }} x 
-        <AppIcon type="action" name="card-space" class="icon"/>
-        = {{ cardVP.space }} {{ t('gameEnd.botCards.vp') }}
-      </div>
-      <div class="mt-1">
-        {{ botResources.inspirationCards }} x 
-        <AppIcon type="action" name="card-inspiration" class="icon"/>
-        = {{ cardVP.inspiration }} {{ t('sideBar.cardVP.vp') }}
-      </div>
-      <p class="mt-3">{{ t('sideBar.cardVP.endGameScoringHint') }}</p>
-    </template>
-  </ModalDialog>
-
+  <CardVPModal :navigationState="navigationState"/>
   <PriorityModal :navigationState="navigationState"/>
 </template>
 
@@ -73,7 +43,7 @@ import NavigationState from '@/util/NavigationState'
 import CardDeck from '@/services/CardDeck'
 import AppIcon from '../structure/AppIcon.vue'
 import PriorityModal from '../rules/PriorityModal.vue'
-import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
+import CardVPModal from '../scoring/CardVPModal.vue'
 import getCardVP, { CardVP } from '@/util/getCardVP'
 
 export default defineComponent({
@@ -81,7 +51,7 @@ export default defineComponent({
   components: {
     AppIcon,
     PriorityModal,
-    ModalDialog
+    CardVPModal
   },
   setup() {
     const { t } = useI18n()

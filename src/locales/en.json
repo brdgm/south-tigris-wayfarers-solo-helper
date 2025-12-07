@@ -68,12 +68,12 @@
     }
   },
   "sideBar": {
-    "turn": "Turn {turn}",
-    "cardVP": {
-      "title": "AI Cards VP",
-      "vp": "VP",
-      "endGameScoringHint": "VP printed on gained upgrade tiles and Guild majorities are added in end game scoring."      
-    }
+    "turn": "Turn {turn}"
+  },
+  "cardVP": {
+    "title": "AI Cards VP",
+    "vp": "VP",
+    "endGameScoringHint": "VP printed on gained upgrade tiles and Guild majorities are added in end game scoring."      
   },
   "botFocus": {
     "townsfolk": "Townsfolk",
