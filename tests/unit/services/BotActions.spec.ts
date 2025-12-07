@@ -5,11 +5,12 @@ import BotFocus from '@/services/enum/BotFocus'
 import Color from '@/services/enum/Color'
 import Guild from '@/services/enum/Guild'
 import { expect } from 'chai'
+import mockBotResources from '../helper/mockBotResources'
 
 describe('services/BotActions', () => {
   it('card-1', () => {
     const deck = CardDeck.fromPersistence({pile: [1,7,2,5,6,3], discard: [4]})
-    const underTest = BotActions.drawCard(deck, {resourceTrack: 0, cometTrack: 0}, BotFocus.JOURNAL)
+    const underTest = BotActions.drawCard(deck, mockBotResources({resourceTrack: 0, cometTrack: 0}), BotFocus.JOURNAL)
 
     expect(underTest.actionChoices).to.eql([
       { actions: [
@@ -19,13 +20,13 @@ describe('services/BotActions', () => {
     ])
     expect(underTest.restActions).to.eql([])
     expect(underTest.benefit).to.undefined
-    expect(underTest.newBotResources).to.eql({resourceTrack: 2, cometTrack: 0})
+    expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 2, cometTrack: 0}))
     expect(underTest.isRest).to.be.false
   })
 
   it('card-7-2', () => {
     const deck = CardDeck.fromPersistence({pile: [7,2,5,6,3], discard: [1,4]})
-    const underTest = BotActions.drawCard(deck, {resourceTrack: 0, cometTrack: 2}, BotFocus.JOURNAL)
+    const underTest = BotActions.drawCard(deck, mockBotResources({resourceTrack: 0, cometTrack: 2}), BotFocus.JOURNAL)
 
     expect(underTest.actionChoices).to.eql([
       { actions: [
@@ -40,13 +41,13 @@ describe('services/BotActions', () => {
     ])
     expect(underTest.restActions).to.eql([])
     expect(underTest.benefit).to.undefined
-    expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 2})
+    expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 0, cometTrack: 2}))
     expect(underTest.isRest).to.be.false
   })
 
   it('card-5-resourceTrackBenefit', () => {
     const deck = CardDeck.fromPersistence({pile: [5,6,3], discard: []})
-    const underTest = BotActions.drawCard(deck, {resourceTrack: 3, cometTrack: 0}, BotFocus.JOURNAL)
+    const underTest = BotActions.drawCard(deck, mockBotResources({resourceTrack: 3, cometTrack: 0}), BotFocus.JOURNAL)
 
     expect(underTest.actionChoices).to.eql([
       { actions: [
@@ -56,13 +57,13 @@ describe('services/BotActions', () => {
     ])
     expect(underTest.restActions).to.eql([])
     expect(underTest.benefit).to.eql({ action: Action.INFLUENCE, influenceBonus: [Guild.BLACK] })
-    expect(underTest.newBotResources).to.eql({resourceTrack: 5, cometTrack: 0})
+    expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 5, cometTrack: 0}))
     expect(underTest.isRest).to.be.false
   })
 
   it('card-1-wrap-over', () => {
     const deck = CardDeck.fromPersistence({pile: [1,7,2,5,6,3], discard: [4]})
-    const underTest = BotActions.drawCard(deck, {resourceTrack: 6, cometTrack: 0}, BotFocus.JOURNAL)
+    const underTest = BotActions.drawCard(deck, mockBotResources({resourceTrack: 6, cometTrack: 0}), BotFocus.JOURNAL)
 
     expect(underTest.actionChoices).to.eql([
       { actions: [
@@ -72,13 +73,13 @@ describe('services/BotActions', () => {
     ])
     expect(underTest.restActions).to.eql([])
     expect(underTest.benefit).to.undefined
-    expect(underTest.newBotResources).to.eql({resourceTrack: 0, cometTrack: 0})
+    expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 0, cometTrack: 0}))
     expect(underTest.isRest).to.be.false
   })
 
   it('rest', () => {
     const deck = CardDeck.fromPersistence({pile: [4,6], discard: [2,5,1,3]})
-    const underTest = BotActions.drawCard(deck, {resourceTrack: 6, cometTrack: 2}, BotFocus.JOURNAL)
+    const underTest = BotActions.drawCard(deck, mockBotResources({resourceTrack: 6, cometTrack: 2}), BotFocus.JOURNAL)
 
     expect(underTest.actionChoices).to.eql([])
     expect(underTest.restActions).to.eql([
@@ -86,7 +87,7 @@ describe('services/BotActions', () => {
       { action: Action.JOURNAL }
     ])
     expect(underTest.benefit).to.eql({ action: Action.COMET })
-    expect(underTest.newBotResources).to.eql({resourceTrack: 6, cometTrack: 3})
+    expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 6, cometTrack: 3}))
     expect(underTest.isRest).to.be.true
   })
 })

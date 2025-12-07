@@ -28,7 +28,6 @@ export default class NavigationState {
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
 
     if (this.player == Player.BOT) {
-      console.log('draw card ' + route.name?.toString())
       let currentCard
       if (this.cardDeck.isRest) {
         currentCard = this.cardDeck.currentCard
@@ -53,7 +52,12 @@ function getBotPersistence(state: State, turn: number, lastTurn: boolean) : BotP
       cardDeck: state.setup.initialCardDeck ?? CardDeck.new(state.setup.expansions).toPersistence(),
       botResources: {
         resourceTrack: 0,
-        cometTrack: 0
+        cometTrack: 0,
+        townsfolkCards: 0,
+        landCards: 0,
+        waterCards: 0,
+        spaceCards: 0,
+        inspirationCards: 0
       }
     }
 }

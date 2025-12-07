@@ -55,15 +55,6 @@
   },
   "gameEnd": {
     "title": "End of Game",
-    "botCards": {
-      "title": "AI Card Count",
-      "cards": "Cards",
-      "vp": "VP",
-      "townsfolk": "Townsfolk Cards",
-      "landWater": "Land/Water Cards",
-      "space": "Space Cards",
-      "inspiration": "Inspiration Cards"
-    },
     "scoring": {
       "title": "Victory Points",
       "primaryLandWaterTags": "Primary Land/Water Tags",
@@ -77,7 +68,12 @@
     }
   },
   "sideBar": {
-    "turn": "Turn {turn}"
+    "turn": "Turn {turn}",
+    "cardVP": {
+      "title": "AI Cards VP",
+      "vp": "VP",
+      "endGameScoringHint": "VP printed on gained upgrade tiles and Guild majorities are added in end game scoring."      
+    }
   },
   "botFocus": {
     "townsfolk": "Townsfolk",

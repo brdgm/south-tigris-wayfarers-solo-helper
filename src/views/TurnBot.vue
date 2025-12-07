@@ -62,6 +62,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import { ActionChoice } from '@/services/BotActions'
 import Action from '@/services/enum/Action'
 import addComets from '@/util/addComets'
+import addCardCount from '@/util/addCardCount'
 
 export default defineComponent({
   name: 'TurnBot',
@@ -114,6 +115,23 @@ export default defineComponent({
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver)+this.additionalActionsSilverBonus, this.state.setup.botFocus)
+    },
+    actionsRelevantForCardCount() : CardAction[] {
+      const actions : CardAction[] = []
+      if (this.botActions?.isRest) {
+        actions.push(...this.botActions.restActions)
+      }
+      else {
+        actions.push(this.currentAction)
+      }
+      actions.push(...this.additionalActions.flatMap(item => item.actions))
+      if (this.botActions?.benefit) {
+        actions.push(this.botActions.benefit)
+      }
+      if (this.additionalResourceTrackBenefit) {
+        actions.push(this.additionalResourceTrackBenefit)
+      }
+      return actions
     }
   },
   methods: {
@@ -130,7 +148,7 @@ export default defineComponent({
         player: this.navigationState.player,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          botResources: addComets(addResourceTrack(this.navigationState.botResources, toNumber(this.botSilver)+this.additionalActionsSilverBonus), this.additionalActionsComets)
+          botResources: addCardCount(addComets(addResourceTrack(this.navigationState.botResources, toNumber(this.botSilver)+this.additionalActionsSilverBonus), this.additionalActionsComets), this.actionsRelevantForCardCount)
         }
       })
       this.router.push(`/turn/${this.turn+1}/player`)

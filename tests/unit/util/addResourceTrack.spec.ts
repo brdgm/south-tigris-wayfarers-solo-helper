@@ -1,9 +1,12 @@
 import addResourceTrack from '@/util/addResourceTrack'
 import { expect } from 'chai'
+import mockBotResources from '../helper/mockBotResources'
 
 describe('util/addResourceTrack', () => {
   it('addResourceTrack', () => {
-    expect(addResourceTrack({resourceTrack: 4, cometTrack: 0}, 1)).to.eql({resourceTrack: 5, cometTrack: 0})
-    expect(addResourceTrack({resourceTrack: 4, cometTrack: 0}, 5)).to.eql({resourceTrack: 1, cometTrack: 0})
+    expect(addResourceTrack(mockBotResources({resourceTrack: 4, cometTrack: 1}), 1))
+      .to.eql(mockBotResources({resourceTrack: 5, cometTrack: 1}))
+    expect(addResourceTrack(mockBotResources({resourceTrack: 4}), 5))
+      .to.eql(mockBotResources({resourceTrack: 1}))
   })
 })

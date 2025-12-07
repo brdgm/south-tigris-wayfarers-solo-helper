@@ -8,6 +8,8 @@ import getResourceTrackBenefit from '@/util/getResourceTrackBenefit'
 import getBotFocusRestAction from '@/util/getBotFocusRestAction'
 import SchemeCardColor from './enum/SchemeCardColor'
 import { cloneDeep } from 'lodash'
+import addComets from '@/util/addComets'
+import addResourceTrack from '@/util/addResourceTrack'
 
 /**
  * Bot actions derived from scheme card deck.
@@ -48,10 +50,8 @@ export default class BotActions {
         { action: getBotFocusRestAction(botFocus) },
         { action: Action.JOURNAL }
       ]
-      return new BotActions([], restActions, benefit, {
-        resourceTrack: botResources.resourceTrack,
-        cometTrack: getNewCometTrack(botResources, benefit)
-      }, colorMajority, silverValueSum)
+      const newBotResources = addComets(botResources, benefit?.action == Action.COMET ? 1 : 0)
+      return new BotActions([], restActions, benefit, newBotResources, colorMajority, silverValueSum)
     }
     else {
       // draw card
@@ -75,25 +75,18 @@ export default class BotActions {
       })
 
       // resource track advancements
-      const advanceSteps = lastCard.silverValue
+      const resourceTrackAdvanceSteps = lastCard.silverValue
       const oldResourceTrack = botResources.resourceTrack
-      let newResourceTrack = oldResourceTrack + advanceSteps
 
       // benefits from resource track and drawn card
       let benefit : CardAction|undefined = undefined
-      const resourceTrackBenefit = getResourceTrackBenefit(oldResourceTrack, advanceSteps, botFocus)
+      const resourceTrackBenefit = getResourceTrackBenefit(oldResourceTrack, resourceTrackAdvanceSteps, botFocus)
       if (resourceTrackBenefit) {
         benefit = resourceTrackBenefit
       }
       
-      if (newResourceTrack > 7) {
-        newResourceTrack -= 8
-      }
-
-      return new BotActions(actionChoices, [], benefit, {
-        resourceTrack: newResourceTrack,
-        cometTrack: getNewCometTrack(botResources, benefit)
-      }, cardDeck.colorMajority, cardDeck.silverValueSum)
+      const newBotResources = addResourceTrack(addComets(botResources, benefit?.action == Action.COMET ? 1 : 0), resourceTrackAdvanceSteps)
+      return new BotActions(actionChoices, [], benefit, newBotResources, cardDeck.colorMajority, cardDeck.silverValueSum)
     }
   }
 
@@ -118,8 +111,4 @@ function mapActions(action : CardAction, botFocus : BotFocus) : CardAction[] {
     })
   }
   return [action]
-}
-
-function getNewCometTrack(botResources: BotResources, benefit?: CardAction) : number {
-  return botResources.cometTrack + (benefit?.action == Action.COMET ? 1 : 0)
 }

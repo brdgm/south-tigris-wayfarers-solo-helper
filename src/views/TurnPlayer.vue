@@ -31,6 +31,7 @@ import addResourceTrack from '@/util/addResourceTrack'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import { CardAction } from '@/services/Card'
 import BotAction from '@/components/turn/BotAction.vue'
+import addCardCount from '@/util/addCardCount'
 
 export default defineComponent({
   name: 'TurnPlayer',
@@ -66,6 +67,13 @@ export default defineComponent({
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver), this.state.setup.botFocus)
+    },
+    actionsRelevantForCardCount() : CardAction[] {
+      const actions : CardAction[] = []
+      if (this.additionalResourceTrackBenefit) {
+        actions.push(this.additionalResourceTrackBenefit)
+      }
+      return actions
     }
   },
   methods: {
@@ -75,7 +83,7 @@ export default defineComponent({
         player: this.navigationState.player,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          botResources: addResourceTrack(this.navigationState.botResources, toNumber(this.botSilver))
+          botResources: addCardCount(addResourceTrack(this.navigationState.botResources, toNumber(this.botSilver)), this.actionsRelevantForCardCount)
         }
       })
       this.router.push(`/turn/${this.turn+1}/bot`)
