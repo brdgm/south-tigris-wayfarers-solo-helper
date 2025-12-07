@@ -8,7 +8,7 @@
     </template>
     <template #priority>
       <ColorPriority :navigationState="navigationState"/>
-      <CardPriority :navigationState="navigationState" :greenYellow="true" :blueBlack="true" :upgradeTile="true"/>
+      <CardPriority :navigationState="navigationState" :greenYellow="true" :blueBlack="true" :upgradeTile="!isGreenUpgradeTile"/>
     </template>
     <template #followUpAction>
       <UpgradeTileFollowUpActions @addActions="(actionId,actions) => $emit('addActions', actionId,actions)"/>
@@ -32,6 +32,7 @@ import NavigationState from '@/util/NavigationState'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
 import CardPriority from '@/components/structure/CardPriority.vue'
 import UpgradeTileFollowUpActions from './followup/UpgradeTileFollowUpActions.vue'
+import Color from '@/services/enum/Color'
 
 export default defineComponent({
   name: 'ActionUpgradeTile',
@@ -58,6 +59,11 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    }
+  },
+  computed: {
+    isGreenUpgradeTile() : boolean {
+      return this.action.color == Color.GREEN
     }
   }
 })
