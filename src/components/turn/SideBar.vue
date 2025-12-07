@@ -41,17 +41,17 @@
       <div class="mt-1">
         {{ botResources.landCards }} x 
         <AppIcon type="action" name="card-land" class="icon"/>
-        = {{ cardVP.land }} {{ t('gameEnd.botCards.vp') }}
+        = {{ cardVP.land }} {{ t('sideBar.cardVP.vp') }}
       </div>
       <div class="mt-1">
         {{ botResources.waterCards }} x 
         <AppIcon type="action" name="card-water" class="icon"/>
-        = {{ cardVP.water }} {{ t('gameEnd.botCards.vp') }}
+        = {{ cardVP.water }} {{ t('sideBar.cardVP.vp') }}
       </div>
       <div class="mt-1">
         {{ botResources.spaceCards }} x 
         <AppIcon type="action" name="card-space" class="icon"/>
-        = {{ cardVP.space }} {{ t('gameEnd.botCards.vp') }}
+        = {{ cardVP.space }} {{ t('sideBar.cardVP.vp') }}
       </div>
       <div class="mt-1">
         {{ botResources.inspirationCards }} x 
