@@ -20,6 +20,7 @@ describe('services/BotActions', () => {
     expect(underTest.benefit).to.undefined
     expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 2, cometTrack: 0}))
     expect(underTest.isRest).to.be.false
+    expect(underTest.botHasAnotherTurn).to.be.false
   })
 
   it('card-7-botHasAnotherTurn', () => {
@@ -49,6 +50,7 @@ describe('services/BotActions', () => {
     expect(underTest.benefit).to.eql({ action: Action.INFLUENCE, influenceBonus: [Guild.BLACK] })
     expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 5, cometTrack: 0}))
     expect(underTest.isRest).to.be.false
+    expect(underTest.botHasAnotherTurn).to.be.false
   })
 
   it('card-1-wrap-over', () => {
@@ -63,6 +65,7 @@ describe('services/BotActions', () => {
     expect(underTest.benefit).to.undefined
     expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 0, cometTrack: 0}))
     expect(underTest.isRest).to.be.false
+    expect(underTest.botHasAnotherTurn).to.be.false
   })
 
   it('rest', () => {
@@ -77,5 +80,6 @@ describe('services/BotActions', () => {
     expect(underTest.benefit).to.eql({ action: Action.COMET })
     expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 6, cometTrack: 3}))
     expect(underTest.isRest).to.be.true
+    expect(underTest.botHasAnotherTurn).to.be.false
   })
 })
