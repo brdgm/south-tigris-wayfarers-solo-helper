@@ -22,7 +22,7 @@ describe('services/BotActions', () => {
     expect(underTest.isRest).to.be.false
   })
 
-  it('card-7-2', () => {
+  it('card-7-botHasAnotherTurn', () => {
     const deck = CardDeck.fromPersistence({pile: [7,2,5,6,3], discard: [1,4]})
     const underTest = BotActions.drawCard(deck, mockBotResources({resourceTrack: 0, cometTrack: 2}), BotFocus.JOURNAL)
 
@@ -34,6 +34,7 @@ describe('services/BotActions', () => {
     expect(underTest.benefit).to.undefined
     expect(underTest.newBotResources).to.eql(mockBotResources({resourceTrack: 1, cometTrack: 2}))
     expect(underTest.isRest).to.be.false
+    expect(underTest.botHasAnotherTurn).to.be.true
   })
 
   it('card-5-resourceTrackBenefit', () => {
