@@ -73,7 +73,7 @@
   "cardVP": {
     "title": "AI Cards VP",
     "vp": "VP",
-    "endGameScoringHint": "VP printed on gained upgrade tiles and Guild majorities are added in end game scoring."      
+    "endGameScoringHint": "VP printed on gained Upgrade Tiles and Guild majorities are added in end game scoring."      
   },
   "botFocus": {
     "townsfolk": "Townsfolk",
@@ -159,18 +159,18 @@
     },
     "priority": {
       "title": "AI Priorities",
-      "intro": "Most AI actions show a priority for choosing cards, upgrade tiles and workers.",
+      "intro": "Most AI actions show a priority for choosing cards, Upgrade Tiles and workers.",
       "positionPriority": {
         "title": "Position Priority",
-        "description": "When picking cards or upgrade tiles, follow these priority icon to pick the desired one. If it's not available, or denied by you, choose the next-possible one following the direction of the arrow, wrapping around if required."
+        "description": "When picking cards or Upgrade Tiles, follow these priority icon to pick the desired one. If it's not available, or denied by you, choose the next-possible one following the direction of the arrow, wrapping around if required."
       },
       "colourPriority": {
         "title": "Colour Priority",
-        "description": "When getting a worker, influencing a card or getting any upgrade tile, follow the colour priority. If it's not available, choose the next colour in the row."
+        "description": "When getting a worker, influencing a card or getting any Upgrade Tile, follow the colour priority. If it's not available, choose the next colour in the row."
       },
       "inspirationCardPriority": {
         "title": "Inspiration Card Priority",
-        "description": "When the AI gains an inspiration card, follow these icons targeting the bottom-most 3 inspiration cards in a preferred order."
+        "description": "When the AI gains an Inspiration Card, follow these icons targeting the bottom-most 3 Inspiration Cards in a preferred order."
       },
       "specialUpgradeTilePriority": {
         "title": "Special Upgrade Tile Priority",

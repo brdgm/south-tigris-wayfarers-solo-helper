@@ -10,7 +10,7 @@ export default class NavigationState {
 
   readonly turn : number
   readonly player : Player
-  readonly actionChoice : number
+  readonly previousTurnPlayer : Player|undefined
   readonly action : number
   readonly cardDeck: CardDeck
   readonly botActions? : BotActions
@@ -20,7 +20,7 @@ export default class NavigationState {
   constructor(route: RouteLocation, state: State) {    
     this.turn = getIntRouteParam(route, 'turn')
     this.player = (route.name == 'TurnBot' || route.name == 'TurnBotAction') ? Player.BOT : Player.PLAYER
-    this.actionChoice = getIntRouteParam(route, 'actionChoice')
+    this.previousTurnPlayer = getPreviousTurnPlayer(state, this.turn)
     this.action = getIntRouteParam(route, 'action')
 
     const lastTurn = (route.name == 'GameEnd')
@@ -66,4 +66,8 @@ function getLastBotPersistence(state: State, turn: number, lastTurn: boolean) : 
   return state.turns
       .toSorted((item1,item2) => item1.turn - item2.turn)
       .findLast(item => (item.turn < turn) || lastTurn)?.botPersistence
+}
+
+function getPreviousTurnPlayer(state: State, turn: number) : Player|undefined {
+  return state.turns.findLast(item => item.turn == turn-1)?.player
 }

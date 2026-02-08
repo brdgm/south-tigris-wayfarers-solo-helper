@@ -38,9 +38,14 @@ const routes: Array<RouteRecordRaw> = [
     component: TurnBot
   },
   {
-    path: '/turn/:turn/bot/action/:actionChoice/:action',
+    path: '/turn/:turn/bot/action/:action',
     name: 'TurnBotAction',
     component: TurnBot
+  },
+  {
+    // backward compatibility for old links, actionChoice is not used anymore
+    path: '/turn/:turn/bot/action/:actionChoice/:action',
+    redirect: to => ({ name: 'TurnBotAction', params: { turn: to.params.turn, action: to.params.action } })
   },
   {
     path: '/gameEnd',
