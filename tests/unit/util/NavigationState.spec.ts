@@ -21,7 +21,9 @@ const state = mockState({botFocus:BotFocus.TOWNSFOLK,
 describe('util/NavigationState', () => {
   it('turn-1', () => {
     const underTest = navigationState('TurnPlayer', {turn:'1'})
-    expect(underTest.turn).to.equal(1)
+    expect(underTest.turn).to.eq(1)
+    expect(underTest.player).to.eq(Player.PLAYER)
+    expect(underTest.previousTurnPlayer).to.undefined
     expect(underTest.cardDeck.currentCard?.id).to.undefined
     expect(underTest.botResources.resourceTrack).to.eq(0)
     expect(underTest.botResources.cometTrack).to.eq(0)
@@ -29,7 +31,9 @@ describe('util/NavigationState', () => {
 
   it('turn-2', () => {
     const underTest = navigationState('TurnBot', {turn:'2'})
-    expect(underTest.turn).to.equal(2)
+    expect(underTest.turn).to.eq(2)
+    expect(underTest.player).to.eq(Player.BOT)
+    expect(underTest.previousTurnPlayer).to.eq(Player.PLAYER)
     expect(underTest.cardDeck.currentCard?.id).to.eq(1)
     expect(underTest.botResources.resourceTrack).to.eq(2)
     expect(underTest.botResources.cometTrack).to.eq(0)
@@ -37,7 +41,9 @@ describe('util/NavigationState', () => {
 
   it('turn-3', () => {
     const underTest = navigationState('TurnPlayer', {turn:'3'})
-    expect(underTest.turn).to.equal(3)
+    expect(underTest.turn).to.eq(3)
+    expect(underTest.player).to.eq(Player.PLAYER)
+    expect(underTest.previousTurnPlayer).to.eq(Player.BOT)
     expect(underTest.cardDeck.currentCard?.id).to.eq(1)
     expect(underTest.botResources.resourceTrack).to.eq(2)
     expect(underTest.botResources.cometTrack).to.eq(1)
@@ -45,7 +51,9 @@ describe('util/NavigationState', () => {
 
   it('turn-4', () => {
     const underTest = navigationState('TurnBot', {turn:'4'})
-    expect(underTest.turn).to.equal(4)
+    expect(underTest.turn).to.eq(4)
+    expect(underTest.player).to.eq(Player.BOT)
+    expect(underTest.previousTurnPlayer).to.eq(Player.PLAYER)
     expect(underTest.cardDeck.currentCard?.id).to.eq(2)
     expect(underTest.botResources.resourceTrack).to.eq(2)
     expect(underTest.botResources.cometTrack).to.eq(1)

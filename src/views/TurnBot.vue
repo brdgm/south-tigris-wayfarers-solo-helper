@@ -59,10 +59,10 @@ import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import BotAction from '@/components/turn/BotAction.vue'
 import { CardAction } from '@/services/Card'
 import AppIcon from '@/components/structure/AppIcon.vue'
-import { ActionChoice } from '@/services/BotActions'
 import Action from '@/services/enum/Action'
 import addComets from '@/util/addComets'
 import addCardCount from '@/util/addCardCount'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'TurnBot',
@@ -81,9 +81,9 @@ export default defineComponent({
     const state = useStateStore()
 
     const navigationState = new NavigationState(route, state)
-    const { turn, actionChoice, action, botActions } = navigationState
+    const { turn, action, botActions } = navigationState
 
-    return { t, router, navigationState, state, turn, actionChoice, action, botActions }
+    return { t, router, navigationState, state, turn, action, botActions }
   },
   data() {
     return {
@@ -93,13 +93,10 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      return `/turn/${this.turn-1}/player`
-    },
-    currentActionChoice() : ActionChoice|undefined {
-      return this.botActions?.actionChoices[this.actionChoice]
+      return `/turn/${this.turn-1}/${this.navigationState.previousTurnPlayer ?? Player.PLAYER}`
     },
     currentActions() : CardAction[] {
-      return this.currentActionChoice?.actions || []
+      return this.botActions?.actions || []
     },
     currentAction() : CardAction {
       return this.currentActions[this.action]
@@ -136,13 +133,9 @@ export default defineComponent({
   },
   methods: {
     notPossible() : void {
-      this.router.push(`/turn/${this.turn}/bot/action/${this.actionChoice}/${this.action+1}`)
+      this.router.push(`/turn/${this.turn}/bot/action/${this.action+1}`)
     },
     next() : void {
-      if (this.actionChoice < (this.botActions?.actionChoices.length ?? 0) - 1) {
-        this.router.push(`/turn/${this.turn}/bot/action/${this.actionChoice+1}/0`)
-        return
-      }
       this.state.storeTurn({
         turn: this.turn,
         player: this.navigationState.player,
@@ -151,7 +144,12 @@ export default defineComponent({
           botResources: addCardCount(addComets(addResourceTrack(this.navigationState.botResources, toNumber(this.botSilver)+this.additionalActionsSilverBonus), this.additionalActionsComets), this.actionsRelevantForCardCount)
         }
       })
-      this.router.push(`/turn/${this.turn+1}/player`)
+      if (this.botActions?.botHasAnotherTurn) {
+        this.router.push(`/turn/${this.turn+1}/bot`)
+      }
+      else {
+        this.router.push(`/turn/${this.turn+1}/player`)
+      }
     },
     addActions(actionId: string, actions: CardAction[], level: number) {
       this.additionalActions = this.additionalActions.filter(item => (item.level < level) || (item.level == level && item.actionId != actionId))

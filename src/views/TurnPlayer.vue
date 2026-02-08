@@ -32,6 +32,7 @@ import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import { CardAction } from '@/services/Card'
 import BotAction from '@/components/turn/BotAction.vue'
 import addCardCount from '@/util/addCardCount'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'TurnPlayer',
@@ -63,7 +64,7 @@ export default defineComponent({
       if (this.turn == 1) {
         return ''
       }
-      return `/turn/${this.turn-1}/bot`
+      return `/turn/${this.turn-1}/${this.navigationState.previousTurnPlayer ?? Player.BOT}`
     },
     additionalResourceTrackBenefit() : CardAction|undefined {
       return getResourceTrackBenefit(this.navigationState.botResources.resourceTrack, toNumber(this.botSilver), this.state.setup.botFocus)
