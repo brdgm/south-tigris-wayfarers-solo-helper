@@ -162,7 +162,7 @@
       "intro": "Most AI actions show a priority for choosing cards, Upgrade Tiles and workers.",
       "positionPriority": {
         "title": "Position Priority",
-        "description": "When picking cards or Upgrade Tiles, follow these priority icon to pick the desired one. If it's not available, or denied by you, choose the next-possible one following the direction of the arrow, wrapping around if required."
+        "description": "When picking cards or Upgrade Tiles, follow these priority icons to pick the desired one. If it's not available, or denied by you, choose the next-possible one following the direction of the arrow, wrapping around if required."
       },
       "colourPriority": {
         "title": "Colour Priority",
